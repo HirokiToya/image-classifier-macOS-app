@@ -1,19 +1,23 @@
-//
-//  ViewController.swift
-//  image-classifier-app
-//
-//  Created by 外谷弘樹 on 2019/09/28.
-//  Copyright © 2019 example. All rights reserved.
-//
-
 import Cocoa
+import Alamofire
+import SwiftyJSON
 
 class ViewController: NSViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+                
+        Alamofire.request(EndPoints.SceneClassifier.Labels.path(), method: .get).validate().responseJSON {
+            res in
+            if res.result.isSuccess {
+                if let returnValue = res.result.value {
+                    print(JSON(returnValue))
+                }
+            } else {
+                print(res.error.debugDescription)
+            }
+        }
+        
     }
 
     override var representedObject: Any? {

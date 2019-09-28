@@ -1,11 +1,3 @@
-//
-//  AppDelegate.swift
-//  image-classifier-app
-//
-//  Created by 外谷弘樹 on 2019/09/28.
-//  Copyright © 2019 example. All rights reserved.
-//
-
 import Cocoa
 
 @NSApplicationMain

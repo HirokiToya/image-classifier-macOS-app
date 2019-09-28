@@ -3,15 +3,20 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		07FD54FFFEDE099764BDAB32 /* Pods_image_classifier_appTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 89BCDE6CC6A9BE8032216E5F /* Pods_image_classifier_appTests.framework */; };
+		894811D478311D8E2A7A79F1 /* Pods_image_classifier_app.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 53C98C79B9649257751C942D /* Pods_image_classifier_app.framework */; };
 		EDF56A88233F710F00A1019F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDF56A87233F710F00A1019F /* AppDelegate.swift */; };
 		EDF56A8A233F710F00A1019F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDF56A89233F710F00A1019F /* ViewController.swift */; };
 		EDF56A8C233F711200A1019F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EDF56A8B233F711200A1019F /* Assets.xcassets */; };
 		EDF56A8F233F711200A1019F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EDF56A8D233F711200A1019F /* Main.storyboard */; };
 		EDF56A9B233F711200A1019F /* image_classifier_appTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDF56A9A233F711200A1019F /* image_classifier_appTests.swift */; };
+		EDF56AA9233F7A7B00A1019F /* EndPoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDF56AA8233F7A7B00A1019F /* EndPoints.swift */; };
+		EDF56AAB233F7B6100A1019F /* ApiPayload.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDF56AAA233F7B6100A1019F /* ApiPayload.swift */; };
+		EDF56AAD233F815000A1019F /* APIConfig.plist in Resources */ = {isa = PBXBuildFile; fileRef = EDF56AAC233F815000A1019F /* APIConfig.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -25,6 +30,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2D141216921C775762248985 /* Pods-image-classifier-appTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-image-classifier-appTests.release.xcconfig"; path = "Target Support Files/Pods-image-classifier-appTests/Pods-image-classifier-appTests.release.xcconfig"; sourceTree = "<group>"; };
+		53C98C79B9649257751C942D /* Pods_image_classifier_app.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_image_classifier_app.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		89BCDE6CC6A9BE8032216E5F /* Pods_image_classifier_appTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_image_classifier_appTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		AD6D020DE27899BD7B2F7879 /* Pods-image-classifier-appTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-image-classifier-appTests.debug.xcconfig"; path = "Target Support Files/Pods-image-classifier-appTests/Pods-image-classifier-appTests.debug.xcconfig"; sourceTree = "<group>"; };
+		CC1A393018D53D7E56C2F1E9 /* Pods-image-classifier-app.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-image-classifier-app.release.xcconfig"; path = "Target Support Files/Pods-image-classifier-app/Pods-image-classifier-app.release.xcconfig"; sourceTree = "<group>"; };
+		E49677C670C73ACF287DB91C /* Pods-image-classifier-app.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-image-classifier-app.debug.xcconfig"; path = "Target Support Files/Pods-image-classifier-app/Pods-image-classifier-app.debug.xcconfig"; sourceTree = "<group>"; };
 		EDF56A84233F710F00A1019F /* image-classifier-app.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "image-classifier-app.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		EDF56A87233F710F00A1019F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EDF56A89233F710F00A1019F /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -35,6 +46,9 @@
 		EDF56A96233F711200A1019F /* image-classifier-appTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "image-classifier-appTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		EDF56A9A233F711200A1019F /* image_classifier_appTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = image_classifier_appTests.swift; sourceTree = "<group>"; };
 		EDF56A9C233F711200A1019F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		EDF56AA8233F7A7B00A1019F /* EndPoints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndPoints.swift; sourceTree = "<group>"; };
+		EDF56AAA233F7B6100A1019F /* ApiPayload.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiPayload.swift; sourceTree = "<group>"; };
+		EDF56AAC233F815000A1019F /* APIConfig.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = APIConfig.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -42,6 +56,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				894811D478311D8E2A7A79F1 /* Pods_image_classifier_app.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -49,18 +64,41 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				07FD54FFFEDE099764BDAB32 /* Pods_image_classifier_appTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0EA3B85B0AD1542943A768D5 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				E49677C670C73ACF287DB91C /* Pods-image-classifier-app.debug.xcconfig */,
+				CC1A393018D53D7E56C2F1E9 /* Pods-image-classifier-app.release.xcconfig */,
+				AD6D020DE27899BD7B2F7879 /* Pods-image-classifier-appTests.debug.xcconfig */,
+				2D141216921C775762248985 /* Pods-image-classifier-appTests.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		72F1F1A1308C1D390BB85765 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				53C98C79B9649257751C942D /* Pods_image_classifier_app.framework */,
+				89BCDE6CC6A9BE8032216E5F /* Pods_image_classifier_appTests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		EDF56A7B233F710F00A1019F = {
 			isa = PBXGroup;
 			children = (
 				EDF56A86233F710F00A1019F /* image-classifier-app */,
 				EDF56A99233F711200A1019F /* image-classifier-appTests */,
 				EDF56A85233F710F00A1019F /* Products */,
+				0EA3B85B0AD1542943A768D5 /* Pods */,
+				72F1F1A1308C1D390BB85765 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -76,11 +114,13 @@
 		EDF56A86233F710F00A1019F /* image-classifier-app */ = {
 			isa = PBXGroup;
 			children = (
+				EDF56AA6233F72A700A1019F /* Service */,
 				EDF56A87233F710F00A1019F /* AppDelegate.swift */,
 				EDF56A89233F710F00A1019F /* ViewController.swift */,
 				EDF56A8B233F711200A1019F /* Assets.xcassets */,
 				EDF56A8D233F711200A1019F /* Main.storyboard */,
 				EDF56A90233F711200A1019F /* Info.plist */,
+				EDF56AAC233F815000A1019F /* APIConfig.plist */,
 				EDF56A91233F711200A1019F /* image_classifier_app.entitlements */,
 			);
 			path = "image-classifier-app";
@@ -95,6 +135,23 @@
 			path = "image-classifier-appTests";
 			sourceTree = "<group>";
 		};
+		EDF56AA6233F72A700A1019F /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				EDF56AA7233F72B700A1019F /* Api */,
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
+		EDF56AA7233F72B700A1019F /* Api */ = {
+			isa = PBXGroup;
+			children = (
+				EDF56AA8233F7A7B00A1019F /* EndPoints.swift */,
+				EDF56AAA233F7B6100A1019F /* ApiPayload.swift */,
+			);
+			path = Api;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -102,9 +159,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = EDF56A9F233F711200A1019F /* Build configuration list for PBXNativeTarget "image-classifier-app" */;
 			buildPhases = (
+				3D970AD38C6DD01BDC177E2E /* [CP] Check Pods Manifest.lock */,
 				EDF56A80233F710F00A1019F /* Sources */,
 				EDF56A81233F710F00A1019F /* Frameworks */,
 				EDF56A82233F710F00A1019F /* Resources */,
+				A2347695B8A9EDCA04754D30 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -119,6 +178,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = EDF56AA2233F711200A1019F /* Build configuration list for PBXNativeTarget "image-classifier-appTests" */;
 			buildPhases = (
+				0A879C553D32ACEBD7732C42 /* [CP] Check Pods Manifest.lock */,
 				EDF56A92233F711200A1019F /* Sources */,
 				EDF56A93233F711200A1019F /* Frameworks */,
 				EDF56A94233F711200A1019F /* Resources */,
@@ -178,6 +238,7 @@
 			files = (
 				EDF56A8C233F711200A1019F /* Assets.xcassets in Resources */,
 				EDF56A8F233F711200A1019F /* Main.storyboard in Resources */,
+				EDF56AAD233F815000A1019F /* APIConfig.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -190,12 +251,78 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		0A879C553D32ACEBD7732C42 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-image-classifier-appTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		3D970AD38C6DD01BDC177E2E /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-image-classifier-app-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		A2347695B8A9EDCA04754D30 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-image-classifier-app/Pods-image-classifier-app-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-image-classifier-app/Pods-image-classifier-app-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-image-classifier-app/Pods-image-classifier-app-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		EDF56A80233F710F00A1019F /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EDF56AAB233F7B6100A1019F /* ApiPayload.swift in Sources */,
 				EDF56A8A233F710F00A1019F /* ViewController.swift in Sources */,
+				EDF56AA9233F7A7B00A1019F /* EndPoints.swift in Sources */,
 				EDF56A88233F710F00A1019F /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -345,6 +472,7 @@
 		};
 		EDF56AA0233F711200A1019F /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E49677C670C73ACF287DB91C /* Pods-image-classifier-app.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "image-classifier-app/image_classifier_app.entitlements";
@@ -365,6 +493,7 @@
 		};
 		EDF56AA1233F711200A1019F /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = CC1A393018D53D7E56C2F1E9 /* Pods-image-classifier-app.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "image-classifier-app/image_classifier_app.entitlements";
@@ -385,6 +514,7 @@
 		};
 		EDF56AA3233F711200A1019F /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = AD6D020DE27899BD7B2F7879 /* Pods-image-classifier-appTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -407,6 +537,7 @@
 		};
 		EDF56AA4233F711200A1019F /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2D141216921C775762248985 /* Pods-image-classifier-appTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
