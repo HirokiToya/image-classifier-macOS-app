@@ -1,0 +1,463 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		EDF56A88233F710F00A1019F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDF56A87233F710F00A1019F /* AppDelegate.swift */; };
+		EDF56A8A233F710F00A1019F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDF56A89233F710F00A1019F /* ViewController.swift */; };
+		EDF56A8C233F711200A1019F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EDF56A8B233F711200A1019F /* Assets.xcassets */; };
+		EDF56A8F233F711200A1019F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EDF56A8D233F711200A1019F /* Main.storyboard */; };
+		EDF56A9B233F711200A1019F /* image_classifier_appTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDF56A9A233F711200A1019F /* image_classifier_appTests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		EDF56A97233F711200A1019F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = EDF56A7C233F710F00A1019F /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = EDF56A83233F710F00A1019F;
+			remoteInfo = "image-classifier-app";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		EDF56A84233F710F00A1019F /* image-classifier-app.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "image-classifier-app.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		EDF56A87233F710F00A1019F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		EDF56A89233F710F00A1019F /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		EDF56A8B233F711200A1019F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		EDF56A8E233F711200A1019F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		EDF56A90233F711200A1019F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		EDF56A91233F711200A1019F /* image_classifier_app.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = image_classifier_app.entitlements; sourceTree = "<group>"; };
+		EDF56A96233F711200A1019F /* image-classifier-appTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "image-classifier-appTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		EDF56A9A233F711200A1019F /* image_classifier_appTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = image_classifier_appTests.swift; sourceTree = "<group>"; };
+		EDF56A9C233F711200A1019F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		EDF56A81233F710F00A1019F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EDF56A93233F711200A1019F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		EDF56A7B233F710F00A1019F = {
+			isa = PBXGroup;
+			children = (
+				EDF56A86233F710F00A1019F /* image-classifier-app */,
+				EDF56A99233F711200A1019F /* image-classifier-appTests */,
+				EDF56A85233F710F00A1019F /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		EDF56A85233F710F00A1019F /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				EDF56A84233F710F00A1019F /* image-classifier-app.app */,
+				EDF56A96233F711200A1019F /* image-classifier-appTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		EDF56A86233F710F00A1019F /* image-classifier-app */ = {
+			isa = PBXGroup;
+			children = (
+				EDF56A87233F710F00A1019F /* AppDelegate.swift */,
+				EDF56A89233F710F00A1019F /* ViewController.swift */,
+				EDF56A8B233F711200A1019F /* Assets.xcassets */,
+				EDF56A8D233F711200A1019F /* Main.storyboard */,
+				EDF56A90233F711200A1019F /* Info.plist */,
+				EDF56A91233F711200A1019F /* image_classifier_app.entitlements */,
+			);
+			path = "image-classifier-app";
+			sourceTree = "<group>";
+		};
+		EDF56A99233F711200A1019F /* image-classifier-appTests */ = {
+			isa = PBXGroup;
+			children = (
+				EDF56A9A233F711200A1019F /* image_classifier_appTests.swift */,
+				EDF56A9C233F711200A1019F /* Info.plist */,
+			);
+			path = "image-classifier-appTests";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		EDF56A83233F710F00A1019F /* image-classifier-app */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = EDF56A9F233F711200A1019F /* Build configuration list for PBXNativeTarget "image-classifier-app" */;
+			buildPhases = (
+				EDF56A80233F710F00A1019F /* Sources */,
+				EDF56A81233F710F00A1019F /* Frameworks */,
+				EDF56A82233F710F00A1019F /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "image-classifier-app";
+			productName = "image-classifier-app";
+			productReference = EDF56A84233F710F00A1019F /* image-classifier-app.app */;
+			productType = "com.apple.product-type.application";
+		};
+		EDF56A95233F711200A1019F /* image-classifier-appTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = EDF56AA2233F711200A1019F /* Build configuration list for PBXNativeTarget "image-classifier-appTests" */;
+			buildPhases = (
+				EDF56A92233F711200A1019F /* Sources */,
+				EDF56A93233F711200A1019F /* Frameworks */,
+				EDF56A94233F711200A1019F /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				EDF56A98233F711200A1019F /* PBXTargetDependency */,
+			);
+			name = "image-classifier-appTests";
+			productName = "image-classifier-appTests";
+			productReference = EDF56A96233F711200A1019F /* image-classifier-appTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		EDF56A7C233F710F00A1019F /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1100;
+				LastUpgradeCheck = 1100;
+				ORGANIZATIONNAME = example;
+				TargetAttributes = {
+					EDF56A83233F710F00A1019F = {
+						CreatedOnToolsVersion = 11.0;
+					};
+					EDF56A95233F711200A1019F = {
+						CreatedOnToolsVersion = 11.0;
+						TestTargetID = EDF56A83233F710F00A1019F;
+					};
+				};
+			};
+			buildConfigurationList = EDF56A7F233F710F00A1019F /* Build configuration list for PBXProject "image-classifier-app" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = EDF56A7B233F710F00A1019F;
+			productRefGroup = EDF56A85233F710F00A1019F /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				EDF56A83233F710F00A1019F /* image-classifier-app */,
+				EDF56A95233F711200A1019F /* image-classifier-appTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		EDF56A82233F710F00A1019F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EDF56A8C233F711200A1019F /* Assets.xcassets in Resources */,
+				EDF56A8F233F711200A1019F /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EDF56A94233F711200A1019F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		EDF56A80233F710F00A1019F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EDF56A8A233F710F00A1019F /* ViewController.swift in Sources */,
+				EDF56A88233F710F00A1019F /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EDF56A92233F711200A1019F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EDF56A9B233F711200A1019F /* image_classifier_appTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		EDF56A98233F711200A1019F /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = EDF56A83233F710F00A1019F /* image-classifier-app */;
+			targetProxy = EDF56A97233F711200A1019F /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		EDF56A8D233F711200A1019F /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				EDF56A8E233F711200A1019F /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		EDF56A9D233F711200A1019F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.14;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		EDF56A9E233F711200A1019F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.14;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = macosx;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+			};
+			name = Release;
+		};
+		EDF56AA0233F711200A1019F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "image-classifier-app/image_classifier_app.entitlements";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = 737938SPC8;
+				ENABLE_HARDENED_RUNTIME = YES;
+				INFOPLIST_FILE = "image-classifier-app/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "jp.com.example.image-classifier-app";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		EDF56AA1233F711200A1019F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "image-classifier-app/image_classifier_app.entitlements";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = 737938SPC8;
+				ENABLE_HARDENED_RUNTIME = YES;
+				INFOPLIST_FILE = "image-classifier-app/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "jp.com.example.image-classifier-app";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+		EDF56AA3233F711200A1019F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = 737938SPC8;
+				INFOPLIST_FILE = "image-classifier-appTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.14;
+				PRODUCT_BUNDLE_IDENTIFIER = "jp.com.example.image-classifier-appTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/image-classifier-app.app/Contents/MacOS/image-classifier-app";
+			};
+			name = Debug;
+		};
+		EDF56AA4233F711200A1019F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = 737938SPC8;
+				INFOPLIST_FILE = "image-classifier-appTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.14;
+				PRODUCT_BUNDLE_IDENTIFIER = "jp.com.example.image-classifier-appTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/image-classifier-app.app/Contents/MacOS/image-classifier-app";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		EDF56A7F233F710F00A1019F /* Build configuration list for PBXProject "image-classifier-app" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EDF56A9D233F711200A1019F /* Debug */,
+				EDF56A9E233F711200A1019F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		EDF56A9F233F711200A1019F /* Build configuration list for PBXNativeTarget "image-classifier-app" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EDF56AA0233F711200A1019F /* Debug */,
+				EDF56AA1233F711200A1019F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		EDF56AA2233F711200A1019F /* Build configuration list for PBXNativeTarget "image-classifier-appTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EDF56AA3233F711200A1019F /* Debug */,
+				EDF56AA4233F711200A1019F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = EDF56A7C233F710F00A1019F /* Project object */;
+}
