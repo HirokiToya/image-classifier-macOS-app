@@ -6,13 +6,18 @@ class ApiPayload {
         let count: Int
         let labels: [Label]
     }
-
+    
     struct Label : Codable   {
         let id: Int
         let name: String
     }
     
-    struct Predict : Codable {
+    struct SceneClassifierPredict : Codable {
+        let status: String
+        let predictions: [Prediction]
+    }
+    
+    struct InceptionResnetPredict : Codable {
         let status: String
         let predictions: [Prediction]
     }

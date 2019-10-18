@@ -2,7 +2,9 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>URL</key>
+	<key>InceptionResnetURL</key>
+	<string>http://max-inception-resnet-v2.max.us-south.containers.appdomain.cloud</string>
+	<key>SceneClassifierURL</key>
 	<string>http://max-scene-classifier.max.us-south.containers.appdomain.cloud</string>
 </dict>
 </plist>
