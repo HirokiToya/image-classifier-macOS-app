@@ -8,6 +8,7 @@ target 'image-classifier-app' do
   # Pods for image-classifier-app
   pod 'SwiftyJSON'
   pod 'Alamofire'
+  pod 'RealmSwift'
 
   target 'image-classifier-appTests' do
     inherit! :search_paths

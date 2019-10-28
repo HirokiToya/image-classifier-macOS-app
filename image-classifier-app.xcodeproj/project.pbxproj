@@ -10,7 +10,14 @@
 		07FD54FFFEDE099764BDAB32 /* Pods_image_classifier_appTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 89BCDE6CC6A9BE8032216E5F /* Pods_image_classifier_appTests.framework */; };
 		894811D478311D8E2A7A79F1 /* Pods_image_classifier_app.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 53C98C79B9649257751C942D /* Pods_image_classifier_app.framework */; };
 		ED1A98DF235391D500AC5701 /* Presenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED1A98DE235391D500AC5701 /* Presenter.swift */; };
-		EDC47080235389F700E7CE91 /* jsonPayload.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDC4707F235389F700E7CE91 /* jsonPayload.swift */; };
+		ED2A330523668760004BF90E /* RealmAccessor.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED2A330423668760004BF90E /* RealmAccessor.swift */; };
+		EDC47080235389F700E7CE91 /* Similality.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDC4707F235389F700E7CE91 /* Similality.swift */; };
+		EDD6DBFC23617B8B00CF3744 /* ApiAccessors.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDD6DBFB23617B8B00CF3744 /* ApiAccessors.swift */; };
+		EDD6DC0123617DC200CF3744 /* FileAccessor.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDD6DC0023617DC200CF3744 /* FileAccessor.swift */; };
+		EDD6DC0C23619FF400CF3744 /* SceneClassifierRepositories.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDD6DC0B23619FF400CF3744 /* SceneClassifierRepositories.swift */; };
+		EDD6DC0E2361A3C000CF3744 /* SceneClassifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDD6DC0D2361A3C000CF3744 /* SceneClassifier.swift */; };
+		EDD6DC102361AF1100CF3744 /* SimilalityRepositories.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDD6DC0F2361AF1100CF3744 /* SimilalityRepositories.swift */; };
+		EDD6DC142361B2CD00CF3744 /* JsonPayload.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDD6DC132361B2CD00CF3744 /* JsonPayload.swift */; };
 		EDF56A88233F710F00A1019F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDF56A87233F710F00A1019F /* AppDelegate.swift */; };
 		EDF56A8A233F710F00A1019F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDF56A89233F710F00A1019F /* ViewController.swift */; };
 		EDF56A8C233F711200A1019F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EDF56A8B233F711200A1019F /* Assets.xcassets */; };
@@ -40,7 +47,14 @@
 		CC1A393018D53D7E56C2F1E9 /* Pods-image-classifier-app.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-image-classifier-app.release.xcconfig"; path = "Target Support Files/Pods-image-classifier-app/Pods-image-classifier-app.release.xcconfig"; sourceTree = "<group>"; };
 		E49677C670C73ACF287DB91C /* Pods-image-classifier-app.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-image-classifier-app.debug.xcconfig"; path = "Target Support Files/Pods-image-classifier-app/Pods-image-classifier-app.debug.xcconfig"; sourceTree = "<group>"; };
 		ED1A98DE235391D500AC5701 /* Presenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Presenter.swift; sourceTree = "<group>"; };
-		EDC4707F235389F700E7CE91 /* jsonPayload.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = jsonPayload.swift; sourceTree = "<group>"; };
+		ED2A330423668760004BF90E /* RealmAccessor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmAccessor.swift; sourceTree = "<group>"; };
+		EDC4707F235389F700E7CE91 /* Similality.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Similality.swift; sourceTree = "<group>"; };
+		EDD6DBFB23617B8B00CF3744 /* ApiAccessors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiAccessors.swift; sourceTree = "<group>"; };
+		EDD6DC0023617DC200CF3744 /* FileAccessor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileAccessor.swift; sourceTree = "<group>"; };
+		EDD6DC0B23619FF400CF3744 /* SceneClassifierRepositories.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneClassifierRepositories.swift; sourceTree = "<group>"; };
+		EDD6DC0D2361A3C000CF3744 /* SceneClassifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneClassifier.swift; sourceTree = "<group>"; };
+		EDD6DC0F2361AF1100CF3744 /* SimilalityRepositories.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimilalityRepositories.swift; sourceTree = "<group>"; };
+		EDD6DC132361B2CD00CF3744 /* JsonPayload.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JsonPayload.swift; sourceTree = "<group>"; };
 		EDF56A84233F710F00A1019F /* image-classifier-app.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "image-classifier-app.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		EDF56A87233F710F00A1019F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EDF56A89233F710F00A1019F /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -97,6 +111,52 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		EDD6DBF823616BB100CF3744 /* Entities */ = {
+			isa = PBXGroup;
+			children = (
+				EDD6DBFD23617CE100CF3744 /* Repositories */,
+				EDD6DC0D2361A3C000CF3744 /* SceneClassifier.swift */,
+				EDC4707F235389F700E7CE91 /* Similality.swift */,
+			);
+			path = Entities;
+			sourceTree = "<group>";
+		};
+		EDD6DBFD23617CE100CF3744 /* Repositories */ = {
+			isa = PBXGroup;
+			children = (
+				EDD6DC0B23619FF400CF3744 /* SceneClassifierRepositories.swift */,
+				EDD6DC0F2361AF1100CF3744 /* SimilalityRepositories.swift */,
+			);
+			path = Repositories;
+			sourceTree = "<group>";
+		};
+		EDD6DBFE23617D0400CF3744 /* Modules */ = {
+			isa = PBXGroup;
+			children = (
+				EDD6DBFF23617D2E00CF3744 /* Main */,
+			);
+			path = Modules;
+			sourceTree = "<group>";
+		};
+		EDD6DBFF23617D2E00CF3744 /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				ED2A330423668760004BF90E /* RealmAccessor.swift */,
+				EDF56AB32342F12000A1019F /* Interactor.swift */,
+				ED1A98DE235391D500AC5701 /* Presenter.swift */,
+				EDF56A89233F710F00A1019F /* ViewController.swift */,
+				EDF56A8D233F711200A1019F /* Main.storyboard */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
+		EDD6DC04236191AC00CF3744 /* Libs */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Libs;
+			sourceTree = "<group>";
+		};
 		EDF56A7B233F710F00A1019F = {
 			isa = PBXGroup;
 			children = (
@@ -120,10 +180,10 @@
 		EDF56A86233F710F00A1019F /* image-classifier-app */ = {
 			isa = PBXGroup;
 			children = (
-				EDF56AB22342F08400A1019F /* Interactor */,
-				EDF56AB12342F07200A1019F /* Presenter */,
-				EDF56AB02342F06C00A1019F /* View */,
+				EDD6DBFE23617D0400CF3744 /* Modules */,
+				EDD6DBF823616BB100CF3744 /* Entities */,
 				EDF56AA6233F72A700A1019F /* Service */,
+				EDD6DC04236191AC00CF3744 /* Libs */,
 				EDF56A87233F710F00A1019F /* AppDelegate.swift */,
 				EDF56A8B233F711200A1019F /* Assets.xcassets */,
 				EDF56A90233F711200A1019F /* Info.plist */,
@@ -146,6 +206,7 @@
 			isa = PBXGroup;
 			children = (
 				EDF56AA7233F72B700A1019F /* Api */,
+				EDD6DC0023617DC200CF3744 /* FileAccessor.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -155,34 +216,10 @@
 			children = (
 				EDF56AA8233F7A7B00A1019F /* EndPoints.swift */,
 				EDF56AAA233F7B6100A1019F /* ApiPayload.swift */,
-				EDC4707F235389F700E7CE91 /* jsonPayload.swift */,
+				EDD6DBFB23617B8B00CF3744 /* ApiAccessors.swift */,
+				EDD6DC132361B2CD00CF3744 /* JsonPayload.swift */,
 			);
 			path = Api;
-			sourceTree = "<group>";
-		};
-		EDF56AB02342F06C00A1019F /* View */ = {
-			isa = PBXGroup;
-			children = (
-				EDF56A89233F710F00A1019F /* ViewController.swift */,
-				EDF56A8D233F711200A1019F /* Main.storyboard */,
-			);
-			path = View;
-			sourceTree = "<group>";
-		};
-		EDF56AB12342F07200A1019F /* Presenter */ = {
-			isa = PBXGroup;
-			children = (
-				ED1A98DE235391D500AC5701 /* Presenter.swift */,
-			);
-			path = Presenter;
-			sourceTree = "<group>";
-		};
-		EDF56AB22342F08400A1019F /* Interactor */ = {
-			isa = PBXGroup;
-			children = (
-				EDF56AB32342F12000A1019F /* Interactor.swift */,
-			);
-			path = Interactor;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -354,10 +391,17 @@
 			buildActionMask = 2147483647;
 			files = (
 				EDF56AAB233F7B6100A1019F /* ApiPayload.swift in Sources */,
+				EDD6DC0C23619FF400CF3744 /* SceneClassifierRepositories.swift in Sources */,
+				EDD6DBFC23617B8B00CF3744 /* ApiAccessors.swift in Sources */,
+				EDD6DC102361AF1100CF3744 /* SimilalityRepositories.swift in Sources */,
+				EDD6DC0E2361A3C000CF3744 /* SceneClassifier.swift in Sources */,
 				ED1A98DF235391D500AC5701 /* Presenter.swift in Sources */,
+				EDD6DC0123617DC200CF3744 /* FileAccessor.swift in Sources */,
+				EDD6DC142361B2CD00CF3744 /* JsonPayload.swift in Sources */,
+				ED2A330523668760004BF90E /* RealmAccessor.swift in Sources */,
 				EDF56A8A233F710F00A1019F /* ViewController.swift in Sources */,
 				EDF56AB42342F12000A1019F /* Interactor.swift in Sources */,
-				EDC47080235389F700E7CE91 /* jsonPayload.swift in Sources */,
+				EDC47080235389F700E7CE91 /* Similality.swift in Sources */,
 				EDF56AA9233F7A7B00A1019F /* EndPoints.swift in Sources */,
 				EDF56A88233F710F00A1019F /* AppDelegate.swift in Sources */,
 			);

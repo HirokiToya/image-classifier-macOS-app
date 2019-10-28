@@ -1,5 +1,5 @@
 import Foundation
 
-struct Similality : Codable  {
+struct Similality {
     let labels: [[Double]]
 }

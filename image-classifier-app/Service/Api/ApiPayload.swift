@@ -8,7 +8,7 @@ class ApiPayload {
     }
     
     struct Label : Codable   {
-        let id: Int
+        let id: String
         let name: String
     }
     
