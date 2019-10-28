@@ -23,7 +23,7 @@ class ApiPayload {
     }
     
     struct Prediction : Codable {
-        let labelId: Int
+        let labelId: String
         let label: String
         let probability: Double
         

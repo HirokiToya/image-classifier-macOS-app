@@ -1,5 +1,9 @@
 import Foundation
 
-class Interactor {
+class Interactor: InteractorInput {
+    weak var output: InteractorOutput!
     
+    init(output: InteractorOutput!) {
+        self.output = output
+    }
 }

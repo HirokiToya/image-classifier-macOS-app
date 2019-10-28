@@ -8,7 +8,7 @@ class SceneClassifier {
     }
     
     struct Prediction {
-        let labelId: Int
+        let labelId: String
         let label: String
         let probability: Double
     }

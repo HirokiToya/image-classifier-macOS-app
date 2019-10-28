@@ -29,52 +29,40 @@ class ApiAccessor {
         return result
     }
     
-    // Scene365を用いてシーン識別します。
+    // Scene365を用いてシーン識別します。    
     func predictScene(path: String,
                       withName: String = "image",
                       fileName: String = "image.jpg",
-                      mimeType: String = "image/jpeg") -> ApiPayload.SceneClassifierPredict? {
-        
+                      mimeType: String = "image/jpeg") {
+
+        guard let data = FileAccessor().loadFileData(path) else { return }
         let requestUrl = EndPoints.SceneClassifier.Predict.path()
-        var result: ApiPayload.SceneClassifierPredict? = nil
-        let semaphore = DispatchSemaphore(value: 0)
-        let queue     = DispatchQueue.global(qos: .utility)
-        
-        guard let data = FileAccessor().loadFileData(path) else { return nil }
-        
+
         Alamofire.upload(multipartFormData: { (multipartFormData) in
-            
+
             multipartFormData.append(data, withName: withName, fileName: fileName, mimeType: mimeType)
-            
+
         }, to: requestUrl) { (encodingResult) in
-            
+
             switch encodingResult {
             case .success(let upload, _, _):
-                upload.responseJSON(queue: queue) { res in
+                upload.responseJSON { res in
                     if res.result.isSuccess {
                         if let returnValue = res.result.value {
                             print(JSON(returnValue))
                             let jsonData = JSON(returnValue).rawString()?.data(using: .utf8)
-                            result = (try! JSONDecoder().decode(ApiPayload.SceneClassifierPredict.self, from: jsonData!))
-                            
-                        } else {
-                            print("ERROR:result value is nil")
+                            let result = (try! JSONDecoder().decode(ApiPayload.SceneClassifierPredict.self, from: jsonData!))
                         }
+                        
                     } else {
                         print(res.error.debugDescription)
                     }
-                    semaphore.signal()
                 }
-                
+
             case .failure(let encodingError):
                 print(encodingError)
-                semaphore.signal()
             }
         }
-        
-        semaphore.wait()
-        
-        return result
     }
     
     // InceptionResnetを用いて物体識別します。
