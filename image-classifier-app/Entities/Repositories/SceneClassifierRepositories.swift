@@ -11,9 +11,15 @@ class SceneClassifierRepositories {
             return labels
         }
         
-        let list = ApiAccessor().getSceneLabelList()
-        labels = list.labels.map {
-            SceneClassifier.Label(id: $0.id, name: $0.name)
+        ApiAccessor.getSceneLabelList() { result in
+            switch result {
+            case let .success(result):
+                labels = result.labels.map {
+                    SceneClassifier.Label(id: $0.id, name: $0.name)
+                }
+            case let .failture(error):
+                print(error)
+            }
         }
         
         return labels

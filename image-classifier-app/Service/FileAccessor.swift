@@ -2,11 +2,20 @@ import Foundation
 
 class FileAccessor {
     
-    func loadFileData(_ filePath: String) -> Data? {
+    class func loadFileData(absoluteUrlPath: URL) -> Data? {
         let fileData: Data?
         do {
-            let fileUrl = URL(fileURLWithPath: filePath)
-//            print("URL:\(fileUrl)")
+            fileData = try Data(contentsOf: absoluteUrlPath)
+        } catch {
+            fileData = nil
+        }
+        return fileData
+    }
+    
+    class func loadFileData(absoluteStrPath: String) -> Data? {
+        let fileData: Data?
+        do {
+            let fileUrl = URL(fileURLWithPath: absoluteStrPath)
             fileData = try Data(contentsOf: fileUrl)
         } catch {
             fileData = nil
@@ -14,9 +23,9 @@ class FileAccessor {
         return fileData
     }
     
-    func writeFileData(_ filePathName: String, fileData: String, encoding: String.Encoding = String.Encoding.utf8)  -> Bool {
+    class func writeFileData(absoluteStrPath: String, fileData: String, encoding: String.Encoding = String.Encoding.utf8)  -> Bool {
         do {
-            try fileData.write(toFile: filePathName, atomically: true, encoding: encoding)
+            try fileData.write(toFile: absoluteStrPath, atomically: true, encoding: encoding)
         } catch {
             return false
         }
@@ -28,22 +37,31 @@ class FileAccessor {
 extension FileAccessor {
     
     // 類似度リストのJsonファイルを読み取ります。
-    func loadSimilalityJson() -> JsonPayload.Similalities? {
+    class func loadSimilalityJson() -> JsonPayload.Similalities? {
         
-        let filePath = "Documents/input/similality_list/data.json"
-        guard let data = loadFileData(filePath) else { return nil}
-        guard let similality = try? JSONDecoder().decode(JsonPayload.Similalities.self, from: data) else { return  nil}
-        
-        print(similality.labels.count)
-        
-        return similality
+        if let filePath = FilePathes.getSimilalityDataPath() {
+            print(filePath)
+            guard let data = loadFileData(absoluteUrlPath: filePath) else {
+                print("No Such a File")
+                return nil
+            }
+            
+            do {
+                let similality = try JSONDecoder().decode(JsonPayload.Similalities.self, from: data)
+                print(similality.labels.count)
+                return similality
+            } catch {
+                print(error)
+                return nil
+            }
+        }
+        return nil
     }
     
-    // path直下の全てのファイル名を取得します。
-    func loadAllImagesPaths(path: String = "input/images/") -> [String] {
+    // path直下の全ての画像ファイル名を取得します。
+    class func loadAllImageNames() -> [String] {
         
-        let documentDirectoryURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0].absoluteString
-        if let imagesPath = URL(string: documentDirectoryURL + path){
+        if let imagesPath = FilePathes.getImagesDirPath() {
             
             do {
                 let contentUrls = try FileManager.default.contentsOfDirectory(at: imagesPath, includingPropertiesForKeys: nil)
@@ -59,8 +77,27 @@ extension FileAccessor {
         return []
     }
     
+    // path直下の全ての画像ファイル名を取得します。
+    class func loadAllImagePathes() -> [URL] {
+        
+        if let imagesPath = FilePathes.getImagesDirPath() {
+            
+            do {
+                let contentUrls = try FileManager.default.contentsOfDirectory(at: imagesPath, includingPropertiesForKeys: nil)
+                let imagePaths = imageFilter(files: contentUrls)
+                return imagePaths
+            } catch {
+                print(error)
+            }
+        }
+        
+        return []
+    }
+    
+    
+    
     // .jpgファイルのみにフィルターします。
-    func imageFilter(files: [URL]) -> [URL] {
+    class func imageFilter(files: [URL]) -> [URL] {
         var imageFile: [URL] = []
         
         for file in files {
@@ -68,7 +105,7 @@ extension FileAccessor {
                 imageFile.append(file)
             }
         }
-    
+        
         return imageFile
     }
 }

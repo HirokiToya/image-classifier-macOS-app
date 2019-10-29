@@ -9,7 +9,16 @@ class Presenter: PresenterInterface {
         self.interactor = Interactor(output: self)
     }
     
-    
+    func predictButtonPushed(){
+        
+        let imageNames = FileAccessor.loadAllImageNames()
+        for image in imageNames {
+            print(image)
+        }
+        
+        interactor.predictScenes(path: "Documents/input/images/5979752.jpg")
+        interactor.predictObjects(path: "Documents/input/images/5979752.jpg")
+    }
 }
 
 

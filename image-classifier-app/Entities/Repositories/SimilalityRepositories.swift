@@ -10,7 +10,7 @@ class SimilalityRepositories {
             return similality![id1][id2]
         }
         
-        if let similality = FileAccessor().loadSimilalityJson(){
+        if let similality = FileAccessor.loadSimilalityJson(){
             self.similality = similality.labels
             return similality.labels[id1][id2]
         } else {

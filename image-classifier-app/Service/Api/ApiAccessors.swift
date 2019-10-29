@@ -5,37 +5,31 @@ import SwiftyJSON
 class ApiAccessor {
     
     // Scene365のラベルリストを取得します。
-    func getSceneLabelList() -> ApiPayload.SceneClassifierLabel {
-        var result: ApiPayload.SceneClassifierLabel!
-        let semaphore = DispatchSemaphore(value: 0)
-        let queue     = DispatchQueue.global(qos: .utility)
+    class func getSceneLabelList(completion: @escaping (Result<ApiPayload.SceneClassifierLabel, ClientError>) -> Void ) {
         
-        Alamofire.request(EndPoints.SceneClassifier.Labels.path(), method: .get).validate().responseJSON(queue: queue) { res in
+        Alamofire.request(EndPoints.SceneClassifier.Labels.path(), method: .get).validate().responseJSON { res in
             if res.result.isSuccess {
                 if let returnValue = res.result.value {
                     print(JSON(returnValue))
                     let jsonData = JSON(returnValue).rawString()?.data(using: .utf8)
-                    result = (try! JSONDecoder().decode(ApiPayload.SceneClassifierLabel.self, from: jsonData!))
+                    let result = (try! JSONDecoder().decode(ApiPayload.SceneClassifierLabel.self, from: jsonData!))
+                    completion(Result(value: result))
                 }
             } else {
                 print(res.error.debugDescription)
+                completion(Result(error: .apiError(res.error!)))
             }
-            
-            semaphore.signal()
         }
-
-        semaphore.wait()
-
-        return result
     }
     
     // Scene365を用いてシーン識別します。    
-    func predictScene(path: String,
+    class func predictScene(path: String,
                       withName: String = "image",
                       fileName: String = "image.jpg",
-                      mimeType: String = "image/jpeg") {
+                      mimeType: String = "image/jpeg",
+                      completion: @escaping (Result<ApiPayload.SceneClassifierPredict, ClientError>) -> Void ) {
 
-        guard let data = FileAccessor().loadFileData(path) else { return }
+        guard let data = FileAccessor.loadFileData(absoluteStrPath: path) else { return }
         let requestUrl = EndPoints.SceneClassifier.Predict.path()
 
         Alamofire.upload(multipartFormData: { (multipartFormData) in
@@ -52,28 +46,35 @@ class ApiAccessor {
                             print(JSON(returnValue))
                             let jsonData = JSON(returnValue).rawString()?.data(using: .utf8)
                             let result = (try! JSONDecoder().decode(ApiPayload.SceneClassifierPredict.self, from: jsonData!))
+                            completion(Result(value: result))
+                        } else {
+                            completion(Result(error: .noResponseError(nil)))
                         }
-                        
                     } else {
                         print(res.error.debugDescription)
+                        completion(Result(error: .apiError(res.error!)))
                     }
                 }
-
             case .failure(let encodingError):
                 print(encodingError)
+                completion(Result(error: .encodingError(encodingError)))
             }
         }
     }
     
     // InceptionResnetを用いて物体識別します。
-    func predictObject() {
-        let requestUrl = EndPoints.InceptionResnet.Predict.path()
-        let filePath = "Documents/image.jpg"
+    class func predictObject(path: String,
+                             withName: String = "image",
+                             fileName: String = "image.jpg",
+                             mimeType: String = "image/jpeg",
+                             completion: @escaping (Result<ApiPayload.InceptionResnetPredict, ClientError>) -> Void ) {
         
-        if let data = FileAccessor().loadFileData(filePath) {
+        let requestUrl = EndPoints.InceptionResnet.Predict.path()
+        
+        if let data = FileAccessor.loadFileData(absoluteStrPath: path) {
             Alamofire.upload(multipartFormData: { (multipartFormData) in
                 
-                multipartFormData.append(data, withName: "image", fileName: "image.jpg", mimeType: "image/jpeg")
+                multipartFormData.append(data, withName: withName, fileName: fileName, mimeType: mimeType)
                 
             }, to: requestUrl) { (encodingResult) in
                 
@@ -83,13 +84,20 @@ class ApiAccessor {
                         if res.result.isSuccess {
                             if let returnValue = res.result.value {
                                 print(JSON(returnValue))
+                                let jsonData = JSON(returnValue).rawString()?.data(using: .utf8)
+                                let result = (try! JSONDecoder().decode(ApiPayload.InceptionResnetPredict.self, from: jsonData!))
+                                completion(Result(value: result))
+                            } else {
+                                completion(Result(error: .noResponseError(nil)))
                             }
                         } else {
                             print(res.error.debugDescription)
+                            completion(Result(error: .apiError(res.error!)))
                         }
                     }
                 case .failure(let encodingError):
                     print(encodingError)
+                    completion(Result(error: .encodingError(encodingError)))
                 }
             }
         }
