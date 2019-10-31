@@ -3,7 +3,7 @@ import Foundation
 class SceneClassifierRepositories {
     
     private static var labels: [SceneClassifier.Label] = []
-    private static var sceneClassifierImages: [SceneClassifier.ImageData] = []
+//    private static var sceneClassifierImages: [SceneClassifier.ImageData] = []
     
     class func getLabels() -> [SceneClassifier.Label] {
         

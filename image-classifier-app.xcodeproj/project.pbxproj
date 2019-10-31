@@ -12,6 +12,7 @@
 		ED1A98DF235391D500AC5701 /* Presenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED1A98DE235391D500AC5701 /* Presenter.swift */; };
 		ED2A330523668760004BF90E /* RealmAccessor.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED2A330423668760004BF90E /* RealmAccessor.swift */; };
 		ED2A33072366EC7E004BF90E /* Contracts.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED2A33062366EC7E004BF90E /* Contracts.swift */; };
+		ED4D70BA236AA23A007F3A3C /* InceptionResnet.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED4D70B9236AA23A007F3A3C /* InceptionResnet.swift */; };
 		ED69985C23686B7C0032453A /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED69985B23686B7C0032453A /* Result.swift */; };
 		ED69985E23686C980032453A /* ClientError.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED69985D23686C980032453A /* ClientError.swift */; };
 		ED69986223687ADE0032453A /* FilePathes.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED69986123687ADE0032453A /* FilePathes.swift */; };
@@ -53,6 +54,7 @@
 		ED1A98DE235391D500AC5701 /* Presenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Presenter.swift; sourceTree = "<group>"; };
 		ED2A330423668760004BF90E /* RealmAccessor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmAccessor.swift; sourceTree = "<group>"; };
 		ED2A33062366EC7E004BF90E /* Contracts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Contracts.swift; sourceTree = "<group>"; };
+		ED4D70B9236AA23A007F3A3C /* InceptionResnet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InceptionResnet.swift; sourceTree = "<group>"; };
 		ED69985B23686B7C0032453A /* Result.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Result.swift; sourceTree = "<group>"; };
 		ED69985D23686C980032453A /* ClientError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientError.swift; sourceTree = "<group>"; };
 		ED69986123687ADE0032453A /* FilePathes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilePathes.swift; sourceTree = "<group>"; };
@@ -124,6 +126,7 @@
 			children = (
 				EDD6DBFD23617CE100CF3744 /* Repositories */,
 				EDD6DC0D2361A3C000CF3744 /* SceneClassifier.swift */,
+				ED4D70B9236AA23A007F3A3C /* InceptionResnet.swift */,
 				EDC4707F235389F700E7CE91 /* Similality.swift */,
 				ED69986123687ADE0032453A /* FilePathes.swift */,
 			);
@@ -415,6 +418,7 @@
 				ED2A330523668760004BF90E /* RealmAccessor.swift in Sources */,
 				EDF56A8A233F710F00A1019F /* ViewController.swift in Sources */,
 				ED2A33072366EC7E004BF90E /* Contracts.swift in Sources */,
+				ED4D70BA236AA23A007F3A3C /* InceptionResnet.swift in Sources */,
 				EDF56AB42342F12000A1019F /* Interactor.swift in Sources */,
 				ED69985E23686C980032453A /* ClientError.swift in Sources */,
 				EDC47080235389F700E7CE91 /* Similality.swift in Sources */,

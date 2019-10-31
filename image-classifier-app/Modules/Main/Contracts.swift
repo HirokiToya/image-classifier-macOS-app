@@ -26,8 +26,8 @@ protocol PresenterInterface: class {
  * Protcol that defines the commands sent from Presenter.
  */
 protocol InteractorInput: class {
-    func predictScenes(path: String)
-    func predictObjects(path: String)
+    func predictScenes(path: URL)
+    func predictObjects(path: URL)
 }
 
 /*
@@ -37,4 +37,17 @@ protocol InteractorOutput: class {
     
 }
 
+/*
+ * Protcol thay defines the commands sent from the Interacter to the RealmAccessor.
+ */
+protocol RealmAccessorInput: class {
+    func saveSceneClassifierPrediction(data: SceneClassifier.ImageData)
+}
+
+/*
+ * Protcol thay defines the commands sent from the RealmAccessor to the Interacter.
+ */
+protocol RealmAccessorOutput: class {
+    
+}
 

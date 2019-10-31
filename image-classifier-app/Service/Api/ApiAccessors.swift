@@ -23,13 +23,16 @@ class ApiAccessor {
     }
     
     // Scene365を用いてシーン識別します。    
-    class func predictScene(path: String,
+    class func predictScene(path: URL,
                       withName: String = "image",
                       fileName: String = "image.jpg",
                       mimeType: String = "image/jpeg",
                       completion: @escaping (Result<ApiPayload.SceneClassifierPredict, ClientError>) -> Void ) {
 
-        guard let data = FileAccessor.loadFileData(absoluteStrPath: path) else { return }
+        guard let data = FileAccessor.loadFileData(absoluteUrlPath: path) else {
+            print("load file data error!")
+            return
+        }
         let requestUrl = EndPoints.SceneClassifier.Predict.path()
 
         Alamofire.upload(multipartFormData: { (multipartFormData) in
@@ -63,7 +66,7 @@ class ApiAccessor {
     }
     
     // InceptionResnetを用いて物体識別します。
-    class func predictObject(path: String,
+    class func predictObject(path: URL,
                              withName: String = "image",
                              fileName: String = "image.jpg",
                              mimeType: String = "image/jpeg",
@@ -71,7 +74,7 @@ class ApiAccessor {
         
         let requestUrl = EndPoints.InceptionResnet.Predict.path()
         
-        if let data = FileAccessor.loadFileData(absoluteStrPath: path) {
+        if let data = FileAccessor.loadFileData(absoluteUrlPath: path) {
             Alamofire.upload(multipartFormData: { (multipartFormData) in
                 
                 multipartFormData.append(data, withName: withName, fileName: fileName, mimeType: mimeType)
