@@ -14,7 +14,7 @@ class Presenter: PresenterInterface {
         let imagePathes = FileAccessor.loadAllImagePathes()
         for path in imagePathes {
             interactor.predictScenes(path: path)
-//            interactor.predictObjects(path: path)
+            interactor.predictObjects(path: path)
         }
     }
 }

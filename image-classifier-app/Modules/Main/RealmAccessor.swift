@@ -31,7 +31,6 @@ class RealmAccessor: RealmAccessorInput {
     }
     
     func saveSceneClassifierPrediction(data: SceneClassifier.ImageData){
-        
         let realm = try! Realm()
         
         if let prediction = realm.object(ofType: ImagePrediction.self, forPrimaryKey: data.path) {
@@ -71,7 +70,40 @@ class RealmAccessor: RealmAccessorInput {
         }
     }
     
-    func saveInceptionResnetPrediction() {
+    func saveInceptionResnetPrediction(data: InceptionResnet.ImageData) {
         
+        let realm = try! Realm()
+        if let prediction = realm.object(ofType: ImagePrediction.self, forPrimaryKey: data.path) {
+            if(prediction.inceptionResnetPredictions.count == 0) {
+                try! realm.write {
+                    for data in data.predictions {
+                        let inceptionPrediction = InceptionResnetPrediction()
+                        inceptionPrediction.labelId = data.labelId
+                        inceptionPrediction.label = data.label
+                        inceptionPrediction.probability = data.probability
+                        
+                        prediction.inceptionResnetPredictions.append(inceptionPrediction)
+                    }
+                    realm.add(prediction)
+                }
+            }
+            
+        } else {
+            
+            try! realm.write {
+                let prediction = ImagePrediction()
+                prediction.imagePath = data.path
+                
+                for data in data.predictions {
+                    let inceptionPrediction = InceptionResnetPrediction()
+                    inceptionPrediction.labelId = data.labelId
+                    inceptionPrediction.label = data.label
+                    inceptionPrediction.probability = data.probability
+                    
+                    prediction.inceptionResnetPredictions.append(inceptionPrediction)
+                }
+                realm.add(prediction)
+            }
+        }
     }
 }

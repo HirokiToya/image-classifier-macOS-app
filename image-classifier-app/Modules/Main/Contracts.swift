@@ -42,6 +42,7 @@ protocol InteractorOutput: class {
  */
 protocol RealmAccessorInput: class {
     func saveSceneClassifierPrediction(data: SceneClassifier.ImageData)
+    func saveInceptionResnetPrediction(data: InceptionResnet.ImageData)
 }
 
 /*
