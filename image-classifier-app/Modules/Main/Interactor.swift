@@ -26,6 +26,7 @@ class Interactor: InteractorInput {
                 
                 let imageData = SceneClassifier.ImageData(path: "\(path)", predictions: predictions)
                 self.realmAccessor.saveSceneClassifierPrediction(data: imageData)
+                self.output.predictedScenes()
                 
             case let .failture(error):
                 print(error)
@@ -38,7 +39,7 @@ class Interactor: InteractorInput {
             switch result {
             case let .success(result):
                 print(result.predictions.count)
-                // ApiPayload.SceneClassifierPredict型をSceneClassifier.ImageData型に変換
+                // ApiPayload.InceptionResnetPredict型をInceptionResnet.ImageData型に変換
                 var predictions: [InceptionResnet.Prediction] = []
                 
                 for result in result.predictions {
@@ -50,10 +51,16 @@ class Interactor: InteractorInput {
                 
                 let imageData = InceptionResnet.ImageData(path: "\(path)", predictions: predictions)
                 self.realmAccessor.saveInceptionResnetPrediction(data: imageData)
+                self.output.predictedObjects()
+                
             case let .failture(error):
                 print(error)
             }
         }
+    }
+    
+    func deleteAll(){
+        realmAccessor.deleteAll()
     }
 }
 

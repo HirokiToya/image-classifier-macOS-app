@@ -721,6 +721,17 @@
                                     <action selector="pushButton:" target="XfG-lQ-9wD" id="A3P-2T-PBt"/>
                                 </connections>
                             </button>
+                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zTJ-de-9Bt">
+                                <rect key="frame" x="198" y="77" width="87" height="32"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <buttonCell key="cell" type="push" title="Deleate" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="sh3-nH-Exa">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="deleteButtonPushed:" target="XfG-lQ-9wD" id="kSB-Iz-g2V"/>
+                                </connections>
+                            </button>
                         </subviews>
                     </view>
                 </viewController>

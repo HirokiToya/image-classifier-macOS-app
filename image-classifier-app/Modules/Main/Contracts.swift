@@ -20,6 +20,7 @@ protocol ViewInterface: class {
  */
 protocol PresenterInterface: class {
     func predictButtonPushed()
+    func deleteButtonPushed()
 }
 
 /*
@@ -28,13 +29,15 @@ protocol PresenterInterface: class {
 protocol InteractorInput: class {
     func predictScenes(path: URL)
     func predictObjects(path: URL)
+    func deleteAll()
 }
 
 /*
  * Protcol that defines the commands sent from the Interacter to the Presenter.
  */
 protocol InteractorOutput: class {
-    
+    func predictedScenes()
+    func predictedObjects()
 }
 
 /*
@@ -43,6 +46,7 @@ protocol InteractorOutput: class {
 protocol RealmAccessorInput: class {
     func saveSceneClassifierPrediction(data: SceneClassifier.ImageData)
     func saveInceptionResnetPrediction(data: InceptionResnet.ImageData)
+    func deleteAll()
 }
 
 /*

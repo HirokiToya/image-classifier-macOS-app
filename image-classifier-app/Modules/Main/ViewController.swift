@@ -18,7 +18,10 @@ class ViewController: NSViewController, ViewInterface {
     }
     
     @IBAction func pushButton(_ sender: Any) {
-        
         presenter.predictButtonPushed()
+    }
+    
+    @IBAction func deleteButtonPushed(_ sender: Any) {
+        presenter.deleteButtonPushed()
     }
 }
