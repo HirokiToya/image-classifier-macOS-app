@@ -18,10 +18,16 @@ class ViewController: NSViewController, ViewInterface {
     }
     
     @IBAction func pushButton(_ sender: Any) {
-        presenter.predictButtonPushed()
+//        presenter.predictButtonPushed()
+        
+        let results = PredictionRepositories.getPredictionResults()
+        print(results.count)
     }
     
     @IBAction func deleteButtonPushed(_ sender: Any) {
-        presenter.deleteButtonPushed()
+//        presenter.deleteButtonPushed()
+        
+        let results = PredictionRepositories.getPredictionResults()
+        print(results.count)
     }
 }

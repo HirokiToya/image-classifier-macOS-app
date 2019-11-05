@@ -23,6 +23,9 @@
 		EDD6DC0E2361A3C000CF3744 /* SceneClassifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDD6DC0D2361A3C000CF3744 /* SceneClassifier.swift */; };
 		EDD6DC102361AF1100CF3744 /* SimilalityRepositories.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDD6DC0F2361AF1100CF3744 /* SimilalityRepositories.swift */; };
 		EDD6DC142361B2CD00CF3744 /* JsonPayload.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDD6DC132361B2CD00CF3744 /* JsonPayload.swift */; };
+		EDF17E2C237117FB00CA77C9 /* PredictionRepositories.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDF17E2B237117FB00CA77C9 /* PredictionRepositories.swift */; };
+		EDF17E2E23711BEE00CA77C9 /* PredictionResults.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDF17E2D23711BEE00CA77C9 /* PredictionResults.swift */; };
+		EDF17E30237153C600CA77C9 /* RealmModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDF17E2F237153C600CA77C9 /* RealmModel.swift */; };
 		EDF56A88233F710F00A1019F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDF56A87233F710F00A1019F /* AppDelegate.swift */; };
 		EDF56A8A233F710F00A1019F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDF56A89233F710F00A1019F /* ViewController.swift */; };
 		EDF56A8C233F711200A1019F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EDF56A8B233F711200A1019F /* Assets.xcassets */; };
@@ -65,6 +68,9 @@
 		EDD6DC0D2361A3C000CF3744 /* SceneClassifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneClassifier.swift; sourceTree = "<group>"; };
 		EDD6DC0F2361AF1100CF3744 /* SimilalityRepositories.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimilalityRepositories.swift; sourceTree = "<group>"; };
 		EDD6DC132361B2CD00CF3744 /* JsonPayload.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JsonPayload.swift; sourceTree = "<group>"; };
+		EDF17E2B237117FB00CA77C9 /* PredictionRepositories.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PredictionRepositories.swift; sourceTree = "<group>"; };
+		EDF17E2D23711BEE00CA77C9 /* PredictionResults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PredictionResults.swift; sourceTree = "<group>"; };
+		EDF17E2F237153C600CA77C9 /* RealmModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmModel.swift; sourceTree = "<group>"; };
 		EDF56A84233F710F00A1019F /* image-classifier-app.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "image-classifier-app.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		EDF56A87233F710F00A1019F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EDF56A89233F710F00A1019F /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -127,8 +133,10 @@
 				EDD6DBFD23617CE100CF3744 /* Repositories */,
 				EDD6DC0D2361A3C000CF3744 /* SceneClassifier.swift */,
 				ED4D70B9236AA23A007F3A3C /* InceptionResnet.swift */,
+				EDF17E2D23711BEE00CA77C9 /* PredictionResults.swift */,
 				EDC4707F235389F700E7CE91 /* Similality.swift */,
 				ED69986123687ADE0032453A /* FilePathes.swift */,
+				EDF17E2F237153C600CA77C9 /* RealmModel.swift */,
 			);
 			path = Entities;
 			sourceTree = "<group>";
@@ -138,6 +146,7 @@
 			children = (
 				EDD6DC0B23619FF400CF3744 /* SceneClassifierRepositories.swift */,
 				EDD6DC0F2361AF1100CF3744 /* SimilalityRepositories.swift */,
+				EDF17E2B237117FB00CA77C9 /* PredictionRepositories.swift */,
 			);
 			path = Repositories;
 			sourceTree = "<group>";
@@ -408,13 +417,16 @@
 				EDF56AAB233F7B6100A1019F /* ApiPayload.swift in Sources */,
 				EDD6DC0C23619FF400CF3744 /* SceneClassifierRepositories.swift in Sources */,
 				EDD6DBFC23617B8B00CF3744 /* ApiAccessors.swift in Sources */,
+				EDF17E30237153C600CA77C9 /* RealmModel.swift in Sources */,
 				EDD6DC102361AF1100CF3744 /* SimilalityRepositories.swift in Sources */,
 				EDD6DC0E2361A3C000CF3744 /* SceneClassifier.swift in Sources */,
 				ED1A98DF235391D500AC5701 /* Presenter.swift in Sources */,
 				ED69986223687ADE0032453A /* FilePathes.swift in Sources */,
 				ED69985C23686B7C0032453A /* Result.swift in Sources */,
+				EDF17E2C237117FB00CA77C9 /* PredictionRepositories.swift in Sources */,
 				EDD6DC0123617DC200CF3744 /* FileAccessor.swift in Sources */,
 				EDD6DC142361B2CD00CF3744 /* JsonPayload.swift in Sources */,
+				EDF17E2E23711BEE00CA77C9 /* PredictionResults.swift in Sources */,
 				ED2A330523668760004BF90E /* RealmAccessor.swift in Sources */,
 				EDF56A8A233F710F00A1019F /* ViewController.swift in Sources */,
 				ED2A33072366EC7E004BF90E /* Contracts.swift in Sources */,

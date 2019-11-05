@@ -1,28 +1,8 @@
 import Foundation
 import RealmSwift
 
-class ImagePrediction: Object {
-    @objc dynamic var imagePath = ""
-    let sceneClassifierPredictions = List<SceneClassifierPrediction>()
-    let inceptionResnetPredictions = List<InceptionResnetPrediction>()
-    override static func primaryKey() -> String? {
-        return "imagePath"
-    }
-}
-
-class SceneClassifierPrediction: Object {
-    @objc dynamic var labelId = ""
-    @objc dynamic var label = ""
-    @objc dynamic var probability: Double = 0.0
-}
-
-class InceptionResnetPrediction: Object {
-    @objc dynamic var labelId = ""
-    @objc dynamic var label = ""
-    @objc dynamic var probability: Double = 0.0
-}
-
 class RealmAccessor: RealmAccessorInput {
+    
     weak var output: RealmAccessorOutput!
     
     init(output: RealmAccessorOutput!) {
@@ -30,6 +10,7 @@ class RealmAccessor: RealmAccessorInput {
         print("Realmファイル：\(Realm.Configuration.defaultConfiguration.fileURL!)")
     }
     
+    // シーン識別結果を保存します。
     func saveSceneClassifierPrediction(data: SceneClassifier.ImageData){
         let realm = try! Realm()
         
@@ -70,6 +51,7 @@ class RealmAccessor: RealmAccessorInput {
         }
     }
     
+    // 物体識別結果を保存します。
     func saveInceptionResnetPrediction(data: InceptionResnet.ImageData) {
         
         let realm = try! Realm()
@@ -107,6 +89,7 @@ class RealmAccessor: RealmAccessorInput {
         }
     }
     
+    // 識別結果を全て削除します。
     func deleteAll() {
         let realm = try! Realm()
         try! realm.write {
