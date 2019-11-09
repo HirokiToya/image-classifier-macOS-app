@@ -1,10 +1,10 @@
 import Foundation
 
-class Interactor: InteractorInput {
-    weak var output: InteractorOutput!
+class OperationInteractor: OperationInteractorInput {
+    weak var output: OperationInteractorOutput!
     var realmAccessor: RealmAccessorInput!
     
-    init(output: InteractorOutput!) {
+    init(output: OperationInteractorOutput!) {
         self.output = output
         self.realmAccessor = RealmAccessor(output: self)
     }
@@ -64,6 +64,6 @@ class Interactor: InteractorInput {
     }
 }
 
-extension Interactor: RealmAccessorOutput {
+extension OperationInteractor: RealmAccessorOutput {
     
 }

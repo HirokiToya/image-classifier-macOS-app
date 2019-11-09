@@ -1,13 +1,13 @@
 import Cocoa
 
-class OperationViewController: NSViewController, ViewInterface {
+class OperationViewController: NSViewController, OperationViewInterface {
     
-    var presenter: PresenterInterface!
+    var presenter: OperationPresenterInterface!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        presenter = Presenter(view: self)
+        presenter = OperationPresenter(view: self)
     }
     
     override var representedObject: Any? {

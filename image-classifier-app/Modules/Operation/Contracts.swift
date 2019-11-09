@@ -3,14 +3,14 @@ import Foundation
 /*
  * Protcol that defines the view input methods.
  */
-protocol ViewInterface: class {
+protocol OperationViewInterface: class {
     
 }
 
 /*
  * Protocol that defines the commands sent from View to the Presenter.
  */
-protocol PresenterInterface: class {
+protocol OperationPresenterInterface: class {
     func predictButtonPushed()
     func deleteButtonPushed()
 }
@@ -18,7 +18,7 @@ protocol PresenterInterface: class {
 /*
  * Protcol that defines the commands sent from Presenter.
  */
-protocol InteractorInput: class {
+protocol OperationInteractorInput: class {
     func predictScenes(path: URL)
     func predictObjects(path: URL)
     func deleteAll()
@@ -27,7 +27,7 @@ protocol InteractorInput: class {
 /*
  * Protcol that defines the commands sent from the Interacter to the Presenter.
  */
-protocol InteractorOutput: class {
+protocol OperationInteractorOutput: class {
     func predictedScenes()
     func predictedObjects()
 }

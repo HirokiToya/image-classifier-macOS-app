@@ -1,16 +1,16 @@
 import Foundation
 
-class Presenter: PresenterInterface {
-    weak var view: ViewInterface!
-    var interactor: InteractorInput!
+class OperationPresenter: OperationPresenterInterface {
+    weak var view: OperationViewInterface!
+    var interactor: OperationInteractorInput!
     
     private var imagePathes:[URL] = []
     private var scenePredictionPathIndex: Int = 0
     private var objectPredictionPathIndex: Int = 0
     
-    init(view: ViewInterface!){
+    init(view: OperationViewInterface!){
         self.view = view
-        self.interactor = Interactor(output: self)
+        self.interactor = OperationInteractor(output: self)
     }
     
     func predictButtonPushed(){
@@ -39,7 +39,7 @@ class Presenter: PresenterInterface {
 }
 
 
-extension Presenter: InteractorOutput {
+extension OperationPresenter: OperationInteractorOutput {
     
     func predictedScenes() {
         scenePredictionPathIndex += 1

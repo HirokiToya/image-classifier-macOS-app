@@ -9,8 +9,11 @@
 /* Begin PBXBuildFile section */
 		07FD54FFFEDE099764BDAB32 /* Pods_image_classifier_appTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 89BCDE6CC6A9BE8032216E5F /* Pods_image_classifier_appTests.framework */; };
 		894811D478311D8E2A7A79F1 /* Pods_image_classifier_app.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 53C98C79B9649257751C942D /* Pods_image_classifier_app.framework */; };
+		ED0E5D7723770C4E00E34B64 /* CategoryRepositories.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED0E5D7623770C4E00E34B64 /* CategoryRepositories.swift */; };
+		ED0E5D792377160500E34B64 /* StringToUrlExtention.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED0E5D782377160500E34B64 /* StringToUrlExtention.swift */; };
+		ED0E5D7B2377358700E34B64 /* NotificationName.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED0E5D7A2377358700E34B64 /* NotificationName.swift */; };
 		ED1193082372ED330030B582 /* CategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED1193072372ED330030B582 /* CategoryViewController.swift */; };
-		ED1A98DF235391D500AC5701 /* Presenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED1A98DE235391D500AC5701 /* Presenter.swift */; };
+		ED1A98DF235391D500AC5701 /* OperationPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED1A98DE235391D500AC5701 /* OperationPresenter.swift */; };
 		ED25B3F123718855001CA699 /* UIImageViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED25B3F023718855001CA699 /* UIImageViewExtension.swift */; };
 		ED2A330523668760004BF90E /* RealmAccessor.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED2A330423668760004BF90E /* RealmAccessor.swift */; };
 		ED2A33072366EC7E004BF90E /* Contracts.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED2A33062366EC7E004BF90E /* Contracts.swift */; };
@@ -39,7 +42,7 @@
 		EDF56AA9233F7A7B00A1019F /* EndPoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDF56AA8233F7A7B00A1019F /* EndPoints.swift */; };
 		EDF56AAB233F7B6100A1019F /* ApiPayload.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDF56AAA233F7B6100A1019F /* ApiPayload.swift */; };
 		EDF56AAD233F815000A1019F /* APIConfig.plist in Resources */ = {isa = PBXBuildFile; fileRef = EDF56AAC233F815000A1019F /* APIConfig.plist */; };
-		EDF56AB42342F12000A1019F /* Interactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDF56AB32342F12000A1019F /* Interactor.swift */; };
+		EDF56AB42342F12000A1019F /* OperationInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDF56AB32342F12000A1019F /* OperationInteractor.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -59,8 +62,11 @@
 		AD6D020DE27899BD7B2F7879 /* Pods-image-classifier-appTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-image-classifier-appTests.debug.xcconfig"; path = "Target Support Files/Pods-image-classifier-appTests/Pods-image-classifier-appTests.debug.xcconfig"; sourceTree = "<group>"; };
 		CC1A393018D53D7E56C2F1E9 /* Pods-image-classifier-app.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-image-classifier-app.release.xcconfig"; path = "Target Support Files/Pods-image-classifier-app/Pods-image-classifier-app.release.xcconfig"; sourceTree = "<group>"; };
 		E49677C670C73ACF287DB91C /* Pods-image-classifier-app.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-image-classifier-app.debug.xcconfig"; path = "Target Support Files/Pods-image-classifier-app/Pods-image-classifier-app.debug.xcconfig"; sourceTree = "<group>"; };
+		ED0E5D7623770C4E00E34B64 /* CategoryRepositories.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryRepositories.swift; sourceTree = "<group>"; };
+		ED0E5D782377160500E34B64 /* StringToUrlExtention.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringToUrlExtention.swift; sourceTree = "<group>"; };
+		ED0E5D7A2377358700E34B64 /* NotificationName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationName.swift; sourceTree = "<group>"; };
 		ED1193072372ED330030B582 /* CategoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryViewController.swift; sourceTree = "<group>"; };
-		ED1A98DE235391D500AC5701 /* Presenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Presenter.swift; sourceTree = "<group>"; };
+		ED1A98DE235391D500AC5701 /* OperationPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OperationPresenter.swift; sourceTree = "<group>"; };
 		ED25B3F023718855001CA699 /* UIImageViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageViewExtension.swift; sourceTree = "<group>"; };
 		ED2A330423668760004BF90E /* RealmAccessor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmAccessor.swift; sourceTree = "<group>"; };
 		ED2A33062366EC7E004BF90E /* Contracts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Contracts.swift; sourceTree = "<group>"; };
@@ -94,7 +100,7 @@
 		EDF56AA8233F7A7B00A1019F /* EndPoints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndPoints.swift; sourceTree = "<group>"; };
 		EDF56AAA233F7B6100A1019F /* ApiPayload.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiPayload.swift; sourceTree = "<group>"; };
 		EDF56AAC233F815000A1019F /* APIConfig.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = APIConfig.plist; sourceTree = "<group>"; };
-		EDF56AB32342F12000A1019F /* Interactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Interactor.swift; sourceTree = "<group>"; };
+		EDF56AB32342F12000A1019F /* OperationInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OperationInteractor.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -181,6 +187,7 @@
 				EDD6DC0B23619FF400CF3744 /* SceneClassifierRepositories.swift */,
 				EDD6DC0F2361AF1100CF3744 /* SimilalityRepositories.swift */,
 				EDF17E2B237117FB00CA77C9 /* PredictionRepositories.swift */,
+				ED0E5D7623770C4E00E34B64 /* CategoryRepositories.swift */,
 			);
 			path = Repositories;
 			sourceTree = "<group>";
@@ -202,8 +209,8 @@
 			children = (
 				ED2A33062366EC7E004BF90E /* Contracts.swift */,
 				EDF56A89233F710F00A1019F /* OperationViewController.swift */,
-				ED1A98DE235391D500AC5701 /* Presenter.swift */,
-				EDF56AB32342F12000A1019F /* Interactor.swift */,
+				ED1A98DE235391D500AC5701 /* OperationPresenter.swift */,
+				EDF56AB32342F12000A1019F /* OperationInteractor.swift */,
 				ED2A330423668760004BF90E /* RealmAccessor.swift */,
 			);
 			path = Operation;
@@ -213,6 +220,8 @@
 			isa = PBXGroup;
 			children = (
 				ED25B3F023718855001CA699 /* UIImageViewExtension.swift */,
+				ED0E5D782377160500E34B64 /* StringToUrlExtention.swift */,
+				ED0E5D7A2377358700E34B64 /* NotificationName.swift */,
 			);
 			path = Libs;
 			sourceTree = "<group>";
@@ -464,11 +473,12 @@
 			files = (
 				EDF56AAB233F7B6100A1019F /* ApiPayload.swift in Sources */,
 				EDD6DC0C23619FF400CF3744 /* SceneClassifierRepositories.swift in Sources */,
+				ED0E5D7B2377358700E34B64 /* NotificationName.swift in Sources */,
 				EDD6DBFC23617B8B00CF3744 /* ApiAccessors.swift in Sources */,
 				EDF17E30237153C600CA77C9 /* RealmModel.swift in Sources */,
 				EDD6DC102361AF1100CF3744 /* SimilalityRepositories.swift in Sources */,
 				EDD6DC0E2361A3C000CF3744 /* SceneClassifier.swift in Sources */,
-				ED1A98DF235391D500AC5701 /* Presenter.swift in Sources */,
+				ED1A98DF235391D500AC5701 /* OperationPresenter.swift in Sources */,
 				ED91661A2376A67400FFA053 /* InCategoryViewController.swift in Sources */,
 				ED69986223687ADE0032453A /* FilePathes.swift in Sources */,
 				ED69985C23686B7C0032453A /* Result.swift in Sources */,
@@ -478,11 +488,13 @@
 				EDF17E2E23711BEE00CA77C9 /* PredictionResults.swift in Sources */,
 				ED2A330523668760004BF90E /* RealmAccessor.swift in Sources */,
 				ED25B3F123718855001CA699 /* UIImageViewExtension.swift in Sources */,
+				ED0E5D792377160500E34B64 /* StringToUrlExtention.swift in Sources */,
 				EDF56A8A233F710F00A1019F /* OperationViewController.swift in Sources */,
 				ED1193082372ED330030B582 /* CategoryViewController.swift in Sources */,
+				ED0E5D7723770C4E00E34B64 /* CategoryRepositories.swift in Sources */,
 				ED2A33072366EC7E004BF90E /* Contracts.swift in Sources */,
 				ED4D70BA236AA23A007F3A3C /* InceptionResnet.swift in Sources */,
-				EDF56AB42342F12000A1019F /* Interactor.swift in Sources */,
+				EDF56AB42342F12000A1019F /* OperationInteractor.swift in Sources */,
 				ED69985E23686C980032453A /* ClientError.swift in Sources */,
 				EDF17E332371690E00CA77C9 /* ImageCollectionViewItem.swift in Sources */,
 				EDC47080235389F700E7CE91 /* Similality.swift in Sources */,

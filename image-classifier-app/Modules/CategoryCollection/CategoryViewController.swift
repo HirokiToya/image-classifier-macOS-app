@@ -4,12 +4,13 @@ class CategoryViewController: NSViewController {
 
     @IBOutlet weak var categoryCollectionView: NSCollectionView!
     
-    var imagePaths: [URL] = []
+    var imagePaths: [CategoryRepositories.Image] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        imagePaths = FileAccessor.loadAllImagePathes()
+        imagePaths = CategoryRepositories.getSceneRepresentativeImages()
+        print("代表画像枚数:\(imagePaths.count)")
         setupCollectionView()
     }
     
@@ -39,13 +40,19 @@ extension CategoryViewController: NSCollectionViewDelegate, NSCollectionViewData
         let item = categoryCollectionView.makeItem(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: "ImageCollectionViewItem"),
                                                       for: indexPath) as! ImageCollectionViewItem
         
-        item.imageItem.load(url: imagePaths[indexPath.item])
-        item.imageLabel.stringValue = imagePaths[indexPath.item].lastPathComponent
+        item.imageItem.load(url: imagePaths[indexPath.item].url)
+        item.imageLabel.stringValue = imagePaths[indexPath.item].sceneName
         
         return item
     }
     
     func collectionView(_ collectionView: NSCollectionView, didSelectItemsAt indexPaths: Set<IndexPath>) {
-        print(imagePaths[indexPaths.first?[1] ?? 0].lastPathComponent)
+        let image = imagePaths[indexPaths.first?[1] ?? 0]
+        print(image.sceneId)
+        print(image.sceneName)
+        print(image.sceneProbability)
+        
+        let sceneId = ["id": image.sceneId]
+        NotificationCenter.default.post(name: .showIncategoryImages, object: nil, userInfo: sceneId)
     }
 }

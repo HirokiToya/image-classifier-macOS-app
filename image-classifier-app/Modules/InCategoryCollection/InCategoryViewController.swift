@@ -4,13 +4,17 @@ class InCategoryViewController: NSViewController {
 
     @IBOutlet weak var imageCollectionView: NSCollectionView!
     
-    var imagePaths: [URL] = []
+    var imagePaths: [CategoryRepositories.Image] = [] {
+        didSet {
+            imageCollectionView.reloadData()
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        imagePaths = FileAccessor.loadAllImagePathes()
         setupCollectionView()
+        NotificationCenter.default.addObserver(self, selector: #selector(reloadData(notification:)), name: .showIncategoryImages, object: nil)
     }
     
     private func setupCollectionView() {
@@ -28,6 +32,11 @@ class InCategoryViewController: NSViewController {
         imageCollectionView.collectionViewLayout = flowLayout
     }
     
+    @objc func reloadData(notification: Notification) {
+        if let target = notification.userInfo?["id"] as? Int {
+            imagePaths = CategoryRepositories.getSceneCategoryImages(sceneId: target)
+        }
+    }
 }
 
 extension InCategoryViewController: NSCollectionViewDelegate, NSCollectionViewDataSource {
@@ -40,14 +49,17 @@ extension InCategoryViewController: NSCollectionViewDelegate, NSCollectionViewDa
         let item = imageCollectionView.makeItem(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: "ImageCollectionViewItem"),
                                                       for: indexPath) as! ImageCollectionViewItem
         
-        item.imageItem.load(url: imagePaths[indexPath.item])
-        item.imageLabel.stringValue = imagePaths[indexPath.item].lastPathComponent
+        item.imageItem.load(url: imagePaths[indexPath.item].url)
+        item.imageLabel.stringValue = "\(ceil(imagePaths[indexPath.item].sceneProbability * 1000) / 1000)"
         
         return item
     }
     
     func collectionView(_ collectionView: NSCollectionView, didSelectItemsAt indexPaths: Set<IndexPath>) {
-        print(imagePaths[indexPaths.first?[1] ?? 0].lastPathComponent)
+        let image = imagePaths[indexPaths.first?[1] ?? 0]
+        print(image.sceneId)
+        print(image.sceneName)
+        print(image.sceneProbability)
     }
 }
 
