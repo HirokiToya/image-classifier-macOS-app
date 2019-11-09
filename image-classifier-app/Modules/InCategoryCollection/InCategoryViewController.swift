@@ -1,26 +1,22 @@
 import Cocoa
 
-class ViewController: NSViewController, ViewInterface {
-    
-    var presenter: PresenterInterface!
+class InCategoryViewController: NSViewController {
+
     @IBOutlet weak var imageCollectionView: NSCollectionView!
-    private var imagePathes:[URL] = []
+    
+    var imagePaths: [URL] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        presenter = Presenter(view: self)
-        
+        imagePaths = FileAccessor.loadAllImagePathes()
         setupCollectionView()
-        
-        imagePathes = FileAccessor.loadAllImagePathes()
     }
     
     private func setupCollectionView() {
         let nib = NSNib(nibNamed: "ImageCollectionViewItem", bundle: nil)
         let identifier = NSUserInterfaceItemIdentifier(rawValue: "ImageCollectionViewItem")
         self.imageCollectionView.register(nib, forItemWithIdentifier: identifier)
-        
         self.imageCollectionView.delegate = self
         self.imageCollectionView.dataSource = self
         
@@ -32,40 +28,26 @@ class ViewController: NSViewController, ViewInterface {
         imageCollectionView.collectionViewLayout = flowLayout
     }
     
-    override var representedObject: Any? {
-        didSet {
-            // Update the view, if already loaded.
-        }
-    }
-    
-    @IBAction func pushButton(_ sender: Any) {
-        presenter.predictButtonPushed()
-        
-    }
-    
-    @IBAction func deleteButtonPushed(_ sender: Any) {
-//        presenter.deleteButtonPushed()
-        
-    }
 }
 
-extension ViewController: NSCollectionViewDelegate, NSCollectionViewDataSource {
+extension InCategoryViewController: NSCollectionViewDelegate, NSCollectionViewDataSource {
     
     func collectionView(_ collectionView: NSCollectionView, numberOfItemsInSection section: Int) -> Int {
-        return imagePathes.count
+        return imagePaths.count
     }
     
     func collectionView(_ collectionView: NSCollectionView, itemForRepresentedObjectAt indexPath: IndexPath) -> NSCollectionViewItem {
         let item = imageCollectionView.makeItem(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: "ImageCollectionViewItem"),
                                                       for: indexPath) as! ImageCollectionViewItem
         
-        item.imageItem.load(url: imagePathes[indexPath.item])
-        item.imageLabel.stringValue = imagePathes[indexPath.item].lastPathComponent
+        item.imageItem.load(url: imagePaths[indexPath.item])
+        item.imageLabel.stringValue = imagePaths[indexPath.item].lastPathComponent
         
         return item
     }
     
     func collectionView(_ collectionView: NSCollectionView, didSelectItemsAt indexPaths: Set<IndexPath>) {
-        print(indexPaths.first?[1])
+        print(imagePaths[indexPaths.first?[1] ?? 0].lastPathComponent)
     }
 }
+
