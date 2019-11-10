@@ -7,9 +7,9 @@ class PredictionRepositories {
     
     class func getPredictionResults() -> [PredictionResult] {
         
-        if !predictions.isEmpty {
-            return predictions
-        }
+//        if !predictions.isEmpty {
+//            return predictions
+//        }
         
         // 識別結果を全て取得します。
         let realm = try! Realm()
@@ -22,27 +22,31 @@ class PredictionRepositories {
             var scenePredictions: [ScenePrediction] = []
             var resnetPredictions: [ResnetPrediction] = []
             
-            for sceneResult in result.sceneClassifierPredictions {
-                var scenePrediction = ScenePrediction()
-                scenePrediction.labelId = sceneResult.labelId
-                scenePrediction.label = sceneResult.label
-                scenePrediction.probability = sceneResult.probability
-                scenePredictions.append(scenePrediction)
+            if(result.sceneClassifierPredictions.count == 5 &&
+                result.inceptionResnetPredictions.count == 5) {
+                
+                for sceneResult in result.sceneClassifierPredictions {
+                    var scenePrediction = ScenePrediction()
+                    scenePrediction.labelId = sceneResult.labelId
+                    scenePrediction.label = sceneResult.label
+                    scenePrediction.probability = sceneResult.probability
+                    scenePredictions.append(scenePrediction)
+                }
+                
+                for resnetResult in result.inceptionResnetPredictions {
+                    var resnetPrediction = ResnetPrediction()
+                    resnetPrediction.labelId = resnetResult.labelId
+                    resnetPrediction.label = resnetResult.label
+                    resnetPrediction.probability = resnetResult.probability
+                    resnetPredictions.append(resnetPrediction)
+                }
+                
+                predictionResult.imagePath = result.imagePath
+                predictionResult.scenePredictions = scenePredictions
+                predictionResult.resnetPredictions = resnetPredictions
+                
+                predictions.append(predictionResult)
             }
-            
-            for resnetResult in result.inceptionResnetPredictions {
-                var resnetPrediction = ResnetPrediction()
-                resnetPrediction.labelId = resnetResult.labelId
-                resnetPrediction.label = resnetResult.label
-                resnetPrediction.probability = resnetResult.probability
-                resnetPredictions.append(resnetPrediction)
-            }
-            
-            predictionResult.imagePath = result.imagePath
-            predictionResult.scenePredictions = scenePredictions
-            predictionResult.resnetPredictions = resnetPredictions
-            
-            predictions.append(predictionResult)
         }
         
         return predictions

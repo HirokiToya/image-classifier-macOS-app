@@ -736,32 +736,59 @@
                         <rect key="frame" x="0.0" y="0.0" width="150" height="300"/>
                         <subviews>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="NWZ-V7-2dr">
-                                <rect key="frame" x="35" y="222" width="81" height="32"/>
-                                <buttonCell key="cell" type="push" title="Button" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="kci-kN-FzB">
+                                <rect key="frame" x="9" y="242" width="132" height="32"/>
+                                <buttonCell key="cell" type="push" title="Predict" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="kci-kN-FzB">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
                                 <connections>
-                                    <action selector="pushButton:" target="taL-D0-KaQ" id="usz-OH-TLn"/>
+                                    <action selector="predict:" target="taL-D0-KaQ" id="usz-OH-TLn"/>
+                                </connections>
+                            </button>
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="z1q-nE-g9i">
+                                <rect key="frame" x="9" y="206" width="132" height="32"/>
+                                <buttonCell key="cell" type="push" title="RestartPredict" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="I43-eC-1Tz">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="predictRestart:" target="taL-D0-KaQ" id="cLm-m3-cPV"/>
                                 </connections>
                             </button>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="0KE-7a-bph">
-                                <rect key="frame" x="35" y="151" width="81" height="32"/>
-                                <buttonCell key="cell" type="push" title="Button" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="TBz-lG-cbv">
+                                <rect key="frame" x="9" y="170" width="132" height="32"/>
+                                <buttonCell key="cell" type="push" title="CleanDatabase" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="TBz-lG-cbv">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
                                 <connections>
-                                    <action selector="deleteButtonPushed:" target="taL-D0-KaQ" id="JFf-Yd-Tfj"/>
+                                    <action selector="cleanDataBase:" target="taL-D0-KaQ" id="JFf-Yd-Tfj"/>
+                                </connections>
+                            </button>
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="inD-md-yw4">
+                                <rect key="frame" x="9" y="134" width="132" height="32"/>
+                                <buttonCell key="cell" type="push" title="ReloadData" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="cvo-Fv-xKV">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="reloadData:" target="taL-D0-KaQ" id="ELJ-YH-XcB"/>
                                 </connections>
                             </button>
                         </subviews>
                         <constraints>
-                            <constraint firstItem="0KE-7a-bph" firstAttribute="top" secondItem="NWZ-V7-2dr" secondAttribute="bottom" constant="50" id="9Rz-xT-XK6"/>
-                            <constraint firstItem="NWZ-V7-2dr" firstAttribute="centerX" secondItem="dCn-Vf-AQr" secondAttribute="centerX" id="Qem-2I-b6o"/>
-                            <constraint firstItem="NWZ-V7-2dr" firstAttribute="top" secondItem="dCn-Vf-AQr" secondAttribute="top" constant="50" id="VvL-sY-JM5"/>
+                            <constraint firstItem="0KE-7a-bph" firstAttribute="width" secondItem="NWZ-V7-2dr" secondAttribute="width" id="4e3-yh-Lh3"/>
+                            <constraint firstItem="NWZ-V7-2dr" firstAttribute="top" secondItem="dCn-Vf-AQr" secondAttribute="top" constant="30" id="6N6-Gl-5bx"/>
+                            <constraint firstItem="inD-md-yw4" firstAttribute="width" secondItem="NWZ-V7-2dr" secondAttribute="width" id="6s0-1Q-ozz"/>
+                            <constraint firstItem="0KE-7a-bph" firstAttribute="centerX" secondItem="dCn-Vf-AQr" secondAttribute="centerX" id="DPF-BI-4JO"/>
+                            <constraint firstItem="z1q-nE-g9i" firstAttribute="centerX" secondItem="dCn-Vf-AQr" secondAttribute="centerX" id="HPD-rT-pEl"/>
+                            <constraint firstItem="inD-md-yw4" firstAttribute="top" secondItem="0KE-7a-bph" secondAttribute="bottom" constant="15" id="N57-eV-Tjo"/>
+                            <constraint firstItem="0KE-7a-bph" firstAttribute="top" secondItem="z1q-nE-g9i" secondAttribute="bottom" constant="15" id="QZe-ik-VZe"/>
+                            <constraint firstItem="NWZ-V7-2dr" firstAttribute="centerX" secondItem="dCn-Vf-AQr" secondAttribute="centerX" id="QgW-4s-2aX"/>
+                            <constraint firstItem="inD-md-yw4" firstAttribute="centerX" secondItem="dCn-Vf-AQr" secondAttribute="centerX" id="XLe-11-whE"/>
+                            <constraint firstItem="z1q-nE-g9i" firstAttribute="width" secondItem="NWZ-V7-2dr" secondAttribute="width" id="bFF-yH-q86"/>
                             <constraint firstAttribute="width" constant="150" id="e6N-SC-Lcc"/>
-                            <constraint firstItem="0KE-7a-bph" firstAttribute="centerX" secondItem="dCn-Vf-AQr" secondAttribute="centerX" id="i8M-hT-WwT"/>
+                            <constraint firstItem="z1q-nE-g9i" firstAttribute="top" secondItem="NWZ-V7-2dr" secondAttribute="bottom" constant="15" id="haN-fn-Pgj"/>
                         </constraints>
                     </view>
                 </viewController>

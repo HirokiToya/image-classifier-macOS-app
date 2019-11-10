@@ -16,14 +16,19 @@ class OperationViewController: NSViewController, OperationViewInterface {
         }
     }
     
-    @IBAction func pushButton(_ sender: Any) {
-//        presenter.predictButtonPushed()
-        print("pushButton1")
-        
+    @IBAction func predict(_ sender: Any) {
+        presenter.predictButtonPushed()
     }
     
-    @IBAction func deleteButtonPushed(_ sender: Any) {
-//        presenter.deleteButtonPushed()
-        print("pushButton2")
+    @IBAction func predictRestart(_ sender: Any) {
+        presenter.predictRestartButtonPushed()
+    }
+    
+    @IBAction func cleanDataBase(_ sender: Any) {
+        presenter.deleteButtonPushed()
+    }
+    
+    @IBAction func reloadData(_ sender: Any) {
+        NotificationCenter.default.post(name: .reloadCategoryImages, object: nil)
     }
 }

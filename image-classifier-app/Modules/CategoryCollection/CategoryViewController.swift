@@ -4,13 +4,17 @@ class CategoryViewController: NSViewController {
 
     @IBOutlet weak var categoryCollectionView: NSCollectionView!
     
-    var imagePaths: [CategoryRepositories.Image] = []
+    var imagePaths: [CategoryRepositories.Image] = [] {
+        didSet {
+            categoryCollectionView.reloadData()
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        NotificationCenter.default.addObserver(self, selector: #selector(reloadData(notification:)), name: .reloadCategoryImages, object: nil)
         imagePaths = CategoryRepositories.getSceneRepresentativeImages()
-        print("代表画像枚数:\(imagePaths.count)")
         setupCollectionView()
     }
     
@@ -27,6 +31,10 @@ class CategoryViewController: NSViewController {
         flowLayout.minimumInteritemSpacing = 20.0
         flowLayout.minimumLineSpacing = 20.0
         categoryCollectionView.collectionViewLayout = flowLayout
+    }
+    
+    @objc func reloadData(notification: Notification) {
+        imagePaths = CategoryRepositories.getSceneRepresentativeImages()
     }
 }
 

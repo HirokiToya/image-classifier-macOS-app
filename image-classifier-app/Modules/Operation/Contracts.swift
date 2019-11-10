@@ -12,6 +12,7 @@ protocol OperationViewInterface: class {
  */
 protocol OperationPresenterInterface: class {
     func predictButtonPushed()
+    func predictRestartButtonPushed()
     func deleteButtonPushed()
 }
 

@@ -4,7 +4,14 @@ class OperationPresenter: OperationPresenterInterface {
     weak var view: OperationViewInterface!
     var interactor: OperationInteractorInput!
     
-    private var imagePathes:[URL] = []
+    private var imagePathes:[URL] = [] {
+        didSet {
+            scenePredictionPathIndex = 0
+            objectPredictionPathIndex = 0
+            predictScenes(index: scenePredictionPathIndex)
+            predictObjects(index: objectPredictionPathIndex)
+        }
+    }
     private var scenePredictionPathIndex: Int = 0
     private var objectPredictionPathIndex: Int = 0
     
@@ -15,10 +22,28 @@ class OperationPresenter: OperationPresenterInterface {
     
     func predictButtonPushed(){
         imagePathes = FileAccessor.loadAllImagePathes()
-        scenePredictionPathIndex = 0
-        objectPredictionPathIndex = 0
-        predictScenes(index: scenePredictionPathIndex)
-        predictObjects(index: objectPredictionPathIndex)
+    }
+    
+    func predictRestartButtonPushed() {
+        imagePathes = FileAccessor.loadAllImagePathes()
+        print("全ての画像の枚数：\(imagePathes.count)")
+        
+        let predictionResult = PredictionRepositories.getPredictionResults()
+        var shouldPredictImages:[URL] = []
+        for path in imagePathes {
+            var shouldPredict: Bool = true
+            for result in predictionResult {
+                if (path == result.imagePath.url!) { shouldPredict = false }
+            }
+            
+            if(shouldPredict) {
+                shouldPredictImages.append(path)
+            }
+        }
+        
+        imagePathes = shouldPredictImages
+        print("まだ識別していない画像の枚数：\(imagePathes.count)")
+        
     }
     
     func deleteButtonPushed() {
