@@ -8,10 +8,14 @@ class OperationPresenter: OperationPresenterInterface {
         didSet {
             scenePredictionPathIndex = 0
             objectPredictionPathIndex = 0
-            predictScenes(index: scenePredictionPathIndex)
-            predictObjects(index: objectPredictionPathIndex)
+            
+            if(imagePathes.count > 0) {
+                predictScenes(index: scenePredictionPathIndex)
+                predictObjects(index: objectPredictionPathIndex)
+            }
         }
     }
+    
     private var scenePredictionPathIndex: Int = 0
     private var objectPredictionPathIndex: Int = 0
     
@@ -33,7 +37,10 @@ class OperationPresenter: OperationPresenterInterface {
         for path in imagePathes {
             var shouldPredict: Bool = true
             for result in predictionResult {
-                if (path == result.imagePath.url!) { shouldPredict = false }
+                if (path == result.imagePath.url!) {
+                    shouldPredict = false
+                    break
+                }
             }
             
             if(shouldPredict) {
@@ -41,7 +48,12 @@ class OperationPresenter: OperationPresenterInterface {
             }
         }
         
-        imagePathes = shouldPredictImages
+        if(shouldPredictImages.count > 0) {
+            imagePathes = shouldPredictImages
+        } else {
+            imagePathes = []
+        }
+        
         print("まだ識別していない画像の枚数：\(imagePathes.count)")
         
     }

@@ -25,7 +25,7 @@ class OperationViewController: NSViewController, OperationViewInterface {
     }
     
     @IBAction func cleanDataBase(_ sender: Any) {
-        presenter.deleteButtonPushed()
+//        presenter.deleteButtonPushed()
     }
     
     @IBAction func reloadData(_ sender: Any) {
