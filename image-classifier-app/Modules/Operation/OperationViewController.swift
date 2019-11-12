@@ -2,6 +2,9 @@ import Cocoa
 
 class OperationViewController: NSViewController, OperationViewInterface {
     
+    @IBOutlet weak var currentClustersLabel: NSTextField!
+    @IBOutlet weak var clustersLabel: NSTextField!
+    
     var presenter: OperationPresenterInterface!
     
     override func viewDidLoad() {
@@ -15,20 +18,17 @@ class OperationViewController: NSViewController, OperationViewInterface {
             // Update the view, if already loaded.
         }
     }
-    
-    @IBAction func predict(_ sender: Any) {
+        
+    @IBAction func predictRestart(_ sender: Any) {
         presenter.predictButtonPushed()
     }
-    
-    @IBAction func predictRestart(_ sender: Any) {
-        presenter.predictRestartButtonPushed()
-    }
-    
-    @IBAction func cleanDataBase(_ sender: Any) {
-//        presenter.deleteButtonPushed()
-    }
-    
+        
     @IBAction func reloadData(_ sender: Any) {
         NotificationCenter.default.post(name: .reloadCategoryImages, object: nil)
+    }
+    
+    @IBAction func performClustering(_ sender: Any) {
+        let clusters = ["clusters": Int(clustersLabel.intValue)]
+        NotificationCenter.default.post(name: .performClustering, object: nil, userInfo: clusters)
     }
 }

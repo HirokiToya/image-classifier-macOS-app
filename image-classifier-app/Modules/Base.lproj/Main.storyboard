@@ -690,7 +690,6 @@
                         <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
                         <rect key="contentRect" x="0.0" y="834" width="508" height="193"/>
                         <rect key="screenRect" x="0.0" y="0.0" width="1680" height="1027"/>
-                        <value key="minSize" type="size" width="1200" height="800"/>
                         <connections>
                             <outlet property="delegate" destination="B8D-0N-5wS" id="98r-iN-zZc"/>
                         </connections>
@@ -756,7 +755,7 @@
                                 </connections>
                             </button>
                             <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="LWU-an-Sa8">
-                                <rect key="frame" x="10" y="177" width="77" height="21"/>
+                                <rect key="frame" x="10" y="130" width="77" height="21"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="Ava-bm-AUt">
                                     <numberFormatter key="formatter" formatterBehavior="default10_4" numberStyle="decimal" formatWidth="-1" minimumIntegerDigits="1" maximumIntegerDigits="2000000000" maximumFractionDigits="3" id="pdP-Iq-J4B"/>
                                     <font key="font" metaFont="system"/>
@@ -765,36 +764,66 @@
                                 </textFieldCell>
                             </textField>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="amb-Ec-sML">
-                                <rect key="frame" x="8" y="203" width="65" height="16"/>
-                                <textFieldCell key="cell" lineBreakMode="clipping" title="クラスタ数" id="TpF-Jb-oah">
+                                <rect key="frame" x="8" y="156" width="89" height="16"/>
+                                <textFieldCell key="cell" lineBreakMode="clipping" title="指定カテゴリ数" id="TpF-Jb-oah">
                                     <font key="font" metaFont="system"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="q3t-xl-rj5">
-                                <rect key="frame" x="86" y="170" width="65" height="32"/>
+                                <rect key="frame" x="86" y="123" width="65" height="32"/>
                                 <buttonCell key="cell" type="push" title="実行" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="DZu-6a-fqx">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
+                                <connections>
+                                    <action selector="performClustering:" target="taL-D0-KaQ" id="26M-GG-zQj"/>
+                                </connections>
                             </button>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="gDV-r8-h2i">
+                                <rect key="frame" x="8" y="203" width="101" height="16"/>
+                                <textFieldCell key="cell" lineBreakMode="clipping" title="現在のカテゴリ数" id="jGN-oN-ymD">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="TgS-cc-7a6">
+                                <rect key="frame" x="8" y="187" width="104" height="16"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="100" id="mQI-zi-6fR"/>
+                                </constraints>
+                                <textFieldCell key="cell" lineBreakMode="clipping" title=" " id="u7I-cy-eCG">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
                         </subviews>
                         <constraints>
+                            <constraint firstItem="TgS-cc-7a6" firstAttribute="leading" secondItem="gDV-r8-h2i" secondAttribute="leading" id="0AR-WZ-kdr"/>
+                            <constraint firstItem="TgS-cc-7a6" firstAttribute="top" secondItem="gDV-r8-h2i" secondAttribute="bottom" id="2Mp-UB-yAO"/>
                             <constraint firstItem="LWU-an-Sa8" firstAttribute="width" secondItem="z1q-nE-g9i" secondAttribute="width" id="5Ld-4Q-ldP"/>
                             <constraint firstItem="LWU-an-Sa8" firstAttribute="top" secondItem="amb-Ec-sML" secondAttribute="bottom" constant="5" id="Eke-Ac-xde"/>
                             <constraint firstItem="q3t-xl-rj5" firstAttribute="leading" secondItem="LWU-an-Sa8" secondAttribute="trailing" constant="5" id="JHM-md-fJI"/>
                             <constraint firstItem="z1q-nE-g9i" firstAttribute="top" secondItem="dCn-Vf-AQr" secondAttribute="top" constant="30" id="LTr-dB-WyA"/>
+                            <constraint firstItem="gDV-r8-h2i" firstAttribute="leading" secondItem="z1q-nE-g9i" secondAttribute="leading" id="YI0-kq-QJx"/>
                             <constraint firstAttribute="width" constant="150" id="e6N-SC-Lcc"/>
+                            <constraint firstItem="amb-Ec-sML" firstAttribute="top" secondItem="TgS-cc-7a6" secondAttribute="bottom" constant="15" id="ebV-JB-3JM"/>
                             <constraint firstItem="inD-md-yw4" firstAttribute="top" secondItem="dCn-Vf-AQr" secondAttribute="top" constant="30" id="edX-sK-icM"/>
                             <constraint firstItem="LWU-an-Sa8" firstAttribute="leading" secondItem="z1q-nE-g9i" secondAttribute="leading" id="jDj-oB-dbE"/>
                             <constraint firstItem="z1q-nE-g9i" firstAttribute="leading" secondItem="dCn-Vf-AQr" secondAttribute="leading" constant="10" id="jEt-io-FKp"/>
                             <constraint firstItem="q3t-xl-rj5" firstAttribute="top" secondItem="LWU-an-Sa8" secondAttribute="top" id="qtP-Iz-5Tr"/>
+                            <constraint firstItem="gDV-r8-h2i" firstAttribute="top" secondItem="z1q-nE-g9i" secondAttribute="bottom" constant="30" id="rug-YC-ySR"/>
                             <constraint firstItem="inD-md-yw4" firstAttribute="leading" secondItem="z1q-nE-g9i" secondAttribute="trailing" constant="15" id="tfT-1j-A8b"/>
-                            <constraint firstItem="amb-Ec-sML" firstAttribute="top" secondItem="z1q-nE-g9i" secondAttribute="bottom" constant="30" id="tuo-I4-jCz"/>
                             <constraint firstItem="LWU-an-Sa8" firstAttribute="leading" secondItem="amb-Ec-sML" secondAttribute="leading" id="vOM-JK-dSA"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="clustersLabel" destination="LWU-an-Sa8" id="IBI-bb-2gN"/>
+                        <outlet property="currentClustersLabel" destination="TgS-cc-7a6" id="rI8-fk-4p5"/>
+                    </connections>
                 </viewController>
                 <customObject id="bNn-cb-0A5" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>

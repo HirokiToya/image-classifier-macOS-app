@@ -6,6 +6,7 @@ class InCategoryViewController: NSViewController {
     
     var imagePaths: [CategoryRepositories.Image] = [] {
         didSet {
+            print("カテゴリ内画像枚数：\(imagePaths.count)")
             imageCollectionView.reloadData()
         }
     }
@@ -34,7 +35,7 @@ class InCategoryViewController: NSViewController {
     
     @objc func reloadData(notification: Notification) {
         if let target = notification.userInfo?["id"] as? Int {
-            imagePaths = CategoryRepositories.getSceneCategoryImages(sceneId: target)
+            imagePaths = CategoryRepositories.getCategoryAttributeImages(sceneId: target)
         }
     }
 }
@@ -50,7 +51,11 @@ extension InCategoryViewController: NSCollectionViewDelegate, NSCollectionViewDa
                                                       for: indexPath) as! ImageCollectionViewItem
         
         item.imageItem.load(url: imagePaths[indexPath.item].url)
-        item.imageLabel.stringValue = "\(ceil(imagePaths[indexPath.item].sceneProbability * 1000) / 1000)"
+        item.imageLabel.stringValue = """
+        \(imagePaths[indexPath.item].sceneId)
+        \(imagePaths[indexPath.item].sceneName)
+        \(ceil(imagePaths[indexPath.item].sceneProbability * 1000) / 1000)
+        """
         
         return item
     }

@@ -24,11 +24,7 @@ class OperationPresenter: OperationPresenterInterface {
         self.interactor = OperationInteractor(output: self)
     }
     
-    func predictButtonPushed(){
-        imagePathes = FileAccessor.loadAllImagePathes()
-    }
-    
-    func predictRestartButtonPushed() {
+    func predictButtonPushed() {
         imagePathes = FileAccessor.loadAllImagePathes()
         print("全ての画像の枚数：\(imagePathes.count)")
         
@@ -58,8 +54,8 @@ class OperationPresenter: OperationPresenterInterface {
         
     }
     
-    func deleteButtonPushed() {
-        interactor.deleteAll()
+    func performClustering(clusters: Int) {
+        print("クラスタ数：\(clusters)")
     }
     
     private func predictScenes(index: Int) {

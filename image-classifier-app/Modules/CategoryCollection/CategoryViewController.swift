@@ -6,6 +6,7 @@ class CategoryViewController: NSViewController {
     
     var imagePaths: [CategoryRepositories.Image] = [] {
         didSet {
+            print("カテゴリ数：\(imagePaths.count)")
             categoryCollectionView.reloadData()
         }
     }
@@ -14,6 +15,7 @@ class CategoryViewController: NSViewController {
         super.viewDidLoad()
         
         NotificationCenter.default.addObserver(self, selector: #selector(reloadData(notification:)), name: .reloadCategoryImages, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(performClustering(notification:)), name: .performClustering, object: nil)
         imagePaths = CategoryRepositories.getSceneRepresentativeImages()
         setupCollectionView()
     }
@@ -36,6 +38,21 @@ class CategoryViewController: NSViewController {
     @objc func reloadData(notification: Notification) {
         imagePaths = CategoryRepositories.getSceneRepresentativeImages()
     }
+    
+    @objc func performClustering(notification: Notification) {
+        if let target = notification.userInfo?["clusters"] as? Int {
+            
+            let sceneRepresentativeImages = CategoryRepositories.getSceneRepresentativeImages()
+            if(target > sceneRepresentativeImages.count){
+                let alert = NSAlert()
+                alert.messageText = "入力エラー"
+                alert.informativeText = "\(sceneRepresentativeImages.count)以下のカテゴリ数を指定してください．"
+                alert.runModal()
+            } else {
+                imagePaths = CategoryRepositories.getClusteredImages(clusters: target)
+            }
+        }
+    }
 }
 
 extension CategoryViewController: NSCollectionViewDelegate, NSCollectionViewDataSource {
@@ -49,7 +66,11 @@ extension CategoryViewController: NSCollectionViewDelegate, NSCollectionViewData
                                                       for: indexPath) as! ImageCollectionViewItem
         
         item.imageItem.load(url: imagePaths[indexPath.item].url)
-        item.imageLabel.stringValue = imagePaths[indexPath.item].sceneName
+        item.imageLabel.stringValue = """
+        \(imagePaths[indexPath.item].sceneId)
+        \(imagePaths[indexPath.item].sceneName)
+        \(ceil(imagePaths[indexPath.item].sceneProbability * 1000) / 1000)
+        """
         
         return item
     }
