@@ -3,6 +3,7 @@ import Foundation
 class SimilalityRepositories {
     
     private static var similality: [[Double]]?
+    private static var similalityCategories: [SimilarCategories] = []
     
     struct SimilarCategories {
         var categoryId1: Int
@@ -40,14 +41,25 @@ class SimilalityRepositories {
     
     // [index 小]：類似度が高い　→ [index 大]：類似度が低い
     class func getSortedSimilality() -> [SimilarCategories] {
-        let predictionResult = PredictionRepositories.getPredictionResults()
         
+        if similalityCategories.count != 0 {
+            return similalityCategories
+        }
         
-        for labelId1 in 0...364 {
-            for labelId2 in 0...364 {
-                
+        for labelId1 in (0...364) {
+            for labelId2 in (0...364) {
+                if(labelId1 < labelId2) {
+                    if let similality = getSimilality(id1: labelId1, id2: labelId2) {
+                        similalityCategories.append(SimilarCategories(categoryId1: labelId1,
+                                                                      categoryId2: labelId2,
+                                                                      similality: similality))
+                    }
+                }
             }
         }
-        return []
+        
+        similalityCategories.sort(by: {$0.similality > $1.similality})
+        
+        return similalityCategories
     }
 }
