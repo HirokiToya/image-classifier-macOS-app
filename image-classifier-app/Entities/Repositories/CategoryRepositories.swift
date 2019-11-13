@@ -10,19 +10,18 @@ class CategoryRepositories {
     }
     
     private static var categoryAttributes: [CategoryAttribute] = []
-    
+    private static var predictionResults: [PredictionResult] = PredictionRepositories.loadPredictionResults()
+    private static var defaultCategorizedImages:[Image] = getSceneRepresentativeImages()
+        
     // 同一のシーンカテゴリ名の中から識別確率が最も高い画像をそれぞれ取得します．
     class func getSceneRepresentativeImages() -> [Image] {
         
         var sceneCategories: [Image] = []
-        let predictionResults = PredictionRepositories.getPredictionResults()
         
         for label in 0...364 {
-            
             let sameCategoryImages = predictionResults.filter({ Int($0.scenePredictions[0].labelId) == label})
             
             if(sameCategoryImages.count > 0) {
-                print("\(sameCategoryImages[0].scenePredictions[0].label)[\(label)]：\(sameCategoryImages.count)枚")
                 
                 var shoudRepresentativeImage = sameCategoryImages[0]
                 for image in sameCategoryImages {
@@ -46,8 +45,6 @@ class CategoryRepositories {
     class func getSceneCategoryImages(sceneId: Int) -> [Image] {
         
         var images: [Image] = []
-        let predictionResults = PredictionRepositories.getPredictionResults()
-        
         let sameCategoryImages = predictionResults.filter({ Int($0.scenePredictions[0].labelId) == sceneId})
         
         if(sameCategoryImages.count > 0) {
@@ -72,7 +69,6 @@ class CategoryRepositories {
         //            return sceneRepresentativeImages
         //        }
         
-        let predictionResults = PredictionRepositories.getPredictionResults()
         var images: [Image] = []
         
         CategoryRepositories.categoryAttributes = []
@@ -84,7 +80,7 @@ class CategoryRepositories {
         }
         
         let mostSimilarCategories = SimilalityRepositories.getSortedSimilality()
-        let defaultCategoriesCount = getSceneRepresentativeImages().count
+        let defaultCategoriesCount = defaultCategorizedImages.count
         var similalityIndex = 0
         var clusteredCount = 0
         print("類似度の個数：\(mostSimilarCategories.count)")

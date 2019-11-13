@@ -16,8 +16,14 @@ class CategoryViewController: NSViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        NotificationCenter.default.addObserver(self, selector: #selector(reloadData(notification:)), name: .reloadCategoryImages, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(performClustering(notification:)), name: .performClustering, object: nil)
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(reloadData(notification:)),
+                                               name: .reloadCategoryImages,
+                                               object: nil)
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(performClustering(notification:)),
+                                               name: .performClustering,
+                                               object: nil)
         imagePaths = CategoryRepositories.getSceneRepresentativeImages()
         setupCollectionView()
     }
@@ -38,7 +44,7 @@ class CategoryViewController: NSViewController {
     }
     
     @objc func reloadData(notification: Notification) {
-        imagePaths = CategoryRepositories.getSceneRepresentativeImages()
+        categoryCollectionView.reloadData()
     }
     
     @objc func performClustering(notification: Notification) {

@@ -28,7 +28,7 @@ class OperationPresenter: OperationPresenterInterface {
         imagePathes = FileAccessor.loadAllImagePathes()
         print("全ての画像の枚数：\(imagePathes.count)")
         
-        let predictionResult = PredictionRepositories.getPredictionResults()
+        let predictionResult = PredictionRepositories.loadPredictionResults()
         var shouldPredictImages:[URL] = []
         for path in imagePathes {
             var shouldPredict: Bool = true

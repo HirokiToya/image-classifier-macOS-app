@@ -5,11 +5,11 @@ class PredictionRepositories {
     
     private static var predictions: [PredictionResult] = []
     
-    class func getPredictionResults() -> [PredictionResult] {
+    class func loadPredictionResults() -> [PredictionResult] {
         
-//        if !predictions.isEmpty {
-//            return predictions
-//        }
+        if !predictions.isEmpty {
+            return predictions
+        }
         
         // 識別結果を全て取得します。
         let realm = try! Realm()
