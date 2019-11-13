@@ -15,7 +15,9 @@ class InCategoryViewController: NSViewController {
         super.viewDidLoad()
         
         setupCollectionView()
-        NotificationCenter.default.addObserver(self, selector: #selector(reloadData(notification:)), name: .showIncategoryImages, object: nil)
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(reloadData(notification:)),
+                                               name: .showIncategoryImages, object: nil)
     }
     
     private func setupCollectionView() {
@@ -56,6 +58,13 @@ extension InCategoryViewController: NSCollectionViewDelegate, NSCollectionViewDa
         \(imagePaths[indexPath.item].sceneName)
         \(ceil(imagePaths[indexPath.item].sceneProbability * 1000) / 1000)
         """
+        item.doubleClickedCallback = {
+            let storyboard: NSStoryboard = NSStoryboard(name: "ImageViewController", bundle: nil)
+            if let nextView = storyboard.instantiateInitialController() as? ImageViewController {
+                nextView.imageUrl = self.imagePaths[indexPath.item].url
+                self.presentAsModalWindow(nextView)
+            }
+        }
         
         return item
     }
@@ -65,6 +74,6 @@ extension InCategoryViewController: NSCollectionViewDelegate, NSCollectionViewDa
         print(image.sceneId)
         print(image.sceneName)
         print(image.sceneProbability)
+        print(image.url)
     }
 }
-

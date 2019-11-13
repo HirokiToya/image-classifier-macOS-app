@@ -18,6 +18,8 @@
 		ED2A330523668760004BF90E /* RealmAccessor.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED2A330423668760004BF90E /* RealmAccessor.swift */; };
 		ED2A33072366EC7E004BF90E /* Contracts.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED2A33062366EC7E004BF90E /* Contracts.swift */; };
 		ED4D70BA236AA23A007F3A3C /* InceptionResnet.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED4D70B9236AA23A007F3A3C /* InceptionResnet.swift */; };
+		ED5E9DCD237BF951004708F9 /* ImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED5E9DCC237BF951004708F9 /* ImageViewController.swift */; };
+		ED5E9DCF237BFDD6004708F9 /* ImageViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ED5E9DCE237BFDD6004708F9 /* ImageViewController.storyboard */; };
 		ED69985C23686B7C0032453A /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED69985B23686B7C0032453A /* Result.swift */; };
 		ED69985E23686C980032453A /* ClientError.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED69985D23686C980032453A /* ClientError.swift */; };
 		ED69986223687ADE0032453A /* FilePathes.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED69986123687ADE0032453A /* FilePathes.swift */; };
@@ -72,6 +74,8 @@
 		ED2A330423668760004BF90E /* RealmAccessor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmAccessor.swift; sourceTree = "<group>"; };
 		ED2A33062366EC7E004BF90E /* Contracts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Contracts.swift; sourceTree = "<group>"; };
 		ED4D70B9236AA23A007F3A3C /* InceptionResnet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InceptionResnet.swift; sourceTree = "<group>"; };
+		ED5E9DCC237BF951004708F9 /* ImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageViewController.swift; sourceTree = "<group>"; };
+		ED5E9DCE237BFDD6004708F9 /* ImageViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ImageViewController.storyboard; sourceTree = "<group>"; };
 		ED69985B23686B7C0032453A /* Result.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Result.swift; sourceTree = "<group>"; };
 		ED69985D23686C980032453A /* ClientError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientError.swift; sourceTree = "<group>"; };
 		ED69986123687ADE0032453A /* FilePathes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilePathes.swift; sourceTree = "<group>"; };
@@ -156,9 +160,19 @@
 		ED1193092372ED610030B582 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				ED5E9DD0237C0224004708F9 /* ImageViewController */,
 				EDF17E352371691300CA77C9 /* CollectionViewItem */,
 			);
 			path = Common;
+			sourceTree = "<group>";
+		};
+		ED5E9DD0237C0224004708F9 /* ImageViewController */ = {
+			isa = PBXGroup;
+			children = (
+				ED5E9DCC237BF951004708F9 /* ImageViewController.swift */,
+				ED5E9DCE237BFDD6004708F9 /* ImageViewController.storyboard */,
+			);
+			path = ImageViewController;
 			sourceTree = "<group>";
 		};
 		ED9166182376A3CE00FFA053 /* InCategoryCollection */ = {
@@ -389,6 +403,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ED5E9DCF237BFDD6004708F9 /* ImageViewController.storyboard in Resources */,
 				EDF56A8C233F711200A1019F /* Assets.xcassets in Resources */,
 				EDF17E342371690E00CA77C9 /* ImageCollectionViewItem.xib in Resources */,
 				EDF56A8F233F711200A1019F /* Main.storyboard in Resources */,
@@ -491,6 +506,7 @@
 				EDD6DC142361B2CD00CF3744 /* JsonPayload.swift in Sources */,
 				EDF17E2E23711BEE00CA77C9 /* PredictionResults.swift in Sources */,
 				ED2A330523668760004BF90E /* RealmAccessor.swift in Sources */,
+				ED5E9DCD237BF951004708F9 /* ImageViewController.swift in Sources */,
 				ED25B3F123718855001CA699 /* UIImageViewExtension.swift in Sources */,
 				ED0E5D792377160500E34B64 /* StringToUrlExtention.swift in Sources */,
 				EDF56A8A233F710F00A1019F /* OperationViewController.swift in Sources */,

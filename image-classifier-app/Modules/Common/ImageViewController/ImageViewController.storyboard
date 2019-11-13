@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="14868" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="ae0-Dl-2ax">
+    <dependencies>
+        <deployment identifier="macosx"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14868"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Image-->
+        <scene sceneID="zX6-ja-gtM">
+            <objects>
+                <viewController title="Image" id="ae0-Dl-2ax" customClass="ImageViewController" customModule="image_classifier_app" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" id="t65-Qt-tmx">
+                        <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <subviews>
+                            <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="eei-U6-4bH">
+                                <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
+                                <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" id="oPc-LA-K2H"/>
+                            </imageView>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="eei-U6-4bH" firstAttribute="leading" secondItem="t65-Qt-tmx" secondAttribute="leading" id="37V-6f-WRA"/>
+                            <constraint firstAttribute="trailing" secondItem="eei-U6-4bH" secondAttribute="trailing" id="JKq-sO-upU"/>
+                            <constraint firstAttribute="bottom" secondItem="eei-U6-4bH" secondAttribute="bottom" id="fV1-8j-r2U"/>
+                            <constraint firstItem="eei-U6-4bH" firstAttribute="top" secondItem="t65-Qt-tmx" secondAttribute="top" id="x63-Ib-BGX"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="imageView" destination="eei-U6-4bH" id="6Ej-Cv-91j"/>
+                    </connections>
+                </viewController>
+                <customObject id="dDl-Il-6ns" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="144" y="120"/>
+        </scene>
+    </scenes>
+</document>
