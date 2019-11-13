@@ -12,7 +12,7 @@ protocol OperationViewInterface: class {
  */
 protocol OperationPresenterInterface: class {
     func predictButtonPushed()
-    func performClustering(clusters: Int)
+    func deleteAllData()
 }
 
 /*

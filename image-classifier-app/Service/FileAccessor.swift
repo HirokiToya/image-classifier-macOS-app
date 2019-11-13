@@ -31,7 +31,6 @@ class FileAccessor {
         }
         return true
     }
-    
 }
 
 extension FileAccessor {
@@ -57,33 +56,13 @@ extension FileAccessor {
         }
         return nil
     }
-    
-    // path直下の全ての画像ファイル名を取得します。
-    class func loadAllImageNames() -> [String] {
         
-        if let imagesPath = FilePathes.getImagesDirPath() {
-            
-            do {
-                let contentUrls = try FileManager.default.contentsOfDirectory(at: imagesPath, includingPropertiesForKeys: nil)
-                let imageNames = imageFilter(files: contentUrls)
-                let files = imageNames.map{$0.lastPathComponent}
-                
-                return files
-            } catch {
-                print(error)
-            }
-        }
-        
-        return []
-    }
-    
     // path直下の全ての画像ファイル名を取得します。
     class func loadAllImagePathes() -> [URL] {
         
-        if let imagesPath = FilePathes.getImagesDirPath() {
-            
+        if let imageFolerPath = FilePathes.getImageFolderPath() {
             do {
-                let contentUrls = try FileManager.default.contentsOfDirectory(at: imagesPath, includingPropertiesForKeys: nil)
+                let contentUrls = try FileManager.default.contentsOfDirectory(at: imageFolerPath, includingPropertiesForKeys: nil)
                 let imagePaths = imageFilter(files: contentUrls)
                 return imagePaths
             } catch {
@@ -93,8 +72,6 @@ extension FileAccessor {
         
         return []
     }
-    
-    
     
     // .jpgファイルのみにフィルターします。
     class func imageFilter(files: [URL]) -> [URL] {

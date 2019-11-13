@@ -24,6 +24,7 @@ class CategoryViewController: NSViewController {
                                                selector: #selector(performClustering(notification:)),
                                                name: .performClustering,
                                                object: nil)
+        
         imagePaths = CategoryRepositories.getSceneRepresentativeImages()
         setupCollectionView()
     }
@@ -84,6 +85,7 @@ extension CategoryViewController: NSCollectionViewDelegate, NSCollectionViewData
     
     func collectionView(_ collectionView: NSCollectionView, didSelectItemsAt indexPaths: Set<IndexPath>) {
         let image = imagePaths[indexPaths.first?[1] ?? 0]
+        print(image.url)
         print(image.sceneId)
         print(image.sceneName)
         print(image.sceneProbability)

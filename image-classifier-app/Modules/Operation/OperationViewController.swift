@@ -19,8 +19,24 @@ class OperationViewController: NSViewController, OperationViewInterface {
             // Update the view, if already loaded.
         }
     }
+    
+    @IBAction func selectImageFolder(_ sender: Any) {
+        let panel = NSOpenPanel()
+        panel.canChooseFiles = false
+        panel.canChooseDirectories = true
+        panel.allowsMultipleSelection = false
+        panel.message = "Select an image folder."
         
-    @IBAction func predictRestart(_ sender: Any) {
+        let response = panel.runModal()
+        if response == NSApplication.ModalResponse.OK {
+            guard let selectedURL = panel.url else { return }
+            print("フォルダパス：\(selectedURL)")
+            presenter.deleteAllData()
+            FilePathes.setImageFolderPath(relativePath: selectedURL)
+        }
+    }
+    
+    @IBAction func predictStart(_ sender: Any) {
         presenter.predictButtonPushed()
     }
         

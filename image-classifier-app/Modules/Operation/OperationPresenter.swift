@@ -54,8 +54,8 @@ class OperationPresenter: OperationPresenterInterface {
         
     }
     
-    func performClustering(clusters: Int) {
-        print("クラスタ数：\(clusters)")
+    func deleteAllData() {
+        interactor.deleteAll()
     }
     
     private func predictScenes(index: Int) {
