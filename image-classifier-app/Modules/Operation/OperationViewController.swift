@@ -11,6 +11,7 @@ class OperationViewController: NSViewController, OperationViewInterface {
         super.viewDidLoad()
         
         presenter = OperationPresenter(view: self)
+        NotificationCenter.default.addObserver(self, selector: #selector(setCurrentClustersLabel(notification:)), name: .setCategoryCountLabel, object: nil)
     }
     
     override var representedObject: Any? {
@@ -30,5 +31,11 @@ class OperationViewController: NSViewController, OperationViewInterface {
     @IBAction func performClustering(_ sender: Any) {
         let clusters = ["clusters": Int(clustersLabel.intValue)]
         NotificationCenter.default.post(name: .performClustering, object: nil, userInfo: clusters)
+    }
+    
+    @objc func setCurrentClustersLabel(notification: Notification) {
+        if let target = notification.userInfo?["clustersCount"] as? Int {
+            currentClustersLabel.stringValue = "(\(target))"
+        }
     }
 }

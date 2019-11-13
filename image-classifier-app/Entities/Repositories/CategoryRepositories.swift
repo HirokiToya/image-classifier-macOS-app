@@ -96,20 +96,19 @@ class CategoryRepositories {
             
             if(categoryId1Images.count != 0 && categoryId2Images.count != 0){
                 
-                print("カテゴリ：\(mostSimilarCategories[similalityIndex].categoryId1) 枚数：\(categoryId1Images.count)")
-                print("カテゴリ：\(mostSimilarCategories[similalityIndex].categoryId2) 枚数：\(categoryId2Images.count)")
-                
                 // カテゴリを統合します．
                 if(categoryId1Images.count > categoryId2Images.count) {
                     for (index,categoryAttribute) in CategoryRepositories.categoryAttributes.enumerated() {
                         if(categoryAttribute.sceneClusteredId == mostSimilarCategories[similalityIndex].categoryId2) {
                             CategoryRepositories.categoryAttributes[index].sceneClusteredId = mostSimilarCategories[similalityIndex].categoryId1
+                            print("カテゴリ[\(mostSimilarCategories[similalityIndex].categoryId2)] \(categoryId2Images.count)枚 → カテゴリ[\(mostSimilarCategories[similalityIndex].categoryId1)] \(categoryId1Images.count)枚")
                         }
                     }
                 } else {
                     for (index,categoryAttribute) in CategoryRepositories.categoryAttributes.enumerated() {
                         if(categoryAttribute.sceneClusteredId == mostSimilarCategories[similalityIndex].categoryId1) {
                             CategoryRepositories.categoryAttributes[index].sceneClusteredId = mostSimilarCategories[similalityIndex].categoryId2
+                            print("カテゴリ[\(mostSimilarCategories[similalityIndex].categoryId1)] \(categoryId1Images.count)枚 → カテゴリ[\(mostSimilarCategories[similalityIndex].categoryId2)] \(categoryId2Images.count)枚")
                         }
                     }
                 }
@@ -151,11 +150,13 @@ class CategoryRepositories {
         let categoryAttributes = CategoryRepositories.categoryAttributes
         
         if(categoryAttributes.count == 0) {
-            return getSceneCategoryImages(sceneId: sceneId)
+            
+            images = getSceneCategoryImages(sceneId: sceneId)
+            images.sort(by: {$0.sceneProbability > $1.sceneProbability})
             
         } else {
-            let categoryImages = categoryAttributes.filter({ $0.sceneClusteredId == sceneId})
             
+            let categoryImages = categoryAttributes.filter({ $0.sceneClusteredId == sceneId})
             if(categoryImages.count > 0) {
                 for categoryImage in categoryImages {
                     images.append(Image(url: categoryImage.predictionResult.imagePath.url!,
@@ -165,7 +166,9 @@ class CategoryRepositories {
                 }
             }
             
-            return images
+            images.sort(by: {$0.sceneProbability > $1.sceneProbability})
         }
+        
+        return images
     }
 }

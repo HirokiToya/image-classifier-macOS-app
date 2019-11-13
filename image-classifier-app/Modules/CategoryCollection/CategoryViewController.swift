@@ -7,6 +7,8 @@ class CategoryViewController: NSViewController {
     var imagePaths: [CategoryRepositories.Image] = [] {
         didSet {
             print("カテゴリ数：\(imagePaths.count)")
+            let clustersCount = ["clustersCount": imagePaths.count]
+            NotificationCenter.default.post(name: .setCategoryCountLabel, object: nil, userInfo: clustersCount)
             categoryCollectionView.reloadData()
         }
     }
@@ -69,7 +71,6 @@ extension CategoryViewController: NSCollectionViewDelegate, NSCollectionViewData
         item.imageLabel.stringValue = """
         \(imagePaths[indexPath.item].sceneId)
         \(imagePaths[indexPath.item].sceneName)
-        \(ceil(imagePaths[indexPath.item].sceneProbability * 1000) / 1000)
         """
         
         return item
