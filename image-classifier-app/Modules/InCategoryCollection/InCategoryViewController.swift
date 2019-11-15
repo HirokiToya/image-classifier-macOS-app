@@ -36,8 +36,10 @@ class InCategoryViewController: NSViewController {
     }
     
     @objc func reloadData(notification: Notification) {
-        if let target = notification.userInfo?["id"] as? Int {
-            imagePaths = CategoryRepositories.getCategoryAttributeImages(sceneId: target)
+        if let target = notification.userInfo?["imageAttributes"] as? CategoryRepositories.Image {
+            imagePaths = CategoryRepositories.getCategoryAttributeImages(sceneId: target.sceneId,
+                                                                         objectName: target.objectName,
+                                                                         scenePriority: target.scenePriority)
         }
     }
 }

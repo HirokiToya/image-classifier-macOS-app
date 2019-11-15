@@ -7,6 +7,10 @@ class CategoryRepositories {
         var sceneId: Int
         var sceneName: String
         var sceneProbability: Double
+        var objectId: String
+        var objectName: String
+        var objectProbability: Double
+        var scenePriority: Bool
     }
     
     private static var categoryAttributes: [CategoryAttribute] = []
@@ -39,7 +43,11 @@ class CategoryRepositories {
                 sceneCategories.append(Image(url: shoudRepresentativeImage.imagePath.url!,
                                              sceneId: Int(shoudRepresentativeImage.scenePredictions[0].labelId)!,
                                              sceneName: shoudRepresentativeImage.scenePredictions[0].label,
-                                             sceneProbability: shoudRepresentativeImage.scenePredictions[0].probability))
+                                             sceneProbability: shoudRepresentativeImage.scenePredictions[0].probability,
+                                             objectId: shoudRepresentativeImage.resnetPredictions[0].labelId,
+                                             objectName: shoudRepresentativeImage.resnetPredictions[0].label,
+                                             objectProbability: shoudRepresentativeImage.resnetPredictions[0].probability,
+                                             scenePriority: true))
             }
             
         }
@@ -59,21 +67,28 @@ class CategoryRepositories {
                 images.append(Image(url: sameCategoryImage.imagePath.url!,
                                     sceneId: Int(sameCategoryImage.scenePredictions[0].labelId)!,
                                     sceneName: sameCategoryImage.scenePredictions[0].label,
-                                    sceneProbability: sameCategoryImage.scenePredictions[0].probability))
+                                    sceneProbability: sameCategoryImage.scenePredictions[0].probability,
+                                    objectId: sameCategoryImage.resnetPredictions[0].labelId,
+                                    objectName: sameCategoryImage.resnetPredictions[0].label,
+                                    objectProbability: sameCategoryImage.resnetPredictions[0].probability,
+                                    scenePriority: true))
             }
         }
         
         return images
     }
     
-    // 類似度の結果を用いてカテゴリを指定された数に統合します．
-    class func getClusteredImages(clusters: Int) -> [Image] {
+    class func clusterCategories(clusters: Int) -> [Image]{
         
-        // UIで同じ判定をしているのでコメントアウトします．(物体識別のカテゴリ分けのクラスタリング処理を実装するまで)
-        //        let sceneRepresentativeImages = getSceneRepresentativeImages()
-        //        if(clusters > sceneRepresentativeImages.count){
-        //            return sceneRepresentativeImages
-        //        }
+        if(clusters < defaultCategorizedImages.count){
+            return integrateCategories(clusters: clusters)
+        } else {
+            return divideCategories(clusters: clusters)
+        }
+    }
+    
+    // 類似度の結果を用いてカテゴリを指定された数に統合します．
+    class func integrateCategories(clusters: Int) -> [Image] {
         
         var images: [Image] = []
         
@@ -81,7 +96,7 @@ class CategoryRepositories {
         for result in predictionResults {
             CategoryRepositories.categoryAttributes.append(CategoryAttribute(predictionResult: result,
                                                                              sceneClusteredId: Int(result.scenePredictions[0].labelId)!,
-                                                                             objectClusteredId: result.resnetPredictions[0].labelId,
+                                                                             objectClusteredName: result.resnetPredictions[0].labelId,
                                                                              scenePriority: true))
         }
         
@@ -139,14 +154,23 @@ class CategoryRepositories {
                 images.append(Image(url: shoudRepresentativeImage.imagePath.url!,
                                     sceneId: Int(shoudRepresentativeImage.scenePredictions[0].labelId)!,
                                     sceneName: shoudRepresentativeImage.scenePredictions[0].label,
-                                    sceneProbability: shoudRepresentativeImage.scenePredictions[0].probability))
+                                    sceneProbability: shoudRepresentativeImage.scenePredictions[0].probability,
+                                    objectId: shoudRepresentativeImage.resnetPredictions[0].labelId,
+                                    objectName: shoudRepresentativeImage.resnetPredictions[0].label,
+                                    objectProbability: shoudRepresentativeImage.resnetPredictions[0].probability,
+                                    scenePriority: true))
             }
         }
         
         return images
     }
     
-    class func getCategoryAttributeImages(sceneId: Int) -> [Image] {
+    class func divideCategories(clusters: Int) -> [Image] {
+        print("未実装項目です．")
+        return []
+    }
+    
+    class func getCategoryAttributeImages(sceneId: Int, objectName: String, scenePriority: Bool) -> [Image] {
         
         var images: [Image] = []
         let categoryAttributes = CategoryRepositories.categoryAttributes
@@ -158,17 +182,38 @@ class CategoryRepositories {
             
         } else {
             
-            let categoryImages = categoryAttributes.filter({ $0.sceneClusteredId == sceneId})
-            if(categoryImages.count > 0) {
-                for categoryImage in categoryImages {
-                    images.append(Image(url: categoryImage.predictionResult.imagePath.url!,
-                                        sceneId: Int(categoryImage.predictionResult.scenePredictions[0].labelId)!,
-                                        sceneName: categoryImage.predictionResult.scenePredictions[0].label,
-                                        sceneProbability: categoryImage.predictionResult.scenePredictions[0].probability))
+            if(scenePriority) {
+                let categoryImages = categoryAttributes.filter({ $0.sceneClusteredId == sceneId})
+                if(categoryImages.count > 0) {
+                    for categoryImage in categoryImages {
+                        images.append(Image(url: categoryImage.predictionResult.imagePath.url!,
+                                            sceneId: Int(categoryImage.predictionResult.scenePredictions[0].labelId)!,
+                                            sceneName: categoryImage.predictionResult.scenePredictions[0].label,
+                                            sceneProbability: categoryImage.predictionResult.scenePredictions[0].probability,
+                                            objectId: categoryImage.predictionResult.resnetPredictions[0].labelId,
+                                            objectName: categoryImage.predictionResult.resnetPredictions[0].label,
+                                            objectProbability: categoryImage.predictionResult.resnetPredictions[0].probability,
+                                            scenePriority: true))
+                    }
                 }
+                images.sort(by: {$0.sceneProbability > $1.sceneProbability})
+                
+            } else {
+                let categoryImages = categoryAttributes.filter({ $0.objectClusteredName == objectName })
+                if(categoryImages.count > 0) {
+                    for categoryImage in categoryImages {
+                        images.append(Image(url: categoryImage.predictionResult.imagePath.url!,
+                                            sceneId: Int(categoryImage.predictionResult.scenePredictions[0].labelId)!,
+                                            sceneName: categoryImage.predictionResult.scenePredictions[0].label,
+                                            sceneProbability: categoryImage.predictionResult.scenePredictions[0].probability,
+                                            objectId: categoryImage.predictionResult.resnetPredictions[0].labelId,
+                                            objectName: categoryImage.predictionResult.resnetPredictions[0].label,
+                                            objectProbability: categoryImage.predictionResult.resnetPredictions[0].probability,
+                                            scenePriority: false))
+                    }
+                }
+                images.sort(by: {$0.objectProbability > $1.objectProbability})
             }
-            
-            images.sort(by: {$0.sceneProbability > $1.sceneProbability})
         }
         
         return images

@@ -59,14 +59,13 @@ class CategoryViewController: NSViewController {
     @objc func performClustering(notification: Notification) {
         if let target = notification.userInfo?["clusters"] as? Int {
             
-            let sceneRepresentativeImages = CategoryRepositories.getSceneRepresentativeImages()
-            if(target > sceneRepresentativeImages.count){
+            if(target < 1){
                 let alert = NSAlert()
                 alert.messageText = "入力エラー"
-                alert.informativeText = "\(sceneRepresentativeImages.count)以下のカテゴリ数を指定してください．"
+                alert.informativeText = "0より大きいカテゴリ数を指定してください．"
                 alert.runModal()
             } else {
-                imagePaths = CategoryRepositories.getClusteredImages(clusters: target)
+                imagePaths = CategoryRepositories.clusterCategories(clusters: target)
             }
         }
     }
@@ -98,7 +97,7 @@ extension CategoryViewController: NSCollectionViewDelegate, NSCollectionViewData
         print(image.sceneName)
         print(image.sceneProbability)
         
-        let sceneId = ["id": image.sceneId]
-        NotificationCenter.default.post(name: .showIncategoryImages, object: nil, userInfo: sceneId)
+        let imageAttributes = ["imageAttributes": image]
+        NotificationCenter.default.post(name: .showIncategoryImages, object: nil, userInfo: imageAttributes)
     }
 }
