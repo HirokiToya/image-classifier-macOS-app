@@ -12,12 +12,18 @@ class CategoryRepositories {
     private static var categoryAttributes: [CategoryAttribute] = []
     private static var predictionResults: [PredictionResult] = PredictionRepositories.loadPredictionResults()
     private static var defaultCategorizedImages:[Image] = getSceneRepresentativeImages()
-        
+    
+    class func reloadCaches() {
+        categoryAttributes = []
+        predictionResults = PredictionRepositories.loadPredictionResults()
+        defaultCategorizedImages = getSceneRepresentativeImages()
+    }
+    
     // 同一のシーンカテゴリ名の中から識別確率が最も高い画像をそれぞれ取得します．
     class func getSceneRepresentativeImages() -> [Image] {
         
         var sceneCategories: [Image] = []
-        
+                
         for label in 0...364 {
             let sameCategoryImages = predictionResults.filter({ Int($0.scenePredictions[0].labelId) == label})
             

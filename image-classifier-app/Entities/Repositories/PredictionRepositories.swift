@@ -51,4 +51,9 @@ class PredictionRepositories {
         
         return predictions
     }
+    
+    class func reloadCache() {
+        predictions = []
+        predictions = loadPredictionResults()
+    }
 }

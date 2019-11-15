@@ -45,7 +45,15 @@ class CategoryViewController: NSViewController {
     }
     
     @objc func reloadData(notification: Notification) {
-        categoryCollectionView.reloadData()
+        PredictionRepositories.reloadCache()
+        CategoryRepositories.reloadCaches()
+        imagePaths = CategoryRepositories.getSceneRepresentativeImages()
+        if(imagePaths.count == 0) {
+            let alert = NSAlert()
+            alert.messageText = "画像読み込みエラー"
+            alert.informativeText = "画像フォルダを指定して再度画像識別を実行してください．"
+            alert.runModal()
+        }
     }
     
     @objc func performClustering(notification: Notification) {
