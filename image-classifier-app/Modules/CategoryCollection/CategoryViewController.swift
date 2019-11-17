@@ -82,11 +82,18 @@ extension CategoryViewController: NSCollectionViewDelegate, NSCollectionViewData
                                                       for: indexPath) as! ImageCollectionViewItem
         
         item.imageItem.load(url: imagePaths[indexPath.item].url)
-        item.imageLabel.stringValue = """
-        \(imagePaths[indexPath.item].sceneId)
-        \(imagePaths[indexPath.item].sceneName)
-        """
-        
+        if(imagePaths[indexPath.item].scenePriority) {
+            item.imageLabel.stringValue = """
+            【Scene】
+            \(imagePaths[indexPath.item].sceneId)
+            \(imagePaths[indexPath.item].sceneName)
+            """
+        } else {
+            item.imageLabel.stringValue = """
+            【Object】
+            \(imagePaths[indexPath.item].objectName)
+            """
+        }
         return item
     }
     

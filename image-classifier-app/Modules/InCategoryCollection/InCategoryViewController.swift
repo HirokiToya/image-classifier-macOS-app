@@ -55,11 +55,17 @@ extension InCategoryViewController: NSCollectionViewDelegate, NSCollectionViewDa
                                                       for: indexPath) as! ImageCollectionViewItem
         
         item.imageItem.load(url: imagePaths[indexPath.item].url)
-        item.imageLabel.stringValue = """
-        \(imagePaths[indexPath.item].sceneId)
-        \(imagePaths[indexPath.item].sceneName)
-        \(ceil(imagePaths[indexPath.item].sceneProbability * 1000) / 1000)
-        """
+        if(imagePaths[indexPath.item].scenePriority) {
+            item.imageLabel.stringValue = """
+            【Scene】
+            \(imagePaths[indexPath.item].sceneName)
+            """
+        } else {
+            item.imageLabel.stringValue = """
+            【Object】
+            \(imagePaths[indexPath.item].objectName)
+            """
+        }
         item.doubleClickedCallback = {
             let storyboard: NSStoryboard = NSStoryboard(name: "ImageViewController", bundle: nil)
             if let nextView = storyboard.instantiateInitialController() as? ImageViewController {
