@@ -11,7 +11,7 @@ class SimilalityRepositories {
     private static var similality: [[Double]]?
     private static var similalityCategories: [SimilarCategories] = []
     
-    private static var shouldRewriteSimilalites: [Int: [Int]] = [:]
+    private static var shouldRewriteSimilalityIds: [Int: [Int]] = [:]
     
     class func getDefaultSimilalities() -> [[Double]] {
         
@@ -51,7 +51,7 @@ class SimilalityRepositories {
         for labelId1 in (0...364) {
             for labelId2 in (0...364) {
                 if(labelId1 < labelId2) {
-                    if let similality = getSimilality(id1: labelId1, id2: labelId2) {
+                    if let similality = getRewitedSimilality(labelId1: labelId1, labelId2: labelId2, coefficient: 1.5) {
                         similalityCategories.append(SimilarCategories(categoryId1: labelId1,
                                                                       categoryId2: labelId2,
                                                                       similality: similality))
@@ -61,13 +61,15 @@ class SimilalityRepositories {
         }
         
         similalityCategories.sort(by: {$0.similality > $1.similality})
-        
+                
         return similalityCategories
     }
     
-    class func getShouldRewriteSimilalityIds() -> [Int: [Int]] {
+    fileprivate class func getShouldRewriteSimilalityIds() -> [Int: [Int]] {
         
-        shouldRewriteSimilalites = [:]
+        if(shouldRewriteSimilalityIds.count != 0) {
+            return shouldRewriteSimilalityIds
+        }
         
         let predicttionResults = PredictionRepositories.loadPredictionResults()
         for result in predicttionResults {
@@ -82,11 +84,11 @@ class SimilalityRepositories {
                 for id in ids {
                     if(categoryId == id) {
                         var shouldAppend: Bool = true
-                        for key in shouldRewriteSimilalites.keys {
+                        for key in shouldRewriteSimilalityIds.keys {
                             if(key == categoryId) {
                                 shouldAppend = false
                                 let wantAppendVals = ids.filter({ $0 > categoryId })
-                                guard let existVals = shouldRewriteSimilalites[categoryId] else { return [:]}
+                                guard let existVals = shouldRewriteSimilalityIds[categoryId] else { return [:]}
                                 
                                 for wantAppendVal in wantAppendVals {
                                     var willAppend = true
@@ -97,26 +99,39 @@ class SimilalityRepositories {
                                     }
 
                                     if(willAppend) {
-                                        shouldRewriteSimilalites[categoryId]!.append(wantAppendVal)
-                                        shouldRewriteSimilalites[categoryId]?.sort(by: { $0 < $1 })
+                                        shouldRewriteSimilalityIds[categoryId]!.append(wantAppendVal)
+                                        shouldRewriteSimilalityIds[categoryId]?.sort(by: { $0 < $1 })
                                     }
                                 }
                             }
                         }
                         
                         if(shouldAppend) {
-                            shouldRewriteSimilalites.updateValue(ids.filter({ $0 > categoryId }), forKey: categoryId)
+                            shouldRewriteSimilalityIds.updateValue(ids.filter({ $0 > categoryId }), forKey: categoryId)
                         }
                     }
                 }
             }
         }
         
-        print("shouldRewriteSimilalites: \(shouldRewriteSimilalites.count)")
-        for sim in shouldRewriteSimilalites {
-            print("shouldRewriteSimilalites: \(sim)")
+        return shouldRewriteSimilalityIds
+    }
+    
+    fileprivate class func getRewitedSimilality(labelId1: Int, labelId2: Int, coefficient: Double) -> Double? {
+        if let shouldRewriteSimilalityIds = getShouldRewriteSimilalityIds()[labelId1]{
+            for id in shouldRewriteSimilalityIds {
+                if(id == labelId2) {
+                    if let similality = getSimilality(id1: labelId1, id2: labelId2) {
+                        return fabs(similality) * coefficient
+                    }
+                }
+            }
         }
         
-        return shouldRewriteSimilalites
+        if let similality = getSimilality(id1: labelId1, id2: labelId2) {
+            return similality
+        }
+        
+        return nil
     }
 }
