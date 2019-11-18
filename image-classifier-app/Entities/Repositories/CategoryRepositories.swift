@@ -295,7 +295,6 @@ class CategoryRepositories {
         if(categoryAttributes.count == 0) {
             
             images = getSceneCategoryImages(sceneId: sceneId)
-            images.sort(by: {$0.sceneProbability > $1.sceneProbability})
             
         } else {
             
@@ -317,8 +316,6 @@ class CategoryRepositories {
                     }
                 }
                 
-                images.sort(by: {$0.sceneProbability > $1.sceneProbability})
-                
             } else {
                 let categoryImages = categoryAttributes
                     .filter({ $0.scenePriority == scenePriority})
@@ -336,8 +333,6 @@ class CategoryRepositories {
                                             scenePriority: false))
                     }
                 }
-                
-                images.sort(by: {$0.objectProbability > $1.objectProbability})
             }
         }
         

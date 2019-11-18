@@ -54,4 +54,17 @@ class OperationViewController: NSViewController, OperationViewInterface {
             currentClustersLabel.stringValue = "(\(target))"
         }
     }
+    
+    @IBAction func leftViewRadioButtonTapped(_ sender: NSButton) {
+        if let tag = SortActionTag(rawValue: sender.tag) {
+            print("tag:\(tag)")
+            NotificationCenter.default.post(name: .setCategorySortTag, object: nil, userInfo: ["sortActionTag": tag])
+        }
+    }
+    
+    @IBAction func rightViewRadioButtonTapped(_ sender: NSButton) {
+        if let tag = SortActionTag(rawValue: sender.tag) {
+            NotificationCenter.default.post(name: .setInCategorySortTag, object: nil, userInfo: ["sortActionTag": tag])
+        }
+    }
 }

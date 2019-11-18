@@ -4,8 +4,34 @@ class InCategoryViewController: NSViewController {
 
     @IBOutlet weak var imageCollectionView: NSCollectionView!
     
+    var sortTag: SortActionTag = .byProbability {
+        didSet {
+            imagePaths = imagesCache
+        }
+    }
+    
+    var imagesCache: [CategoryRepositories.Image] = []
+    var scenePriorityCache = false
+    
     var imagePaths: [CategoryRepositories.Image] = [] {
         didSet {
+            switch sortTag {
+            case .byId:
+                if(scenePriorityCache) {
+                    imagePaths.sort(by: { $0.sceneId < $1.sceneId })
+                }
+            case .bByCount:
+                print("何もしません")
+            case .byProbability:
+                if(scenePriorityCache) {
+                    imagePaths.sort(by: { $0.sceneProbability > $1.sceneProbability })
+                } else {
+                    imagePaths.sort(by: { $0.objectProbability > $1.objectProbability })
+                }
+            }
+            
+            imagesCache = imagePaths
+            
             print("カテゴリ内画像枚数：\(imagePaths.count)")
             imageCollectionView.reloadData()
         }
@@ -17,7 +43,11 @@ class InCategoryViewController: NSViewController {
         setupCollectionView()
         NotificationCenter.default.addObserver(self,
                                                selector: #selector(reloadData(notification:)),
-                                               name: .showIncategoryImages, object: nil)
+                                               name: .reloadIncategoryImages, object: nil)
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(setInCategorySortTag(notification:)),
+                                               name: .setInCategorySortTag,
+                                               object: nil)
     }
     
     private func setupCollectionView() {
@@ -37,9 +67,23 @@ class InCategoryViewController: NSViewController {
     
     @objc func reloadData(notification: Notification) {
         if let target = notification.userInfo?["imageAttributes"] as? CategoryRepositories.Image {
+            scenePriorityCache = target.scenePriority
             imagePaths = CategoryRepositories.getCategoryAttributeImages(sceneId: target.sceneId,
                                                                          objectName: target.objectName,
                                                                          scenePriority: target.scenePriority)
+        }
+    }
+    
+    @objc func setInCategorySortTag(notification: Notification) {
+        if let tag = notification.userInfo?["sortActionTag"] as? SortActionTag {
+            switch tag {
+            case .byId:
+                sortTag = .byId
+            case .bByCount:
+                sortTag = .bByCount
+            case .byProbability:
+                sortTag = .byProbability
+            }
         }
     }
 }
@@ -57,12 +101,14 @@ extension InCategoryViewController: NSCollectionViewDelegate, NSCollectionViewDa
         item.imageItem.load(url: imagePaths[indexPath.item].url)
         if(imagePaths[indexPath.item].scenePriority) {
             item.imageLabel.stringValue = """
+            \(imagePaths[indexPath.item].sceneId)
             \(imagePaths[indexPath.item].sceneName)
             \(ceil(imagePaths[indexPath.item].sceneProbability * 1000) / 1000)
 
             """
         } else {
             item.imageLabel.stringValue = """
+            \(imagePaths[indexPath.item].objectId)
             \(imagePaths[indexPath.item].objectName)
             \(ceil(imagePaths[indexPath.item].objectProbability * 1000) / 1000)
 

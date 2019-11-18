@@ -4,8 +4,40 @@ class CategoryViewController: NSViewController {
 
     @IBOutlet weak var categoryCollectionView: NSCollectionView!
     
+    var sorTag: SortActionTag = .byId {
+        didSet {
+            imagePaths = imagesCache
+        }
+    }
+    
+    var imagesCache: [CategoryRepositories.Image] = []
+    
     var imagePaths: [CategoryRepositories.Image] = [] {
         didSet {
+            
+            switch sorTag {
+            case .byId:
+                imagePaths.sort(by: { $0.sceneId < $1.sceneId })
+            case .bByCount:
+                imagePaths.sort(by: {
+                    CategoryRepositories.getInCategoryImagesCount(sceneId: $0.sceneId, objectName: $0.objectName, scenePriority: $0.scenePriority) > CategoryRepositories.getInCategoryImagesCount(sceneId: $1.sceneId, objectName: $1.objectName, scenePriority: $1.scenePriority)
+                })
+            case .byProbability:
+                imagePaths.sort(by: {
+                    if($0.scenePriority && $1.scenePriority) {
+                       return ($0.sceneProbability > $1.sceneProbability)
+                    } else if (!$0.scenePriority && $1.scenePriority){
+                       return ($0.objectProbability > $1.sceneProbability)
+                    } else if($0.scenePriority && !$1.scenePriority) {
+                        return ($0.sceneProbability > $1.objectProbability)
+                    } else {
+                        return ($0.objectProbability > $1.objectProbability)
+                    }
+                })
+            }
+            
+            imagesCache = imagePaths
+            
             print("カテゴリ数：\(imagePaths.count)")
             let clustersCount = ["clustersCount": imagePaths.count]
             NotificationCenter.default.post(name: .setCategoryCountLabel, object: nil, userInfo: clustersCount)
@@ -23,6 +55,10 @@ class CategoryViewController: NSViewController {
         NotificationCenter.default.addObserver(self,
                                                selector: #selector(performClustering(notification:)),
                                                name: .performClustering,
+                                               object: nil)
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(setCategorySortTag(notification:)),
+                                               name: .setCategorySortTag,
                                                object: nil)
         
         imagePaths = CategoryRepositories.getSceneRepresentativeImages()
@@ -45,6 +81,7 @@ class CategoryViewController: NSViewController {
     }
     
     @objc func reloadData(notification: Notification) {
+        
         PredictionRepositories.reloadCache()
         CategoryRepositories.reloadCaches()
         imagePaths = CategoryRepositories.getSceneRepresentativeImages()
@@ -69,6 +106,19 @@ class CategoryViewController: NSViewController {
             }
         }
     }
+    
+    @objc func setCategorySortTag(notification: Notification) {
+        if let tag = notification.userInfo?["sortActionTag"] as? SortActionTag {
+            switch tag {
+            case .byId:
+                sorTag = .byId
+            case .bByCount:
+                sorTag = .bByCount
+            case .byProbability:
+                sorTag = .byProbability
+            }
+        }
+    }
 }
 
 extension CategoryViewController: NSCollectionViewDelegate, NSCollectionViewDataSource {
@@ -84,13 +134,13 @@ extension CategoryViewController: NSCollectionViewDelegate, NSCollectionViewData
         item.imageItem.load(url: imagePaths[indexPath.item].url)
         if(imagePaths[indexPath.item].scenePriority) {
             item.imageLabel.stringValue = """
-            【Scene】
+            【S】\(imagePaths[indexPath.item].sceneId)
             \(CategoryRepositories.getInCategoryImagesCount(sceneId: imagePaths[indexPath.item].sceneId, objectName: imagePaths[indexPath.item].objectName, scenePriority: imagePaths[indexPath.item].scenePriority))枚
             \(imagePaths[indexPath.item].sceneName)
             """
         } else {
             item.imageLabel.stringValue = """
-            【Object】
+            【O】\(imagePaths[indexPath.item].objectId)
             \(CategoryRepositories.getInCategoryImagesCount(sceneId: imagePaths[indexPath.item].sceneId, objectName: imagePaths[indexPath.item].objectName, scenePriority: imagePaths[indexPath.item].scenePriority))枚
             \(imagePaths[indexPath.item].objectName)
             """
@@ -106,6 +156,6 @@ extension CategoryViewController: NSCollectionViewDelegate, NSCollectionViewData
         print(image.sceneProbability)
         
         let imageAttributes = ["imageAttributes": image]
-        NotificationCenter.default.post(name: .showIncategoryImages, object: nil, userInfo: imageAttributes)
+        NotificationCenter.default.post(name: .reloadIncategoryImages, object: nil, userInfo: imageAttributes)
     }
 }

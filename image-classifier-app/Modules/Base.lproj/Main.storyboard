@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="14868" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="15505" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14868"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="15505"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -732,10 +732,10 @@
             <objects>
                 <viewController id="taL-D0-KaQ" customClass="OperationViewController" customModule="image_classifier_app" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" translatesAutoresizingMaskIntoConstraints="NO" id="dCn-Vf-AQr">
-                        <rect key="frame" x="0.0" y="0.0" width="150" height="300"/>
+                        <rect key="frame" x="0.0" y="0.0" width="150" height="458"/>
                         <subviews>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="z1q-nE-g9i">
-                                <rect key="frame" x="4" y="211" width="89" height="32"/>
+                                <rect key="frame" x="4" y="369" width="89" height="32"/>
                                 <buttonCell key="cell" type="push" title="識別開始" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="I43-eC-1Tz">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
@@ -745,7 +745,7 @@
                                 </connections>
                             </button>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="inD-md-yw4">
-                                <rect key="frame" x="96" y="211" width="47" height="32"/>
+                                <rect key="frame" x="96" y="369" width="47" height="32"/>
                                 <buttonCell key="cell" type="push" bezelStyle="rounded" image="NSRefreshTemplate" imagePosition="only" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="cvo-Fv-xKV">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
@@ -755,7 +755,7 @@
                                 </connections>
                             </button>
                             <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="LWU-an-Sa8">
-                                <rect key="frame" x="10" y="156" width="77" height="21"/>
+                                <rect key="frame" x="10" y="314" width="77" height="21"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="Ava-bm-AUt">
                                     <numberFormatter key="formatter" formatterBehavior="default10_4" numberStyle="decimal" formatWidth="-1" minimumIntegerDigits="1" maximumIntegerDigits="2000000000" maximumFractionDigits="3" id="pdP-Iq-J4B"/>
                                     <font key="font" metaFont="system"/>
@@ -764,7 +764,7 @@
                                 </textFieldCell>
                             </textField>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="amb-Ec-sML">
-                                <rect key="frame" x="8" y="182" width="89" height="16"/>
+                                <rect key="frame" x="8" y="340" width="89" height="16"/>
                                 <textFieldCell key="cell" lineBreakMode="clipping" title="カテゴリ数指定" id="TpF-Jb-oah">
                                     <font key="font" metaFont="system"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -772,7 +772,7 @@
                                 </textFieldCell>
                             </textField>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="q3t-xl-rj5">
-                                <rect key="frame" x="4" y="113" width="142" height="32"/>
+                                <rect key="frame" x="4" y="271" width="142" height="32"/>
                                 <buttonCell key="cell" type="push" title="カテゴリ分類実行" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="DZu-6a-fqx">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
@@ -782,10 +782,7 @@
                                 </connections>
                             </button>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="TgS-cc-7a6">
-                                <rect key="frame" x="90" y="159" width="54" height="16"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="50" id="64H-1C-PXt"/>
-                                </constraints>
+                                <rect key="frame" x="90" y="317" width="50" height="16"/>
                                 <textFieldCell key="cell" lineBreakMode="clipping" title="(○○○)" id="u7I-cy-eCG">
                                     <font key="font" metaFont="system"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -793,7 +790,7 @@
                                 </textFieldCell>
                             </textField>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="vwB-Np-eVl">
-                                <rect key="frame" x="4" y="252" width="142" height="32"/>
+                                <rect key="frame" x="4" y="410" width="142" height="32"/>
                                 <buttonCell key="cell" type="push" title="画像フォルダ選択" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="jkr-YB-RT3">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
@@ -802,25 +799,113 @@
                                     <action selector="selectImageFolder:" target="taL-D0-KaQ" id="Apa-Bo-3Oe"/>
                                 </connections>
                             </button>
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="a4i-uy-oHt">
+                                <rect key="frame" x="6" y="215" width="59" height="18"/>
+                                <buttonCell key="cell" type="radio" title="No. 順" bezelStyle="regularSquare" imagePosition="left" alignment="left" state="on" inset="2" id="Uen-Q4-t7X">
+                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="leftViewRadioButtonTapped:" target="taL-D0-KaQ" id="7Xm-fD-kCI"/>
+                                </connections>
+                            </button>
+                            <button verticalHuggingPriority="750" tag="1" translatesAutoresizingMaskIntoConstraints="NO" id="Dbg-h1-chJ">
+                                <rect key="frame" x="6" y="189" width="59" height="18"/>
+                                <buttonCell key="cell" type="radio" title="枚数順" bezelStyle="regularSquare" imagePosition="left" alignment="left" inset="2" id="q18-Qg-zm5">
+                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="leftViewRadioButtonTapped:" target="taL-D0-KaQ" id="ORr-J2-ezL"/>
+                                </connections>
+                            </button>
+                            <button verticalHuggingPriority="750" tag="2" translatesAutoresizingMaskIntoConstraints="NO" id="1Cj-wD-B6y">
+                                <rect key="frame" x="6" y="163" width="59" height="18"/>
+                                <buttonCell key="cell" type="radio" title="確率順" bezelStyle="regularSquare" imagePosition="left" alignment="left" inset="2" id="kQG-5r-2Ud">
+                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="leftViewRadioButtonTapped:" target="taL-D0-KaQ" id="Ie8-Km-owm"/>
+                                </connections>
+                            </button>
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="KK5-ci-9Mw">
+                                <rect key="frame" x="77" y="215" width="59" height="18"/>
+                                <buttonCell key="cell" type="radio" title="No. 順" bezelStyle="regularSquare" imagePosition="left" alignment="left" inset="2" id="jtv-ov-UhD">
+                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="rightViewRadioButtonTapped:" target="taL-D0-KaQ" id="5wT-ls-Vfx"/>
+                                </connections>
+                            </button>
+                            <button verticalHuggingPriority="750" tag="2" translatesAutoresizingMaskIntoConstraints="NO" id="ULL-qm-sXe">
+                                <rect key="frame" x="77" y="163" width="59" height="18"/>
+                                <buttonCell key="cell" type="radio" title="確率順" bezelStyle="regularSquare" imagePosition="left" alignment="left" state="on" inset="2" id="Re3-Ma-Rzs">
+                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="rightViewRadioButtonTapped:" target="taL-D0-KaQ" id="B7k-RQ-8U3"/>
+                                </connections>
+                            </button>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="ohj-3L-Qtc">
+                                <rect key="frame" x="18" y="242" width="33" height="16"/>
+                                <textFieldCell key="cell" lineBreakMode="clipping" alignment="center" title="左側" id="xlM-av-9bz">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="fk1-L4-Bqr">
+                                <rect key="frame" x="89" y="242" width="33" height="16"/>
+                                <textFieldCell key="cell" lineBreakMode="clipping" alignment="center" title="右側" id="Zcv-X7-qCu">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
                         </subviews>
                         <constraints>
+                            <constraint firstItem="ULL-qm-sXe" firstAttribute="leading" secondItem="KK5-ci-9Mw" secondAttribute="leading" id="2RK-VB-uii"/>
+                            <constraint firstItem="ULL-qm-sXe" firstAttribute="centerX" secondItem="fk1-L4-Bqr" secondAttribute="centerX" id="3iJ-gR-Ysk"/>
                             <constraint firstItem="amb-Ec-sML" firstAttribute="top" secondItem="z1q-nE-g9i" secondAttribute="bottom" constant="20" id="4yQ-Ow-g5j"/>
                             <constraint firstItem="LWU-an-Sa8" firstAttribute="width" secondItem="z1q-nE-g9i" secondAttribute="width" id="5Ld-4Q-ldP"/>
+                            <constraint firstItem="Dbg-h1-chJ" firstAttribute="leading" secondItem="a4i-uy-oHt" secondAttribute="leading" id="87o-Mz-EZd"/>
+                            <constraint firstItem="KK5-ci-9Mw" firstAttribute="centerX" secondItem="fk1-L4-Bqr" secondAttribute="centerX" id="8F1-jB-xmh"/>
+                            <constraint firstItem="a4i-uy-oHt" firstAttribute="centerX" secondItem="ohj-3L-Qtc" secondAttribute="centerX" id="9KN-ua-FyE"/>
+                            <constraint firstItem="a4i-uy-oHt" firstAttribute="centerX" secondItem="ohj-3L-Qtc" secondAttribute="centerX" id="AZX-fx-l70"/>
+                            <constraint firstItem="ohj-3L-Qtc" firstAttribute="leading" secondItem="dCn-Vf-AQr" secondAttribute="leading" constant="20" id="DOd-E7-n0H"/>
+                            <constraint firstItem="fk1-L4-Bqr" firstAttribute="centerY" secondItem="ohj-3L-Qtc" secondAttribute="centerY" id="DZ7-5L-EqF"/>
+                            <constraint firstItem="ULL-qm-sXe" firstAttribute="leading" secondItem="KK5-ci-9Mw" secondAttribute="leading" id="Dg5-mV-eGY"/>
+                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="amb-Ec-sML" secondAttribute="trailing" constant="20" symbolic="YES" id="Dpk-wB-FIe"/>
                             <constraint firstItem="LWU-an-Sa8" firstAttribute="top" secondItem="amb-Ec-sML" secondAttribute="bottom" constant="5" id="Eke-Ac-xde"/>
+                            <constraint firstItem="KK5-ci-9Mw" firstAttribute="top" secondItem="fk1-L4-Bqr" secondAttribute="bottom" constant="10" id="Ghe-me-5qD"/>
                             <constraint firstItem="z1q-nE-g9i" firstAttribute="top" secondItem="vwB-Np-eVl" secondAttribute="bottom" constant="20" id="HH5-sW-t21"/>
+                            <constraint firstItem="ohj-3L-Qtc" firstAttribute="top" secondItem="q3t-xl-rj5" secondAttribute="bottom" constant="20" id="Iq5-fe-0iE"/>
+                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="TgS-cc-7a6" secondAttribute="trailing" constant="12" id="LpN-cw-Xld"/>
                             <constraint firstItem="q3t-xl-rj5" firstAttribute="top" secondItem="LWU-an-Sa8" secondAttribute="bottom" constant="15" id="NA9-LL-rHc"/>
                             <constraint firstItem="q3t-xl-rj5" firstAttribute="centerX" secondItem="dCn-Vf-AQr" secondAttribute="centerX" id="b5H-9O-KFi"/>
+                            <constraint firstItem="ULL-qm-sXe" firstAttribute="top" secondItem="KK5-ci-9Mw" secondAttribute="bottom" constant="36" id="bAN-EV-5iG"/>
+                            <constraint firstItem="KK5-ci-9Mw" firstAttribute="centerX" secondItem="fk1-L4-Bqr" secondAttribute="centerX" id="bNI-Zd-2jM"/>
                             <constraint firstItem="z1q-nE-g9i" firstAttribute="leading" secondItem="vwB-Np-eVl" secondAttribute="leading" id="cnT-VQ-fqk"/>
+                            <constraint firstItem="Dbg-h1-chJ" firstAttribute="top" secondItem="a4i-uy-oHt" secondAttribute="bottom" constant="10" id="dkX-9v-UUq"/>
                             <constraint firstAttribute="width" constant="150" id="e6N-SC-Lcc"/>
+                            <constraint firstItem="Dbg-h1-chJ" firstAttribute="centerX" secondItem="ohj-3L-Qtc" secondAttribute="centerX" id="eN6-xW-bMf"/>
                             <constraint firstItem="LWU-an-Sa8" firstAttribute="leading" secondItem="z1q-nE-g9i" secondAttribute="leading" id="jDj-oB-dbE"/>
                             <constraint firstItem="z1q-nE-g9i" firstAttribute="leading" secondItem="dCn-Vf-AQr" secondAttribute="leading" constant="10" id="jEt-io-FKp"/>
                             <constraint firstItem="vwB-Np-eVl" firstAttribute="top" secondItem="dCn-Vf-AQr" secondAttribute="top" constant="20" id="jUI-EO-dNJ"/>
                             <constraint firstItem="vwB-Np-eVl" firstAttribute="centerX" secondItem="dCn-Vf-AQr" secondAttribute="centerX" id="jzS-7h-4MI"/>
                             <constraint firstItem="z1q-nE-g9i" firstAttribute="centerY" secondItem="inD-md-yw4" secondAttribute="centerY" id="oJ7-gV-Giq"/>
+                            <constraint firstAttribute="trailing" secondItem="fk1-L4-Bqr" secondAttribute="trailing" constant="30" id="q9Q-o3-Dqm"/>
+                            <constraint firstItem="1Cj-wD-B6y" firstAttribute="centerX" secondItem="ohj-3L-Qtc" secondAttribute="centerX" id="qvc-lE-uFB"/>
+                            <constraint firstItem="1Cj-wD-B6y" firstAttribute="leading" secondItem="a4i-uy-oHt" secondAttribute="leading" id="r9R-KS-uZc"/>
                             <constraint firstItem="TgS-cc-7a6" firstAttribute="centerY" secondItem="LWU-an-Sa8" secondAttribute="centerY" id="tDJ-96-A04"/>
                             <constraint firstItem="TgS-cc-7a6" firstAttribute="leading" secondItem="LWU-an-Sa8" secondAttribute="trailing" constant="5" id="tc9-j6-dEl"/>
                             <constraint firstItem="inD-md-yw4" firstAttribute="leading" secondItem="z1q-nE-g9i" secondAttribute="trailing" constant="15" id="tfT-1j-A8b"/>
+                            <constraint firstItem="a4i-uy-oHt" firstAttribute="top" secondItem="ohj-3L-Qtc" secondAttribute="bottom" constant="10" id="uJJ-eI-iaI"/>
                             <constraint firstItem="amb-Ec-sML" firstAttribute="leading" secondItem="vwB-Np-eVl" secondAttribute="leading" id="uSA-Zq-dHc"/>
+                            <constraint firstItem="1Cj-wD-B6y" firstAttribute="top" secondItem="Dbg-h1-chJ" secondAttribute="bottom" constant="10" id="wqt-E5-eTG"/>
                             <constraint firstItem="q3t-xl-rj5" firstAttribute="leading" secondItem="vwB-Np-eVl" secondAttribute="leading" id="zm4-7w-Ip1"/>
                         </constraints>
                     </view>
@@ -831,7 +916,7 @@
                 </viewController>
                 <customObject id="bNn-cb-0A5" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="463" y="345"/>
+            <point key="canvasLocation" x="463" y="424"/>
         </scene>
         <!--Split View Controller-->
         <scene sceneID="2bs-bI-a5c">
@@ -842,7 +927,7 @@
                         <splitViewItem id="L0n-uf-YTS"/>
                     </splitViewItems>
                     <splitView key="splitView" dividerStyle="thin" vertical="YES" id="jVe-gl-Jdh">
-                        <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
+                        <rect key="frame" x="0.0" y="0.0" width="612" height="459"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <connections>
                             <outlet property="delegate" destination="Fdo-Ou-OAV" id="jI8-vt-4SS"/>
@@ -856,7 +941,7 @@
                 </splitViewController>
                 <customObject id="6md-6E-3c0" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="835" y="345"/>
+            <point key="canvasLocation" x="916" y="424.5"/>
         </scene>
         <!--Category View Controller-->
         <scene sceneID="Mv9-mN-1ra">
@@ -905,7 +990,7 @@
                 </viewController>
                 <customObject id="Ldf-OW-bLu" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="613" y="854"/>
+            <point key="canvasLocation" x="611" y="984"/>
         </scene>
         <!--In Category View Controller-->
         <scene sceneID="j5X-uS-y7y">
@@ -954,7 +1039,7 @@
                 </viewController>
                 <customObject id="DMg-C3-FTq" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1126" y="854"/>
+            <point key="canvasLocation" x="1129" y="984"/>
         </scene>
     </scenes>
     <resources>
