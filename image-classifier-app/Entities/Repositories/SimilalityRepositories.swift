@@ -11,9 +11,9 @@ class SimilalityRepositories {
     private static var similality: [[Double]]?
     private static var similalityCategories: [SimilarCategories] = []
     
-    private static var shouldRewriteSimilalites: [[Int: [Int]]] = []
+    private static var shouldRewriteSimilalites: [Int: [Int]] = [:]
     
-    class func getSimilalities() -> [[Double]] {
+    class func getDefaultSimilalities() -> [[Double]] {
         
         if similality != nil {
             return similality!
@@ -27,7 +27,7 @@ class SimilalityRepositories {
         }
     }
     
-    class func getSimilality(id1: Int, id2: Int) -> Double? {
+    fileprivate class func getSimilality(id1: Int, id2: Int) -> Double? {
         
         if similality != nil {
             return similality![id1][id2]
@@ -65,7 +65,10 @@ class SimilalityRepositories {
         return similalityCategories
     }
     
-    class func rewriteSimilalites() {
+    class func getShouldRewriteSimilalityIds() -> [Int: [Int]] {
+        
+        shouldRewriteSimilalites = [:]
+        
         let predicttionResults = PredictionRepositories.loadPredictionResults()
         for result in predicttionResults {
             var ids:[Int] = []
@@ -78,41 +81,42 @@ class SimilalityRepositories {
             for categoryId in 0...364 {
                 for id in ids {
                     if(categoryId == id) {
-                        var shouldAppend:(Bool, Int) = (true, categoryId)
-                        for (index, shouldRewriteSimilalite) in shouldRewriteSimilalites.enumerated() {
-                            if(shouldRewriteSimilalite.keys.first! == categoryId) {
-                                shouldAppend = (false, index)
+                        var shouldAppend: Bool = true
+                        for key in shouldRewriteSimilalites.keys {
+                            if(key == categoryId) {
+                                shouldAppend = false
+                                let wantAppendVals = ids.filter({ $0 > categoryId })
+                                guard let existVals = shouldRewriteSimilalites[categoryId] else { return [:]}
+                                
+                                for wantAppendVal in wantAppendVals {
+                                    var willAppend = true
+                                    for existVal in existVals {
+                                        if(wantAppendVal == existVal) {
+                                            willAppend = false
+                                        }
+                                    }
+
+                                    if(willAppend) {
+                                        shouldRewriteSimilalites[categoryId]!.append(wantAppendVal)
+                                        shouldRewriteSimilalites[categoryId]?.sort(by: { $0 < $1 })
+                                    }
+                                }
                             }
                         }
                         
-                        if(shouldAppend.0) {
-                            shouldRewriteSimilalites.append([categoryId: ids.filter({ $0 > categoryId })])
-                        } else {
-                            let wantAppendVals = ids.filter({ $0 > categoryId })
-                            guard let existVals = shouldRewriteSimilalites[shouldAppend.1][categoryId] else { return }
-                            
-                            for wantAppendVal in wantAppendVals {
-                                var willAppend = true
-                                for existVal in existVals {
-                                    if(wantAppendVal == existVal) {
-                                        willAppend = false
-                                    }
-                                }
-
-                                if(willAppend) {
-                                    shouldRewriteSimilalites[shouldAppend.1][categoryId]!.append(wantAppendVal)
-                                    shouldRewriteSimilalites[shouldAppend.1][categoryId]?.sort(by: { $0 < $1 })
-                                }
-                            }
+                        if(shouldAppend) {
+                            shouldRewriteSimilalites.updateValue(ids.filter({ $0 > categoryId }), forKey: categoryId)
                         }
                     }
                 }
             }
         }
         
-        shouldRewriteSimilalites.sort(by: { $0.keys.first! < $1.keys.first! })
+        print("shouldRewriteSimilalites: \(shouldRewriteSimilalites.count)")
         for sim in shouldRewriteSimilalites {
             print("shouldRewriteSimilalites: \(sim)")
         }
+        
+        return shouldRewriteSimilalites
     }
 }
