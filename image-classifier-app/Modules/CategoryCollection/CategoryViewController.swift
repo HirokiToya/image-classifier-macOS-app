@@ -133,13 +133,15 @@ extension CategoryViewController: NSCollectionViewDelegate, NSCollectionViewData
         
         item.imageItem.load(url: imagePaths[indexPath.item].url)
         if(imagePaths[indexPath.item].scenePriority) {
-            item.imageLabel.stringValue = """
+            item.imageLabel.stringValue =
+            """
             【S】\(imagePaths[indexPath.item].sceneId)
             \(CategoryRepositories.getInCategoryImagesCount(sceneId: imagePaths[indexPath.item].sceneId, objectName: imagePaths[indexPath.item].objectName, scenePriority: imagePaths[indexPath.item].scenePriority))枚
             \(imagePaths[indexPath.item].sceneName)
             """
         } else {
-            item.imageLabel.stringValue = """
+            item.imageLabel.stringValue =
+            """
             【O】\(imagePaths[indexPath.item].objectId)
             \(CategoryRepositories.getInCategoryImagesCount(sceneId: imagePaths[indexPath.item].sceneId, objectName: imagePaths[indexPath.item].objectName, scenePriority: imagePaths[indexPath.item].scenePriority))枚
             \(imagePaths[indexPath.item].objectName)

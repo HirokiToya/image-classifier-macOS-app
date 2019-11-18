@@ -41,7 +41,9 @@ class OperationViewController: NSViewController, OperationViewInterface {
     }
         
     @IBAction func reloadData(_ sender: Any) {
-        NotificationCenter.default.post(name: .reloadCategoryImages, object: nil)
+//        NotificationCenter.default.post(name: .reloadCategoryImages, object: nil)
+        
+        SimilalityRepositories.rewriteSimilalites()
     }
     
     @IBAction func performClustering(_ sender: Any) {

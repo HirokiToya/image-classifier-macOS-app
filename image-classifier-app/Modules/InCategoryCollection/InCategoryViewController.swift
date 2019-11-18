@@ -21,7 +21,7 @@ class InCategoryViewController: NSViewController {
                     imagePaths.sort(by: { $0.sceneId < $1.sceneId })
                 }
             case .bByCount:
-                print("何もしません")
+                break
             case .byProbability:
                 if(scenePriorityCache) {
                     imagePaths.sort(by: { $0.sceneProbability > $1.sceneProbability })
@@ -100,18 +100,18 @@ extension InCategoryViewController: NSCollectionViewDelegate, NSCollectionViewDa
         
         item.imageItem.load(url: imagePaths[indexPath.item].url)
         if(imagePaths[indexPath.item].scenePriority) {
-            item.imageLabel.stringValue = """
+            item.imageLabel.stringValue =
+            """
             \(imagePaths[indexPath.item].sceneId)
             \(imagePaths[indexPath.item].sceneName)
             \(ceil(imagePaths[indexPath.item].sceneProbability * 1000) / 1000)
-
             """
         } else {
-            item.imageLabel.stringValue = """
+            item.imageLabel.stringValue =
+            """
             \(imagePaths[indexPath.item].objectId)
             \(imagePaths[indexPath.item].objectName)
             \(ceil(imagePaths[indexPath.item].objectProbability * 1000) / 1000)
-
             """
         }
         item.doubleClickedCallback = {
