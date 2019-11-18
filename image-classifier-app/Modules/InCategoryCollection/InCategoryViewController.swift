@@ -57,13 +57,15 @@ extension InCategoryViewController: NSCollectionViewDelegate, NSCollectionViewDa
         item.imageItem.load(url: imagePaths[indexPath.item].url)
         if(imagePaths[indexPath.item].scenePriority) {
             item.imageLabel.stringValue = """
-            【Scene】
             \(imagePaths[indexPath.item].sceneName)
+            \(ceil(imagePaths[indexPath.item].sceneProbability * 1000) / 1000)
+
             """
         } else {
             item.imageLabel.stringValue = """
-            【Object】
             \(imagePaths[indexPath.item].objectName)
+            \(ceil(imagePaths[indexPath.item].objectProbability * 1000) / 1000)
+
             """
         }
         item.doubleClickedCallback = {

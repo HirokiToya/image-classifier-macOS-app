@@ -12,7 +12,7 @@ class CategoryRepositories {
         var objectProbability: Double
         var scenePriority: Bool
     }
-        
+    
     private static var categoryAttributes: [CategoryAttribute] = []
     private static var predictionResults: [PredictionResult] = PredictionRepositories.loadPredictionResults()
     private static var defaultCategorizedImages:[Image] = getSceneRepresentativeImages()
@@ -27,7 +27,7 @@ class CategoryRepositories {
     class func getSceneRepresentativeImages() -> [Image] {
         
         var sceneCategories: [Image] = []
-                
+        
         for label in 0...364 {
             let sameCategoryImages = predictionResults.filter({ Int($0.scenePredictions[0].labelId) == label})
             
@@ -186,7 +186,7 @@ class CategoryRepositories {
         let defaultCategoriesCount = defaultCategorizedImages.count
         var clusteredCount = 0
         var loopIndex = 0
-                
+        
         while(clusteredCount != (clusters - defaultCategoriesCount)) {
             
             sceneCategoryCounts = []
@@ -283,6 +283,10 @@ class CategoryRepositories {
         return images
     }
     
+    class func getInCategoryImagesCount(sceneId: Int, objectName: String, scenePriority: Bool) -> Int {
+        return getCategoryAttributeImages(sceneId: sceneId, objectName: objectName, scenePriority: scenePriority).count
+    }
+    
     class func getCategoryAttributeImages(sceneId: Int, objectName: String, scenePriority: Bool) -> [Image] {
         
         var images: [Image] = []
@@ -312,9 +316,9 @@ class CategoryRepositories {
                                             scenePriority: true))
                     }
                 }
-
+                
                 images.sort(by: {$0.sceneProbability > $1.sceneProbability})
-
+                
             } else {
                 let categoryImages = categoryAttributes
                     .filter({ $0.scenePriority == scenePriority})
@@ -332,7 +336,7 @@ class CategoryRepositories {
                                             scenePriority: false))
                     }
                 }
-
+                
                 images.sort(by: {$0.objectProbability > $1.objectProbability})
             }
         }
