@@ -810,23 +810,13 @@
                                 </connections>
                             </button>
                             <button verticalHuggingPriority="750" tag="1" translatesAutoresizingMaskIntoConstraints="NO" id="Dbg-h1-chJ">
-                                <rect key="frame" x="6" y="189" width="59" height="18"/>
+                                <rect key="frame" x="6" y="163" width="59" height="18"/>
                                 <buttonCell key="cell" type="radio" title="枚数順" bezelStyle="regularSquare" imagePosition="left" alignment="left" inset="2" id="q18-Qg-zm5">
                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
                                 <connections>
                                     <action selector="leftViewRadioButtonTapped:" target="taL-D0-KaQ" id="ORr-J2-ezL"/>
-                                </connections>
-                            </button>
-                            <button verticalHuggingPriority="750" tag="2" translatesAutoresizingMaskIntoConstraints="NO" id="1Cj-wD-B6y">
-                                <rect key="frame" x="6" y="163" width="59" height="18"/>
-                                <buttonCell key="cell" type="radio" title="確率順" bezelStyle="regularSquare" imagePosition="left" alignment="left" inset="2" id="kQG-5r-2Ud">
-                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                                    <font key="font" metaFont="system"/>
-                                </buttonCell>
-                                <connections>
-                                    <action selector="leftViewRadioButtonTapped:" target="taL-D0-KaQ" id="Ie8-Km-owm"/>
                                 </connections>
                             </button>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="KK5-ci-9Mw">
@@ -840,7 +830,7 @@
                                 </connections>
                             </button>
                             <button verticalHuggingPriority="750" tag="2" translatesAutoresizingMaskIntoConstraints="NO" id="ULL-qm-sXe">
-                                <rect key="frame" x="77" y="163" width="59" height="18"/>
+                                <rect key="frame" x="77" y="189" width="59" height="18"/>
                                 <buttonCell key="cell" type="radio" title="確率順" bezelStyle="regularSquare" imagePosition="left" alignment="left" state="on" inset="2" id="Re3-Ma-Rzs">
                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                     <font key="font" metaFont="system"/>
@@ -865,6 +855,16 @@
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
+                            <button verticalHuggingPriority="750" tag="2" translatesAutoresizingMaskIntoConstraints="NO" id="1Cj-wD-B6y">
+                                <rect key="frame" x="6" y="189" width="59" height="18"/>
+                                <buttonCell key="cell" type="radio" title="確率順" bezelStyle="regularSquare" imagePosition="left" alignment="left" inset="2" id="kQG-5r-2Ud">
+                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="leftViewRadioButtonTapped:" target="taL-D0-KaQ" id="Ie8-Km-owm"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <constraints>
                             <constraint firstItem="ULL-qm-sXe" firstAttribute="leading" secondItem="KK5-ci-9Mw" secondAttribute="leading" id="2RK-VB-uii"/>
@@ -885,11 +885,12 @@
                             <constraint firstItem="ohj-3L-Qtc" firstAttribute="top" secondItem="q3t-xl-rj5" secondAttribute="bottom" constant="20" id="Iq5-fe-0iE"/>
                             <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="TgS-cc-7a6" secondAttribute="trailing" constant="12" id="LpN-cw-Xld"/>
                             <constraint firstItem="q3t-xl-rj5" firstAttribute="top" secondItem="LWU-an-Sa8" secondAttribute="bottom" constant="15" id="NA9-LL-rHc"/>
+                            <constraint firstItem="Dbg-h1-chJ" firstAttribute="top" secondItem="1Cj-wD-B6y" secondAttribute="bottom" constant="10" id="TZ1-7n-3sJ"/>
+                            <constraint firstItem="1Cj-wD-B6y" firstAttribute="top" secondItem="a4i-uy-oHt" secondAttribute="bottom" constant="10" id="WR7-Xn-bww"/>
                             <constraint firstItem="q3t-xl-rj5" firstAttribute="centerX" secondItem="dCn-Vf-AQr" secondAttribute="centerX" id="b5H-9O-KFi"/>
-                            <constraint firstItem="ULL-qm-sXe" firstAttribute="top" secondItem="KK5-ci-9Mw" secondAttribute="bottom" constant="36" id="bAN-EV-5iG"/>
+                            <constraint firstItem="ULL-qm-sXe" firstAttribute="top" secondItem="KK5-ci-9Mw" secondAttribute="bottom" constant="10" id="bAN-EV-5iG"/>
                             <constraint firstItem="KK5-ci-9Mw" firstAttribute="centerX" secondItem="fk1-L4-Bqr" secondAttribute="centerX" id="bNI-Zd-2jM"/>
                             <constraint firstItem="z1q-nE-g9i" firstAttribute="leading" secondItem="vwB-Np-eVl" secondAttribute="leading" id="cnT-VQ-fqk"/>
-                            <constraint firstItem="Dbg-h1-chJ" firstAttribute="top" secondItem="a4i-uy-oHt" secondAttribute="bottom" constant="10" id="dkX-9v-UUq"/>
                             <constraint firstAttribute="width" constant="150" id="e6N-SC-Lcc"/>
                             <constraint firstItem="Dbg-h1-chJ" firstAttribute="centerX" secondItem="ohj-3L-Qtc" secondAttribute="centerX" id="eN6-xW-bMf"/>
                             <constraint firstItem="LWU-an-Sa8" firstAttribute="leading" secondItem="z1q-nE-g9i" secondAttribute="leading" id="jDj-oB-dbE"/>
@@ -905,7 +906,6 @@
                             <constraint firstItem="inD-md-yw4" firstAttribute="leading" secondItem="z1q-nE-g9i" secondAttribute="trailing" constant="15" id="tfT-1j-A8b"/>
                             <constraint firstItem="a4i-uy-oHt" firstAttribute="top" secondItem="ohj-3L-Qtc" secondAttribute="bottom" constant="10" id="uJJ-eI-iaI"/>
                             <constraint firstItem="amb-Ec-sML" firstAttribute="leading" secondItem="vwB-Np-eVl" secondAttribute="leading" id="uSA-Zq-dHc"/>
-                            <constraint firstItem="1Cj-wD-B6y" firstAttribute="top" secondItem="Dbg-h1-chJ" secondAttribute="bottom" constant="10" id="wqt-E5-eTG"/>
                             <constraint firstItem="q3t-xl-rj5" firstAttribute="leading" secondItem="vwB-Np-eVl" secondAttribute="leading" id="zm4-7w-Ip1"/>
                         </constraints>
                     </view>
