@@ -65,6 +65,15 @@ class SimilalityRepositories {
         return similalityCategories
     }
     
+    // 指定されたsceneIdと類似度が高い順にsceneIdのリストを返します．
+    class func getSimilarSceneIds(sceneId: Int) -> [SimilarCategories] {
+        
+        let sortedSimilalities = getSortedSimilality()
+        let similalityCategories = sortedSimilalities.filter({ ($0.categoryId1 == sceneId) || ($0.categoryId2 == sceneId) })
+                
+        return similalityCategories
+    }
+    
     fileprivate class func getShouldRewriteSimilalityIds() -> [Int: [Int]] {
         
         if(shouldRewriteSimilalityIds.count != 0) {
