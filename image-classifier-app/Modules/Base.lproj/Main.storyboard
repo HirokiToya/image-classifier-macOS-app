@@ -961,7 +961,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="498" height="158"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES"/>
                                             <collectionViewFlowLayout key="collectionViewLayout" minimumInteritemSpacing="10" minimumLineSpacing="10" id="3LB-1u-Wxp">
-                                                <size key="itemSize" width="165" height="165"/>
+                                                <size key="itemSize" width="170" height="170"/>
                                             </collectionViewFlowLayout>
                                             <color key="primaryBackgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                         </collectionView>
@@ -1010,7 +1010,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="498" height="158"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES"/>
                                             <collectionViewFlowLayout key="collectionViewLayout" minimumInteritemSpacing="10" minimumLineSpacing="10" id="AW8-3b-sqz">
-                                                <size key="itemSize" width="50" height="50"/>
+                                                <size key="itemSize" width="175" height="175"/>
                                             </collectionViewFlowLayout>
                                             <color key="primaryBackgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                         </collectionView>

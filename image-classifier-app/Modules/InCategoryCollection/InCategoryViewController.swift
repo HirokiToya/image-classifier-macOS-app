@@ -58,7 +58,7 @@ class InCategoryViewController: NSViewController {
         self.imageCollectionView.dataSource = self
         
         let flowLayout = NSCollectionViewFlowLayout()
-        flowLayout.itemSize = NSSize(width: 165.0, height: 165.0)
+        flowLayout.itemSize = NSSize(width: 175.0, height: 175.0)
         flowLayout.sectionInset = NSEdgeInsets(top: 10.0, left: 10.0, bottom: 10.0, right: 10.0)
         flowLayout.minimumInteritemSpacing = 20.0
         flowLayout.minimumLineSpacing = 20.0
@@ -100,20 +100,19 @@ extension InCategoryViewController: NSCollectionViewDelegate, NSCollectionViewDa
         
         item.imageItem.load(url: imagePaths[indexPath.item].url)
         if(imagePaths[indexPath.item].scenePriority) {
-            item.imageLabel.stringValue =
-            """
-            \(imagePaths[indexPath.item].sceneId)
-            \(imagePaths[indexPath.item].sceneName)
-            \(ceil(imagePaths[indexPath.item].sceneProbability * 1000) / 1000)
-            """
+            
+            item.idLabel.stringValue = "\(imagePaths[indexPath.item].sceneId)"
+            item.numberLabel.stringValue = "\(ceil(imagePaths[indexPath.item].sceneProbability * 1000) / 1000)"
+            item.nameLabel.stringValue = imagePaths[indexPath.item].sceneName
+            item.setMarkImage(isSceneImage: true)
         } else {
-            item.imageLabel.stringValue =
-            """
-            \(imagePaths[indexPath.item].objectId)
-            \(imagePaths[indexPath.item].objectName)
-            \(ceil(imagePaths[indexPath.item].objectProbability * 1000) / 1000)
-            """
+            
+            item.idLabel.stringValue = "\(imagePaths[indexPath.item].objectId)"
+            item.numberLabel.stringValue = "\(ceil(imagePaths[indexPath.item].objectProbability * 1000) / 1000)"
+            item.nameLabel.stringValue = imagePaths[indexPath.item].objectName
+            item.setMarkImage(isSceneImage: false)
         }
+        
         item.doubleClickedCallback = {
             let storyboard: NSStoryboard = NSStoryboard(name: "ImageViewController", bundle: nil)
             if let nextView = storyboard.instantiateInitialController() as? ImageViewController {

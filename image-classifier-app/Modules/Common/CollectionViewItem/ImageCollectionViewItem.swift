@@ -5,7 +5,11 @@ class ImageCollectionViewItem: NSCollectionViewItem {
     @IBOutlet var collectionViewItem: ImageCollectionViewItem!
     
     @IBOutlet weak var imageItem: NSImageView!
-    @IBOutlet weak var imageLabel: NSTextField!
+    @IBOutlet weak var idLabel: NSTextField!
+    @IBOutlet weak var numberLabel: NSTextField!
+    @IBOutlet weak var nameLabel: NSTextField!
+    @IBOutlet weak var markImage: NSImageView!
+    
     var doubleClickedCallback:(()->Void)?
     
     override func viewDidLoad() {
@@ -16,6 +20,14 @@ class ImageCollectionViewItem: NSCollectionViewItem {
         doubleClickGesture.delegate = self
         self.view.addGestureRecognizer(doubleClickGesture)
         
+    }
+    
+    func setMarkImage(isSceneImage: Bool) {
+        if(isSceneImage) {
+            markImage.image = NSImage(named: "NSStatusAvailable")
+        } else {
+            markImage.image = NSImage(named: "NSStatusNone")
+        }
     }
 }
 

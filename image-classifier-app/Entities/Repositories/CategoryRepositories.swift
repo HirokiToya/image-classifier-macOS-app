@@ -54,7 +54,6 @@ class CategoryRepositories {
                                              objectProbability: shoudRepresentativeImage.resnetPredictions[0].probability,
                                              scenePriority: true))
             }
-            
         }
         
         return sceneCategories
@@ -96,6 +95,7 @@ class CategoryRepositories {
     class func integrateCategories(clusters: Int, isNumberConsidering: Bool) -> [Image] {
         
         var images: [Image] = []
+        let defaultCategoriesCount = defaultCategorizedImages.count
         
         CategoryRepositories.categoryAttributes = []
         for result in predictionResults {
@@ -108,7 +108,6 @@ class CategoryRepositories {
         // カテゴリ統合にカテゴリ内の枚数を考慮するかどうか
         if(isNumberConsidering) {
             var sceneCategoryCounts:[CategoryImagesCount] = []
-            let defaultCategoriesCount = defaultCategorizedImages.count
             var clusteredCount = 0
             
             while(clusteredCount != (defaultCategoriesCount - clusters)) {
@@ -164,7 +163,6 @@ class CategoryRepositories {
         } else {
             
             let mostSimilarCategories = SimilalityRepositories.getSortedSimilality()
-            let defaultCategoriesCount = defaultCategorizedImages.count
             var similalityIndex = 0
             var clusteredCount = 0
             
@@ -289,6 +287,7 @@ class CategoryRepositories {
                     break
                 }
             }
+            
             loopIndex += 1
         }
         

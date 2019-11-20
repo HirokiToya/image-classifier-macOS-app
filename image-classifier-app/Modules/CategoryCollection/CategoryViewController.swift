@@ -73,7 +73,7 @@ class CategoryViewController: NSViewController {
         self.categoryCollectionView.dataSource = self
         
         let flowLayout = NSCollectionViewFlowLayout()
-        flowLayout.itemSize = NSSize(width: 165.0, height: 165.0)
+        flowLayout.itemSize = NSSize(width: 175.0, height: 175.0)
         flowLayout.sectionInset = NSEdgeInsets(top: 10.0, left: 10.0, bottom: 10.0, right: 10.0)
         flowLayout.minimumInteritemSpacing = 20.0
         flowLayout.minimumLineSpacing = 20.0
@@ -133,19 +133,17 @@ extension CategoryViewController: NSCollectionViewDelegate, NSCollectionViewData
         
         item.imageItem.load(url: imagePaths[indexPath.item].url)
         if(imagePaths[indexPath.item].scenePriority) {
-            item.imageLabel.stringValue =
-            """
-            【S】\(imagePaths[indexPath.item].sceneId)
-            \(CategoryRepositories.getInCategoryImagesCount(sceneId: imagePaths[indexPath.item].sceneId, objectName: imagePaths[indexPath.item].objectName, scenePriority: imagePaths[indexPath.item].scenePriority))枚
-            \(imagePaths[indexPath.item].sceneName)
-            """
+            
+            item.idLabel.stringValue = "\(imagePaths[indexPath.item].sceneId)"
+            item.numberLabel.stringValue = "\(CategoryRepositories.getInCategoryImagesCount(sceneId: imagePaths[indexPath.item].sceneId, objectName: imagePaths[indexPath.item].objectName, scenePriority: imagePaths[indexPath.item].scenePriority))枚"
+            item.nameLabel.stringValue = imagePaths[indexPath.item].sceneName
+            item.setMarkImage(isSceneImage: true)
         } else {
-            item.imageLabel.stringValue =
-            """
-            【O】\(imagePaths[indexPath.item].objectId)
-            \(CategoryRepositories.getInCategoryImagesCount(sceneId: imagePaths[indexPath.item].sceneId, objectName: imagePaths[indexPath.item].objectName, scenePriority: imagePaths[indexPath.item].scenePriority))枚
-            \(imagePaths[indexPath.item].objectName)
-            """
+            
+            item.idLabel.stringValue = "(\(imagePaths[indexPath.item].sceneId))"
+            item.nameLabel.stringValue = imagePaths[indexPath.item].objectName
+            item.numberLabel.stringValue = "\(CategoryRepositories.getInCategoryImagesCount(sceneId: imagePaths[indexPath.item].sceneId, objectName: imagePaths[indexPath.item].objectName, scenePriority: imagePaths[indexPath.item].scenePriority))枚"
+            item.setMarkImage(isSceneImage: false)
         }
         return item
     }
