@@ -143,16 +143,18 @@ class CategoryRepositories {
                             for (index,categoryAttribute) in CategoryRepositories.categoryAttributes.enumerated() {
                                 if(categoryAttribute.sceneClusteredId == similarIds[similalityIndex].categoryId2) {
                                     CategoryRepositories.categoryAttributes[index].sceneClusteredId = similarIds[similalityIndex].categoryId1
-                                    print("カテゴリ[\(similarIds[similalityIndex].categoryId2)] \(categoryId2Images.count)枚 >> カテゴリ[\(similarIds[similalityIndex].categoryId1)] \(categoryId1Images.count)枚")
                                 }
                             }
+                            
+                            print("カテゴリ[\(similarIds[similalityIndex].categoryId2)] \(categoryId2Images.count)枚 >> カテゴリ[\(similarIds[similalityIndex].categoryId1)] \(categoryId1Images.count)枚 \(DebugComponent.getTimeNow())")
                         } else {
                             for (index,categoryAttribute) in CategoryRepositories.categoryAttributes.enumerated() {
                                 if(categoryAttribute.sceneClusteredId == similarIds[similalityIndex].categoryId1) {
                                     CategoryRepositories.categoryAttributes[index].sceneClusteredId = similarIds[similalityIndex].categoryId2
-                                    print("カテゴリ[\(similarIds[similalityIndex].categoryId1)] \(categoryId1Images.count)枚 >> カテゴリ[\(similarIds[similalityIndex].categoryId2)] \(categoryId2Images.count)枚")
                                 }
                             }
+                            
+                            print("カテゴリ[\(similarIds[similalityIndex].categoryId1)] \(categoryId1Images.count)枚 >> カテゴリ[\(similarIds[similalityIndex].categoryId2)] \(categoryId2Images.count)枚 \(DebugComponent.getTimeNow())")
                         }
                         
                         clusteredCount += 1
@@ -272,7 +274,7 @@ class CategoryRepositories {
                                 CategoryRepositories.categoryAttributes[index].objectClusteredName = resnetPrediction.label
                                 CategoryRepositories.categoryAttributes[index].scenePriority = false
                                 
-                                print("SceneId[\(targetSceneId)]\(targetCategoryImages.count)枚 → ObjectId[\(resnetPrediction.labelId)]")
+                                print("SceneId[\(targetSceneId)]\(targetCategoryImages.count)枚 → ObjectId[\(resnetPrediction.labelId)] \(DebugComponent.getTimeNow())")
                                 let dividedObjectNames = categoryAttributes
                                     .filter({ !$0.scenePriority })
                                     .filter({ $0.objectClusteredName == resnetPrediction.label })

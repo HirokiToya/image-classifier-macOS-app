@@ -2,6 +2,9 @@ import Cocoa
 
 class OperationViewController: NSViewController, OperationViewInterface {
     
+    @IBOutlet weak var selectFolderButton: NSButton!
+    @IBOutlet weak var startPredictionButton: NSButton!
+    
     @IBOutlet weak var currentClustersLabel: NSTextField!
     @IBOutlet weak var clustersLabel: NSTextField!
     
@@ -10,8 +13,14 @@ class OperationViewController: NSViewController, OperationViewInterface {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        
+        startPredictionButton.isEnabled = false
+        
         presenter = OperationPresenter(view: self)
-        NotificationCenter.default.addObserver(self, selector: #selector(setCurrentClustersLabel(notification:)), name: .setCategoryCountLabel, object: nil)
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(setCurrentClustersLabel(notification:)),
+                                               name: .setCategoryCountLabel,
+                                               object: nil)
     }
     
     override var representedObject: Any? {
@@ -31,8 +40,8 @@ class OperationViewController: NSViewController, OperationViewInterface {
         if response == NSApplication.ModalResponse.OK {
             guard let selectedURL = panel.url else { return }
             print("フォルダパス：\(selectedURL)")
-            presenter.deleteAllData()
             FilePathes.setImageFolderPath(relativePath: selectedURL)
+            startPredictionButton.isEnabled = true
         }
     }
     
@@ -47,6 +56,12 @@ class OperationViewController: NSViewController, OperationViewInterface {
     @IBAction func performClustering(_ sender: Any) {
         let clusters = ["clusters": Int(clustersLabel.intValue)]
         NotificationCenter.default.post(name: .performClustering, object: nil, userInfo: clusters)
+    }
+    
+    @IBAction func cleanDatabase(_ sender: Any) {
+        if(showDialog("注意", description: "画像識別データが全て削除されます．本当に削除しますか？")) {
+            presenter.deleteAllData()
+        }
     }
     
     @objc func setCurrentClustersLabel(notification: Notification) {
@@ -66,5 +81,15 @@ class OperationViewController: NSViewController, OperationViewInterface {
         if let tag = SortActionTag(rawValue: sender.tag) {
             NotificationCenter.default.post(name: .setInCategorySortTag, object: nil, userInfo: ["sortActionTag": tag])
         }
+    }
+    
+    private func showDialog(_ mainText: String, description: String) -> Bool {
+        let alert = NSAlert()
+        alert.messageText = mainText
+        alert.informativeText = description
+        alert.alertStyle = .warning
+        alert.addButton(withTitle: "はい")
+        alert.addButton(withTitle: "いいえ")
+        return alert.runModal() == .alertFirstButtonReturn
     }
 }

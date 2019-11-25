@@ -865,6 +865,16 @@
                                     <action selector="leftViewRadioButtonTapped:" target="taL-D0-KaQ" id="Ie8-Km-owm"/>
                                 </connections>
                             </button>
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="y20-Qu-ZSz">
+                                <rect key="frame" x="17" y="3" width="116" height="32"/>
+                                <buttonCell key="cell" type="push" title="cleanAllData" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="gfB-Lg-O4Z">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="cleanDatabase:" target="taL-D0-KaQ" id="WvK-8m-Qbk"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <constraints>
                             <constraint firstItem="ULL-qm-sXe" firstAttribute="leading" secondItem="KK5-ci-9Mw" secondAttribute="leading" id="2RK-VB-uii"/>
@@ -885,6 +895,7 @@
                             <constraint firstItem="ohj-3L-Qtc" firstAttribute="top" secondItem="q3t-xl-rj5" secondAttribute="bottom" constant="20" id="Iq5-fe-0iE"/>
                             <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="TgS-cc-7a6" secondAttribute="trailing" constant="12" id="LpN-cw-Xld"/>
                             <constraint firstItem="q3t-xl-rj5" firstAttribute="top" secondItem="LWU-an-Sa8" secondAttribute="bottom" constant="15" id="NA9-LL-rHc"/>
+                            <constraint firstAttribute="bottom" secondItem="y20-Qu-ZSz" secondAttribute="bottom" constant="10" id="PKI-bc-t4u"/>
                             <constraint firstItem="Dbg-h1-chJ" firstAttribute="top" secondItem="1Cj-wD-B6y" secondAttribute="bottom" constant="10" id="TZ1-7n-3sJ"/>
                             <constraint firstItem="1Cj-wD-B6y" firstAttribute="top" secondItem="a4i-uy-oHt" secondAttribute="bottom" constant="10" id="WR7-Xn-bww"/>
                             <constraint firstItem="q3t-xl-rj5" firstAttribute="centerX" secondItem="dCn-Vf-AQr" secondAttribute="centerX" id="b5H-9O-KFi"/>
@@ -897,6 +908,7 @@
                             <constraint firstItem="z1q-nE-g9i" firstAttribute="leading" secondItem="dCn-Vf-AQr" secondAttribute="leading" constant="10" id="jEt-io-FKp"/>
                             <constraint firstItem="vwB-Np-eVl" firstAttribute="top" secondItem="dCn-Vf-AQr" secondAttribute="top" constant="20" id="jUI-EO-dNJ"/>
                             <constraint firstItem="vwB-Np-eVl" firstAttribute="centerX" secondItem="dCn-Vf-AQr" secondAttribute="centerX" id="jzS-7h-4MI"/>
+                            <constraint firstItem="y20-Qu-ZSz" firstAttribute="centerX" secondItem="dCn-Vf-AQr" secondAttribute="centerX" id="n6H-Pa-2PA"/>
                             <constraint firstItem="z1q-nE-g9i" firstAttribute="centerY" secondItem="inD-md-yw4" secondAttribute="centerY" id="oJ7-gV-Giq"/>
                             <constraint firstAttribute="trailing" secondItem="fk1-L4-Bqr" secondAttribute="trailing" constant="30" id="q9Q-o3-Dqm"/>
                             <constraint firstItem="1Cj-wD-B6y" firstAttribute="centerX" secondItem="ohj-3L-Qtc" secondAttribute="centerX" id="qvc-lE-uFB"/>
@@ -912,6 +924,8 @@
                     <connections>
                         <outlet property="clustersLabel" destination="LWU-an-Sa8" id="IBI-bb-2gN"/>
                         <outlet property="currentClustersLabel" destination="TgS-cc-7a6" id="rI8-fk-4p5"/>
+                        <outlet property="selectFolderButton" destination="vwB-Np-eVl" id="wUO-88-iyZ"/>
+                        <outlet property="startPredictionButton" destination="z1q-nE-g9i" id="p2H-zH-wbG"/>
                     </connections>
                 </viewController>
                 <customObject id="bNn-cb-0A5" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
