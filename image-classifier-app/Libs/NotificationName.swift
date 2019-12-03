@@ -7,4 +7,5 @@ extension Notification.Name {
     static let setCategoryCountLabel = Notification.Name("setCategoryCountLabel")
     static let setCategorySortTag = Notification.Name("setCategorySortTag")
     static let setInCategorySortTag = Notification.Name("setInCategorySortTag")
+    static let translationState = Notification.Name("translationState")
 }

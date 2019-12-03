@@ -4,7 +4,13 @@ class CategoryViewController: NSViewController {
 
     @IBOutlet weak var categoryCollectionView: NSCollectionView!
     
-    var sorTag: SortActionTag = .byId {
+    var sortTag: SortActionTag = .byId {
+        didSet {
+            imagePaths = imagesCache
+        }
+    }
+    
+    var translationState: Bool = false {
         didSet {
             imagePaths = imagesCache
         }
@@ -15,7 +21,7 @@ class CategoryViewController: NSViewController {
     var imagePaths: [CategoryRepositories.Image] = [] {
         didSet {
             
-            switch sorTag {
+            switch sortTag {
             case .byId:
                 imagePaths.sort(by: { $0.sceneId < $1.sceneId })
             case .bByCount:
@@ -59,6 +65,10 @@ class CategoryViewController: NSViewController {
         NotificationCenter.default.addObserver(self,
                                                selector: #selector(setCategorySortTag(notification:)),
                                                name: .setCategorySortTag,
+                                               object: nil)
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(changeTranslationState(notification:)),
+                                               name: .translationState,
                                                object: nil)
         
         imagePaths = CategoryRepositories.getSceneRepresentativeImages()
@@ -111,12 +121,18 @@ class CategoryViewController: NSViewController {
         if let tag = notification.userInfo?["sortActionTag"] as? SortActionTag {
             switch tag {
             case .byId:
-                sorTag = .byId
+                sortTag = .byId
             case .bByCount:
-                sorTag = .bByCount
+                sortTag = .bByCount
             case .byProbability:
-                sorTag = .byProbability
+                sortTag = .byProbability
             }
+        }
+    }
+    
+    @objc func changeTranslationState(notification: Notification) {
+        if let state = notification.userInfo?["state"] as? Bool {
+            translationState = state
         }
     }
 }
@@ -131,20 +147,8 @@ extension CategoryViewController: NSCollectionViewDelegate, NSCollectionViewData
         let item = categoryCollectionView.makeItem(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: "ImageCollectionViewItem"),
                                                       for: indexPath) as! ImageCollectionViewItem
         
-        item.imageItem.load(url: imagePaths[indexPath.item].url)
-        if(imagePaths[indexPath.item].scenePriority) {
-            
-            item.idLabel.stringValue = "\(imagePaths[indexPath.item].sceneId)"
-            item.numberLabel.stringValue = "\(CategoryRepositories.getInCategoryImagesCount(sceneId: imagePaths[indexPath.item].sceneId, objectName: imagePaths[indexPath.item].objectName, scenePriority: imagePaths[indexPath.item].scenePriority))枚"
-            item.nameLabel.stringValue = imagePaths[indexPath.item].sceneName
-            item.setMarkImage(isSceneImage: true)
-        } else {
-            
-            item.idLabel.stringValue = "(\(imagePaths[indexPath.item].sceneId))"
-            item.nameLabel.stringValue = imagePaths[indexPath.item].objectName
-            item.numberLabel.stringValue = "\(CategoryRepositories.getInCategoryImagesCount(sceneId: imagePaths[indexPath.item].sceneId, objectName: imagePaths[indexPath.item].objectName, scenePriority: imagePaths[indexPath.item].scenePriority))枚"
-            item.setMarkImage(isSceneImage: false)
-        }
+        item.bind(image: imagePaths[indexPath.item], translationState: translationState)
+        
         return item
     }
     

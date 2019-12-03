@@ -711,7 +711,7 @@
                         <splitViewItem id="wEx-OV-BGh"/>
                     </splitViewItems>
                     <splitView key="splitView" dividerStyle="thin" vertical="YES" id="iBq-4j-4xf">
-                        <rect key="frame" x="0.0" y="0.0" width="520" height="270"/>
+                        <rect key="frame" x="0.0" y="-92" width="520" height="362"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <connections>
                             <outlet property="delegate" destination="DGH-nm-GdP" id="tx3-fL-pdv"/>
@@ -725,7 +725,7 @@
                 </splitViewController>
                 <customObject id="R1P-Xc-FxH" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="699" y="-40"/>
+            <point key="canvasLocation" x="699" y="-193"/>
         </scene>
         <!--Operation View Controller-->
         <scene sceneID="OiA-ww-XGR">
@@ -875,6 +875,16 @@
                                     <action selector="cleanDatabase:" target="taL-D0-KaQ" id="WvK-8m-Qbk"/>
                                 </connections>
                             </button>
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="60S-0m-GgZ">
+                                <rect key="frame" x="8" y="123" width="47" height="18"/>
+                                <buttonCell key="cell" type="check" title="翻訳" bezelStyle="regularSquare" imagePosition="left" inset="2" id="JS9-bG-jDr">
+                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="translationButtonTapped:" target="taL-D0-KaQ" id="yNI-8f-ZOS"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <constraints>
                             <constraint firstItem="ULL-qm-sXe" firstAttribute="leading" secondItem="KK5-ci-9Mw" secondAttribute="leading" id="2RK-VB-uii"/>
@@ -893,11 +903,13 @@
                             <constraint firstItem="KK5-ci-9Mw" firstAttribute="top" secondItem="fk1-L4-Bqr" secondAttribute="bottom" constant="10" id="Ghe-me-5qD"/>
                             <constraint firstItem="z1q-nE-g9i" firstAttribute="top" secondItem="vwB-Np-eVl" secondAttribute="bottom" constant="20" id="HH5-sW-t21"/>
                             <constraint firstItem="ohj-3L-Qtc" firstAttribute="top" secondItem="q3t-xl-rj5" secondAttribute="bottom" constant="20" id="Iq5-fe-0iE"/>
+                            <constraint firstItem="60S-0m-GgZ" firstAttribute="leading" secondItem="q3t-xl-rj5" secondAttribute="leading" id="JVB-9F-82x"/>
                             <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="TgS-cc-7a6" secondAttribute="trailing" constant="12" id="LpN-cw-Xld"/>
                             <constraint firstItem="q3t-xl-rj5" firstAttribute="top" secondItem="LWU-an-Sa8" secondAttribute="bottom" constant="15" id="NA9-LL-rHc"/>
                             <constraint firstAttribute="bottom" secondItem="y20-Qu-ZSz" secondAttribute="bottom" constant="10" id="PKI-bc-t4u"/>
                             <constraint firstItem="Dbg-h1-chJ" firstAttribute="top" secondItem="1Cj-wD-B6y" secondAttribute="bottom" constant="10" id="TZ1-7n-3sJ"/>
                             <constraint firstItem="1Cj-wD-B6y" firstAttribute="top" secondItem="a4i-uy-oHt" secondAttribute="bottom" constant="10" id="WR7-Xn-bww"/>
+                            <constraint firstItem="60S-0m-GgZ" firstAttribute="top" secondItem="Dbg-h1-chJ" secondAttribute="bottom" constant="25" id="a5x-Cd-qOn"/>
                             <constraint firstItem="q3t-xl-rj5" firstAttribute="centerX" secondItem="dCn-Vf-AQr" secondAttribute="centerX" id="b5H-9O-KFi"/>
                             <constraint firstItem="ULL-qm-sXe" firstAttribute="top" secondItem="KK5-ci-9Mw" secondAttribute="bottom" constant="10" id="bAN-EV-5iG"/>
                             <constraint firstItem="KK5-ci-9Mw" firstAttribute="centerX" secondItem="fk1-L4-Bqr" secondAttribute="centerX" id="bNI-Zd-2jM"/>
@@ -1004,7 +1016,7 @@
                 </viewController>
                 <customObject id="Ldf-OW-bLu" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="611" y="984"/>
+            <point key="canvasLocation" x="665" y="984"/>
         </scene>
         <!--In Category View Controller-->
         <scene sceneID="j5X-uS-y7y">
@@ -1053,7 +1065,7 @@
                 </viewController>
                 <customObject id="DMg-C3-FTq" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1129" y="984"/>
+            <point key="canvasLocation" x="1168" y="984"/>
         </scene>
     </scenes>
     <resources>

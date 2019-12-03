@@ -83,6 +83,16 @@ class OperationViewController: NSViewController, OperationViewInterface {
         }
     }
     
+    @IBAction func translationButtonTapped(_ sender: NSButton) {
+        switch sender.state {
+        case .on:
+            NotificationCenter.default.post(name: .translationState, object: nil, userInfo: ["state": true])
+        case .off:
+            NotificationCenter.default.post(name: .translationState, object: nil, userInfo: ["state": false])
+        default: break
+        }
+    }
+    
     private func showDialog(_ mainText: String, description: String) -> Bool {
         let alert = NSAlert()
         alert.messageText = mainText

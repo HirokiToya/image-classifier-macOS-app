@@ -3,10 +3,10 @@ import Foundation
 class FilePathes {
     
     private static var defaultBasePath: String = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0].absoluteString
-    private static var defaultSimilalityPath: String = defaultBasePath + "input/similality_list/"
+    private static var dataFilePath: String = defaultBasePath + "input/"
     private static var imageFolderPath: URL? = nil
     
-    // 画像フォルダのPathを指定します。
+    // 画像フォルダのPathを指定します．
     class func setImageFolderPath(relativePath: URL){
         self.imageFolderPath = relativePath
     }
@@ -19,14 +19,17 @@ class FilePathes {
         return nil
     }
     
-    // 類似度リストファイルのフォルダのPathを指定します。
-    class func setSimilalityPath(relativePath: String) {
-        self.defaultSimilalityPath = defaultBasePath + relativePath
+    // 類似度リストファイルのPathを取得します．
+    class func getSimilalityFilePath(fileName: String = "similality_list.json") -> URL? {
+        if let filePath = URL(string: dataFilePath + fileName){
+            return filePath
+        }
+        return nil
     }
-        
-    // 類似度リストファイルのPathを取得します。
-    class func getSimilalityDataPath(fileName: String = "data.json") -> URL? {
-        if let filePath = URL(string: defaultSimilalityPath + fileName){
+    
+    // 翻訳ファイルのPathを取得します．
+    class func getTranslationFilePath(fileName: String = "translation_list.json") -> URL? {
+        if let filePath = URL(string: dataFilePath + fileName){
             return filePath
         }
         return nil

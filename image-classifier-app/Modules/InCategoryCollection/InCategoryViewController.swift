@@ -10,6 +10,12 @@ class InCategoryViewController: NSViewController {
         }
     }
     
+    var translationState: Bool = false {
+        didSet {
+            imagePaths = imagesCache
+        }
+    }
+    
     var imagesCache: [CategoryRepositories.Image] = []
     var scenePriorityCache = false
     
@@ -47,6 +53,10 @@ class InCategoryViewController: NSViewController {
         NotificationCenter.default.addObserver(self,
                                                selector: #selector(setInCategorySortTag(notification:)),
                                                name: .setInCategorySortTag,
+                                               object: nil)
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(changeTranslationState(notification:)),
+                                               name: .translationState,
                                                object: nil)
     }
     
@@ -86,6 +96,12 @@ class InCategoryViewController: NSViewController {
             }
         }
     }
+    
+    @objc func changeTranslationState(notification: Notification) {
+        if let state = notification.userInfo?["state"] as? Bool {
+            translationState = state
+        }
+    }
 }
 
 extension InCategoryViewController: NSCollectionViewDelegate, NSCollectionViewDataSource {
@@ -98,28 +114,7 @@ extension InCategoryViewController: NSCollectionViewDelegate, NSCollectionViewDa
         let item = imageCollectionView.makeItem(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: "ImageCollectionViewItem"),
                                                       for: indexPath) as! ImageCollectionViewItem
         
-        item.imageItem.load(url: imagePaths[indexPath.item].url)
-        if(imagePaths[indexPath.item].scenePriority) {
-            
-            item.idLabel.stringValue = "\(imagePaths[indexPath.item].sceneId)"
-            item.numberLabel.stringValue = "\(ceil(imagePaths[indexPath.item].sceneProbability * 1000) / 1000)"
-            item.nameLabel.stringValue = imagePaths[indexPath.item].sceneName
-            item.setMarkImage(isSceneImage: true)
-        } else {
-            
-            item.idLabel.stringValue = "\(imagePaths[indexPath.item].objectId)"
-            item.numberLabel.stringValue = "\(ceil(imagePaths[indexPath.item].objectProbability * 1000) / 1000)"
-            item.nameLabel.stringValue = imagePaths[indexPath.item].objectName
-            item.setMarkImage(isSceneImage: false)
-        }
-        
-        item.doubleClickedCallback = {
-            let storyboard: NSStoryboard = NSStoryboard(name: "ImageViewController", bundle: nil)
-            if let nextView = storyboard.instantiateInitialController() as? ImageViewController {
-                nextView.imageUrl = self.imagePaths[indexPath.item].url
-                self.presentAsModalWindow(nextView)
-            }
-        }
+        item.bindProbability(image: imagePaths[indexPath.item], translationState: translationState)
         
         return item
     }

@@ -2,7 +2,8 @@ import Foundation
 
 class JsonPayload {
     
-    struct Similalities : Codable{
+    struct Similalities : Codable {
         let labels: [[Double]]
     }
+    
 }
