@@ -10,6 +10,12 @@ class InCategoryViewController: NSViewController {
         }
     }
     
+    var translationState: Bool = false {
+        didSet {
+            imagePaths = imagesCache
+        }
+    }
+    
     var imagesCache: [CategoryRepositories.Image] = []
     var scenePriorityCache = false
     
@@ -48,6 +54,10 @@ class InCategoryViewController: NSViewController {
                                                selector: #selector(setInCategorySortTag(notification:)),
                                                name: .setInCategorySortTag,
                                                object: nil)
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(changeTranslationState(notification:)),
+                                               name: .translationState,
+                                               object: nil)
     }
     
     private func setupCollectionView() {
@@ -58,7 +68,7 @@ class InCategoryViewController: NSViewController {
         self.imageCollectionView.dataSource = self
         
         let flowLayout = NSCollectionViewFlowLayout()
-        flowLayout.itemSize = NSSize(width: 165.0, height: 165.0)
+        flowLayout.itemSize = NSSize(width: 175.0, height: 175.0)
         flowLayout.sectionInset = NSEdgeInsets(top: 10.0, left: 10.0, bottom: 10.0, right: 10.0)
         flowLayout.minimumInteritemSpacing = 20.0
         flowLayout.minimumLineSpacing = 20.0
@@ -86,6 +96,12 @@ class InCategoryViewController: NSViewController {
             }
         }
     }
+    
+    @objc func changeTranslationState(notification: Notification) {
+        if let state = notification.userInfo?["state"] as? Bool {
+            translationState = state
+        }
+    }
 }
 
 extension InCategoryViewController: NSCollectionViewDelegate, NSCollectionViewDataSource {
@@ -98,29 +114,7 @@ extension InCategoryViewController: NSCollectionViewDelegate, NSCollectionViewDa
         let item = imageCollectionView.makeItem(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: "ImageCollectionViewItem"),
                                                       for: indexPath) as! ImageCollectionViewItem
         
-        item.imageItem.load(url: imagePaths[indexPath.item].url)
-        if(imagePaths[indexPath.item].scenePriority) {
-            item.imageLabel.stringValue =
-            """
-            \(imagePaths[indexPath.item].sceneId)
-            \(imagePaths[indexPath.item].sceneName)
-            \(ceil(imagePaths[indexPath.item].sceneProbability * 1000) / 1000)
-            """
-        } else {
-            item.imageLabel.stringValue =
-            """
-            \(imagePaths[indexPath.item].objectId)
-            \(imagePaths[indexPath.item].objectName)
-            \(ceil(imagePaths[indexPath.item].objectProbability * 1000) / 1000)
-            """
-        }
-        item.doubleClickedCallback = {
-            let storyboard: NSStoryboard = NSStoryboard(name: "ImageViewController", bundle: nil)
-            if let nextView = storyboard.instantiateInitialController() as? ImageViewController {
-                nextView.imageUrl = self.imagePaths[indexPath.item].url
-                self.presentAsModalWindow(nextView)
-            }
-        }
+        item.bindProbability(image: imagePaths[indexPath.item], translationState: translationState)
         
         return item
     }

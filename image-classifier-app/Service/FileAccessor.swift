@@ -1,4 +1,5 @@
 import Foundation
+import SwiftyJSON
 
 class FileAccessor {
     
@@ -35,10 +36,10 @@ class FileAccessor {
 
 extension FileAccessor {
     
-    // 類似度リストのJsonファイルを読み取ります。
+    // 類似度ファイルのJsonデータを読み取ります.
     class func loadSimilalityJson() -> JsonPayload.Similalities? {
         
-        if let filePath = FilePathes.getSimilalityDataPath() {
+        if let filePath = FilePathes.getSimilalityFilePath() {
             print(filePath)
             guard let data = loadFileData(absoluteUrlPath: filePath) else {
                 print("No Such a File")
@@ -55,6 +56,26 @@ extension FileAccessor {
             }
         }
         return nil
+    }
+    
+    // 翻訳ファイルのJsonデータを読み取ります．
+    class func loadTranslationData() -> [String : String]? {
+        if let filePath = FilePathes.getTranslationFilePath() {
+            guard let data = loadFileData(absoluteUrlPath: filePath) else {
+                print("No Such a File")
+                return [:]
+            }
+            
+            do {
+                let dic = try JSONSerialization.jsonObject(with: data, options: []) as? [String : String]
+                return dic
+                
+            } catch {
+                print(error.localizedDescription)
+            }
+        }
+        
+        return [:]
     }
         
     // path直下の全ての画像ファイル名を取得します。

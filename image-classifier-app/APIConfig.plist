@@ -2,6 +2,8 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>googleTranslationScriptURL</key>
+	<string>https://script.google.com/macros/s/AKfycbxZQrv_KnBzjEGHIYqm9HcGWC7OS-mzAsagPqyZEmgO_XPX2Dhi/exec?text=Hello&amp;source=en&amp;target=ja</string>
 	<key>InceptionResnetURL</key>
 	<string>http://max-inception-resnet-v2.max.us-south.containers.appdomain.cloud</string>
 	<key>SceneClassifierURL</key>

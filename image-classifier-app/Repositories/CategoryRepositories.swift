@@ -13,6 +13,11 @@ class CategoryRepositories {
         var scenePriority: Bool
     }
     
+    struct CategoryImagesCount {
+        var labelId: Int
+        var count: Int
+    }
+    
     private static var categoryAttributes: [CategoryAttribute] = []
     private static var predictionResults: [PredictionResult] = PredictionRepositories.loadPredictionResults()
     private static var defaultCategorizedImages:[Image] = getSceneRepresentativeImages()
@@ -49,7 +54,6 @@ class CategoryRepositories {
                                              objectProbability: shoudRepresentativeImage.resnetPredictions[0].probability,
                                              scenePriority: true))
             }
-            
         }
         
         return sceneCategories
@@ -91,6 +95,7 @@ class CategoryRepositories {
     class func integrateCategories(clusters: Int) -> [Image] {
         
         var images: [Image] = []
+        let defaultCategoriesCount = defaultCategorizedImages.count
         
         CategoryRepositories.categoryAttributes = []
         for result in predictionResults {
@@ -100,42 +105,60 @@ class CategoryRepositories {
                                                                              scenePriority: true))
         }
         
-        let mostSimilarCategories = SimilalityRepositories.getSortedSimilality()
-        let defaultCategoriesCount = defaultCategorizedImages.count
-        var similalityIndex = 0
+        var sceneCategoryCounts:[CategoryImagesCount] = []
         var clusteredCount = 0
-        print("類似度の個数：\(mostSimilarCategories.count)")
         
         while(clusteredCount != (defaultCategoriesCount - clusters)) {
-            // 類似度が最も高い２つのカテゴリIDを取得します．
-            let categoryId1Images = categoryAttributes.filter({ $0.sceneClusteredId == mostSimilarCategories[similalityIndex].categoryId1 })
-            let categoryId2Images = categoryAttributes.filter({ $0.sceneClusteredId == mostSimilarCategories[similalityIndex].categoryId2 })
             
-            if(categoryId1Images.count != 0 && categoryId2Images.count != 0){
-                
-                // カテゴリを統合します．
-                if(categoryId1Images.count > categoryId2Images.count) {
-                    for (index,categoryAttribute) in CategoryRepositories.categoryAttributes.enumerated() {
-                        if(categoryAttribute.sceneClusteredId == mostSimilarCategories[similalityIndex].categoryId2) {
-                            CategoryRepositories.categoryAttributes[index].sceneClusteredId = mostSimilarCategories[similalityIndex].categoryId1
-                            print("カテゴリ[\(mostSimilarCategories[similalityIndex].categoryId2)] \(categoryId2Images.count)枚 >> カテゴリ[\(mostSimilarCategories[similalityIndex].categoryId1)] \(categoryId1Images.count)枚")
-                        }
-                    }
-                } else {
-                    for (index,categoryAttribute) in CategoryRepositories.categoryAttributes.enumerated() {
-                        if(categoryAttribute.sceneClusteredId == mostSimilarCategories[similalityIndex].categoryId1) {
-                            CategoryRepositories.categoryAttributes[index].sceneClusteredId = mostSimilarCategories[similalityIndex].categoryId2
-                            print("カテゴリ[\(mostSimilarCategories[similalityIndex].categoryId1)] \(categoryId1Images.count)枚 >> カテゴリ[\(mostSimilarCategories[similalityIndex].categoryId2)] \(categoryId2Images.count)枚")
-                        }
+            sceneCategoryCounts = []
+            for labelId in (0...364) {
+                let categoryImages = CategoryRepositories.categoryAttributes.filter({ $0.sceneClusteredId == labelId})
+                sceneCategoryCounts.append(CategoryImagesCount(labelId: labelId, count: categoryImages.count))
+            }
+            
+            sceneCategoryCounts.sort(by: { $0.count < $1.count })
+            let filteredCategories = sceneCategoryCounts.filter({ $0.count != 0 })
+            
+            // 枚数が一番少ない統合すべきカテゴリId
+            if let targetId = filteredCategories.first?.labelId {
+                let similarIds = SimilalityRepositories.getSimilarSceneIds(sceneId: targetId)
+                var similalityIndex: Int? = nil
+                for (index,similarId) in similarIds.enumerated() {
+                    let categoryId1Images = categoryAttributes.filter({ $0.sceneClusteredId == similarId.categoryId1 })
+                    let categoryId2Images = categoryAttributes.filter({ $0.sceneClusteredId == similarId.categoryId2 })
+                    
+                    if(categoryId1Images.count != 0 && categoryId2Images.count != 0) {
+                        similalityIndex = index
                     }
                 }
                 
-                clusteredCount += 1
+                if let similalityIndex = similalityIndex {
+                    let categoryId1Images = categoryAttributes.filter({ $0.sceneClusteredId == similarIds[similalityIndex].categoryId1 })
+                    let categoryId2Images = categoryAttributes.filter({ $0.sceneClusteredId == similarIds[similalityIndex].categoryId2 })
+                    
+                    // カテゴリを統合します．
+                    if(categoryId1Images.count > categoryId2Images.count) {
+                        for (index,categoryAttribute) in CategoryRepositories.categoryAttributes.enumerated() {
+                            if(categoryAttribute.sceneClusteredId == similarIds[similalityIndex].categoryId2) {
+                                CategoryRepositories.categoryAttributes[index].sceneClusteredId = similarIds[similalityIndex].categoryId1
+                            }
+                        }
+                        
+                        print("カテゴリ[\(similarIds[similalityIndex].categoryId2)] \(categoryId2Images.count)枚 >> カテゴリ[\(similarIds[similalityIndex].categoryId1)] \(categoryId1Images.count)枚 \(DebugComponent.getTimeNow())")
+                    } else {
+                        for (index,categoryAttribute) in CategoryRepositories.categoryAttributes.enumerated() {
+                            if(categoryAttribute.sceneClusteredId == similarIds[similalityIndex].categoryId1) {
+                                CategoryRepositories.categoryAttributes[index].sceneClusteredId = similarIds[similalityIndex].categoryId2
+                            }
+                        }
+                        
+                        print("カテゴリ[\(similarIds[similalityIndex].categoryId1)] \(categoryId1Images.count)枚 >> カテゴリ[\(similarIds[similalityIndex].categoryId2)] \(categoryId2Images.count)枚 \(DebugComponent.getTimeNow())")
+                    }
+                    
+                    clusteredCount += 1
+                }
             }
-            
-            similalityIndex += 1
         }
-        
         // 統合後表示する画像のリストの生成
         let clusteredCategoryAttributes = CategoryRepositories.categoryAttributes
         for label in 0...364 {
@@ -167,11 +190,6 @@ class CategoryRepositories {
     
     // カテゴリを指定された数に分割します．
     class func divideCategories(clusters: Int) -> [Image] {
-        
-        struct CategoryImagesCount {
-            var labelId: Int
-            var count: Int
-        }
         
         var images: [Image] = []
         CategoryRepositories.categoryAttributes = []
@@ -215,7 +233,7 @@ class CategoryRepositories {
                                 CategoryRepositories.categoryAttributes[index].objectClusteredName = resnetPrediction.label
                                 CategoryRepositories.categoryAttributes[index].scenePriority = false
                                 
-                                print("SceneId[\(targetSceneId)]\(targetCategoryImages.count)枚 → ObjectId[\(resnetPrediction.labelId)]")
+                                print("SceneId[\(targetSceneId)]\(targetCategoryImages.count)枚 → ObjectId[\(resnetPrediction.labelId)] \(DebugComponent.getTimeNow())")
                                 let dividedObjectNames = categoryAttributes
                                     .filter({ !$0.scenePriority })
                                     .filter({ $0.objectClusteredName == resnetPrediction.label })
@@ -230,6 +248,7 @@ class CategoryRepositories {
                     break
                 }
             }
+            
             loopIndex += 1
         }
         
