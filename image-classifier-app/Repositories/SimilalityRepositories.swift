@@ -51,7 +51,7 @@ class SimilalityRepositories {
         for labelId1 in (0...364) {
             for labelId2 in (0...364) {
                 if(labelId1 < labelId2) {
-                    if let similality = getRewitedSimilality(labelId1: labelId1, labelId2: labelId2, coefficient: 1.5) {
+                    if let similality = getRewitedSimilality(labelId1: labelId1, labelId2: labelId2, coefficient: 1.0) {
                         similalityCategories.append(SimilarCategories(categoryId1: labelId1,
                                                                       categoryId2: labelId2,
                                                                       similality: similality))

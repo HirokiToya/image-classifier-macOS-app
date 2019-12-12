@@ -59,9 +59,18 @@ class OperationViewController: NSViewController, OperationViewInterface {
     }
     
     @IBAction func cleanDatabase(_ sender: Any) {
-        if(showDialog("注意", description: "画像識別データが全て削除されます．本当に削除しますか？")) {
-            presenter.deleteAllData()
+//        if(showDialog("注意", description: "画像識別データが全て削除されます．本当に削除しますか？")) {
+//            presenter.deleteAllData()
+//        }
+        
+        let predictionResults = PredictionRepositories.loadPredictionResults()
+        let list = SimilalityRepositories.getSimilarSceneIds(sceneId: 3)
+        for l in list {
+            
+            let filteredResults = predictionResults.filter({ Int($0.scenePredictions[0].labelId) == l.categoryId2 })
+            print("\(l.categoryId1), \(l.categoryId2): \(l.similality), \(filteredResults.count)枚")
         }
+        
     }
     
     @objc func setCurrentClustersLabel(notification: Notification) {

@@ -65,14 +65,6 @@ class ImageCollectionViewItem: NSCollectionViewItem {
             nameLabel.stringValue = setTransltedName(name: image.objectName, state: translationState)
             setMarkImage(isSceneImage: false)
         }
-        
-        doubleClickedCallback = {
-            let storyboard: NSStoryboard = NSStoryboard(name: "ImageViewController", bundle: nil)
-            if let nextView = storyboard.instantiateInitialController() as? ImageViewController {
-                nextView.imageUrl = image.url
-                self.presentAsModalWindow(nextView)
-            }
-        }
     }
     
     func setMarkImage(isSceneImage: Bool) {

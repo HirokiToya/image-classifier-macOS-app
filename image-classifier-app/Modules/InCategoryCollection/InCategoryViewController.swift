@@ -115,6 +115,13 @@ extension InCategoryViewController: NSCollectionViewDelegate, NSCollectionViewDa
                                                       for: indexPath) as! ImageCollectionViewItem
         
         item.bindProbability(image: imagePaths[indexPath.item], translationState: translationState)
+        item.doubleClickedCallback = {
+            let storyboard: NSStoryboard = NSStoryboard(name: "ImageViewController", bundle: nil)
+            if let nextView = storyboard.instantiateInitialController() as? ImageViewController {
+                nextView.imageUrl = self.imagePaths[indexPath.item].url
+                self.presentAsModalWindow(nextView)
+            }
+        }
         
         return item
     }

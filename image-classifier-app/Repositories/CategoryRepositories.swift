@@ -122,40 +122,37 @@ class CategoryRepositories {
             // 枚数が一番少ない統合すべきカテゴリId
             if let targetId = filteredCategories.first?.labelId {
                 let similarIds = SimilalityRepositories.getSimilarSceneIds(sceneId: targetId)
-                var similalityIndex: Int? = nil
-                for (index,similarId) in similarIds.enumerated() {
+                for similarId in similarIds {
+                    
                     let categoryId1Images = categoryAttributes.filter({ $0.sceneClusteredId == similarId.categoryId1 })
                     let categoryId2Images = categoryAttributes.filter({ $0.sceneClusteredId == similarId.categoryId2 })
                     
                     if(categoryId1Images.count != 0 && categoryId2Images.count != 0) {
-                        similalityIndex = index
-                    }
-                }
-                
-                if let similalityIndex = similalityIndex {
-                    let categoryId1Images = categoryAttributes.filter({ $0.sceneClusteredId == similarIds[similalityIndex].categoryId1 })
-                    let categoryId2Images = categoryAttributes.filter({ $0.sceneClusteredId == similarIds[similalityIndex].categoryId2 })
-                    
-                    // カテゴリを統合します．
-                    if(categoryId1Images.count > categoryId2Images.count) {
-                        for (index,categoryAttribute) in CategoryRepositories.categoryAttributes.enumerated() {
-                            if(categoryAttribute.sceneClusteredId == similarIds[similalityIndex].categoryId2) {
-                                CategoryRepositories.categoryAttributes[index].sceneClusteredId = similarIds[similalityIndex].categoryId1
+                        print("id1:\(similarId.categoryId1)")
+                        print("id2:\(similarId.categoryId2)")
+                        
+                        // カテゴリを統合します．
+                        if(categoryId1Images.count > categoryId2Images.count) {
+                            for (index,categoryAttribute) in CategoryRepositories.categoryAttributes.enumerated() {
+                                if(categoryAttribute.sceneClusteredId == similarId.categoryId2) {
+                                    CategoryRepositories.categoryAttributes[index].sceneClusteredId = similarId.categoryId1
+                                }
                             }
+                            
+                            print("カテゴリ[\(similarId.categoryId2)] \(categoryId2Images.count)枚 >> カテゴリ[\(similarId.categoryId1)] \(categoryId1Images.count)枚 \(similarId.similality)")
+                        } else {
+                            for (index,categoryAttribute) in CategoryRepositories.categoryAttributes.enumerated() {
+                                if(categoryAttribute.sceneClusteredId == similarId.categoryId1) {
+                                    CategoryRepositories.categoryAttributes[index].sceneClusteredId = similarId.categoryId2
+                                }
+                            }
+                            
+                            print("カテゴリ[\(similarId.categoryId1)] \(categoryId1Images.count)枚 >> カテゴリ[\(similarId.categoryId2)] \(categoryId2Images.count)枚 \(similarId.similality)")
                         }
                         
-                        print("カテゴリ[\(similarIds[similalityIndex].categoryId2)] \(categoryId2Images.count)枚 >> カテゴリ[\(similarIds[similalityIndex].categoryId1)] \(categoryId1Images.count)枚 \(DebugComponent.getTimeNow())")
-                    } else {
-                        for (index,categoryAttribute) in CategoryRepositories.categoryAttributes.enumerated() {
-                            if(categoryAttribute.sceneClusteredId == similarIds[similalityIndex].categoryId1) {
-                                CategoryRepositories.categoryAttributes[index].sceneClusteredId = similarIds[similalityIndex].categoryId2
-                            }
-                        }
+                        clusteredCount += 1
                         
-                        print("カテゴリ[\(similarIds[similalityIndex].categoryId1)] \(categoryId1Images.count)枚 >> カテゴリ[\(similarIds[similalityIndex].categoryId2)] \(categoryId2Images.count)枚 \(DebugComponent.getTimeNow())")
                     }
-                    
-                    clusteredCount += 1
                 }
             }
         }
