@@ -121,32 +121,36 @@ class CategoryRepositories {
             
             // 枚数が一番少ない統合すべきカテゴリId
             if let targetId = filteredCategories.first?.labelId {
-                let similarIds = SimilalityRepositories.getSimilarSceneIds(sceneId: targetId)
-                for similarId in similarIds {
+                let similarList = SimilalityRepositories.getSimilarSceneIds(sceneId: targetId)
+                let filteredSimilarList = similarList.filter({
+                    CategoryRepositories().getSameSceneIdCount(sceneId: $0.categoryId1) > 0 &&
+                        CategoryRepositories().getSameSceneIdCount(sceneId: $0.categoryId2) > 0
+                })
+                
+                if let similarId = filteredSimilarList.first {
                     let categoryId1Images = categoryAttributes.filter({ $0.representativeSceneId == similarId.categoryId1 })
                     let categoryId2Images = categoryAttributes.filter({ $0.representativeSceneId == similarId.categoryId2 })
-                    if(categoryId1Images.count != 0 && categoryId2Images.count != 0) {
-                        // カテゴリを統合します．
-                        if(categoryId1Images.count > categoryId2Images.count) {
-                            for (index,categoryAttribute) in CategoryRepositories.categoryAttributes.enumerated() {
-                                if(categoryAttribute.representativeSceneId == similarId.categoryId2) {
-                                    CategoryRepositories.categoryAttributes[index].representativeSceneId = similarId.categoryId1
-                                }
+                    let categoryId1Count = PredictionRepositories().getSameSceneIdCount(sceneId: similarId.categoryId1)
+                    let categoryId2Count = PredictionRepositories().getSameSceneIdCount(sceneId: similarId.categoryId2)
+                    if( categoryId1Count > categoryId2Count) {
+                        for (index,categoryAttribute) in CategoryRepositories.categoryAttributes.enumerated() {
+                            if(categoryAttribute.representativeSceneId == similarId.categoryId2) {
+                                CategoryRepositories.categoryAttributes[index].representativeSceneId = similarId.categoryId1
                             }
-                            print("カテゴリ[\(similarId.categoryId2)] \(categoryId2Images.count)枚 >> カテゴリ[\(similarId.categoryId1)] \(categoryId1Images.count)枚 \(similarId.similality)")
-
-                        } else {
-                            for (index,categoryAttribute) in CategoryRepositories.categoryAttributes.enumerated() {
-                                if(categoryAttribute.representativeSceneId == similarId.categoryId1) {
-                                    CategoryRepositories.categoryAttributes[index].representativeSceneId = similarId.categoryId2
-                                }
+                        }
+                        print("カテゴリ[\(similarId.categoryId2)] \(categoryId2Images.count)枚 >> カテゴリ[\(similarId.categoryId1)] \(categoryId1Images.count)枚 \(similarId.similality)")
+                        
+                    } else {
+                        for (index,categoryAttribute) in CategoryRepositories.categoryAttributes.enumerated() {
+                            if(categoryAttribute.representativeSceneId == similarId.categoryId1) {
+                                CategoryRepositories.categoryAttributes[index].representativeSceneId = similarId.categoryId2
                             }
-
-                            print("カテゴリ[\(similarId.categoryId1)] \(categoryId1Images.count)枚 >> カテゴリ[\(similarId.categoryId2)] \(categoryId2Images.count)枚 \(similarId.similality)")
                         }
                         
-                        clusteredCount += 1
+                        print("カテゴリ[\(similarId.categoryId1)] \(categoryId1Images.count)枚 >> カテゴリ[\(similarId.categoryId2)] \(categoryId2Images.count)枚 \(similarId.similality)")
                     }
+                    
+                    clusteredCount += 1
                 }
             }
         }
@@ -344,5 +348,10 @@ class CategoryRepositories {
         }
         
         return images
+    }
+    
+    func getSameSceneIdCount(sceneId: Int) -> Int {
+        let results = CategoryRepositories.categoryAttributes.filter({ $0.representativeSceneId == sceneId})
+        return results.count
     }
 }
