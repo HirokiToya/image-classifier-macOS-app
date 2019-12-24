@@ -7,7 +7,6 @@ class InCategoryViewController: NSViewController {
     var sortTag: SortActionTag = .byProbability {
         didSet {
             imagePaths = imagesCache
-            selectedCount = 0
         }
     }
     
@@ -44,7 +43,7 @@ class InCategoryViewController: NSViewController {
         }
     }
     
-    var selectedCount = 0
+    var selectedImages:[CategoryRepositories.Image] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -52,7 +51,12 @@ class InCategoryViewController: NSViewController {
         setupCollectionView()
         NotificationCenter.default.addObserver(self,
                                                selector: #selector(reloadData(notification:)),
-                                               name: .reloadIncategoryImages, object: nil)
+                                               name: .reloadIncategoryImages,
+                                               object: nil)
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(performClustering(notification:)),
+                                               name: .performClustering,
+                                               object: nil)
         NotificationCenter.default.addObserver(self,
                                                selector: #selector(setInCategorySortTag(notification:)),
                                                name: .setInCategorySortTag,
@@ -60,6 +64,11 @@ class InCategoryViewController: NSViewController {
         NotificationCenter.default.addObserver(self,
                                                selector: #selector(changeTranslationState(notification:)),
                                                name: .translationState,
+                                               object: nil)
+        
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(outputLog(notification:)),
+                                               name: .outputLog,
                                                object: nil)
     }
     
@@ -71,7 +80,7 @@ class InCategoryViewController: NSViewController {
         self.imageCollectionView.dataSource = self
         
         let flowLayout = NSCollectionViewFlowLayout()
-        flowLayout.itemSize = NSSize(width: 175.0, height: 175.0)
+        flowLayout.itemSize = NSSize(width: 100.0, height: 190.0)
         flowLayout.sectionInset = NSEdgeInsets(top: 10.0, left: 10.0, bottom: 10.0, right: 10.0)
         flowLayout.minimumInteritemSpacing = 20.0
         flowLayout.minimumLineSpacing = 20.0
@@ -85,6 +94,10 @@ class InCategoryViewController: NSViewController {
                                                                          objectName: target.objectName,
                                                                          scenePriority: target.scenePriority)
         }
+    }
+    
+    @objc func performClustering(notification: Notification) {
+        selectedImages = []
     }
     
     @objc func setInCategorySortTag(notification: Notification) {
@@ -104,6 +117,21 @@ class InCategoryViewController: NSViewController {
         if let state = notification.userInfo?["state"] as? Bool {
             translationState = state
         }
+    }
+    
+    @objc func outputLog(notification: Notification) {
+        print("ログ出力")
+        print("Time:\(DebugComponent.getTimeNow())")
+        
+        for image in selectedImages {
+            if let representativeImage = CategoryRepositories.getRepresentativeImage(sceneId: image.sceneId){
+                print("カテゴリ[\(representativeImage.sceneId)]:\(representativeImage.sceneName) -> [\(image.sceneId)]:\(image.sceneName)")
+            } else {
+                print("カテゴリ[\(image.sceneId)]:\(image.sceneName) -> [\(image.sceneId)]:\(image.sceneName)")
+            }
+        }
+        print("不適切な画像：\(selectedImages.count)枚")
+        
     }
 }
 
@@ -125,8 +153,28 @@ extension InCategoryViewController: NSCollectionViewDelegate, NSCollectionViewDa
 //                self.presentAsModalWindow(nextView)
 //            }
             
-            self.selectedCount += 1
-            print(self.selectedCount)
+            let image = self.imagePaths[indexPath.item]
+            if(self.selectedImages.filter({ $0.url == image.url }).count > 0) {
+                self.selectedImages.removeAll(where: { $0.url == image.url })
+                item.isImageSelected = false
+            } else {
+                self.selectedImages.append(CategoryRepositories.Image(url: image.url,
+                                                                      sceneId: image.sceneId,
+                                                                      sceneName: image.sceneName,
+                                                                      sceneProbability: image.sceneProbability,
+                                                                      objectId: image.objectId,
+                                                                      objectName: image.objectName,
+                                                                      objectProbability: image.objectProbability,
+                                                                      scenePriority: image.scenePriority))
+                item.isImageSelected = true
+            }
+        }
+        
+        let image = self.imagePaths[indexPath.item]
+        if(self.selectedImages.filter({ $0.url == image.url }).count > 0) {
+            item.isImageSelected = true
+        } else {
+            item.isImageSelected = false
         }
         
         return item

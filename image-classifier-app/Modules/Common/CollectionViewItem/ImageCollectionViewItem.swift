@@ -9,8 +9,15 @@ class ImageCollectionViewItem: NSCollectionViewItem {
     @IBOutlet weak var numberLabel: NSTextField!
     @IBOutlet weak var nameLabel: NSTextField!
     @IBOutlet weak var markImage: NSImageView!
+    @IBOutlet weak var imageBackgrountView: NSView!
+    
     
     var doubleClickedCallback:(()->Void)?
+    var isImageSelected: Bool = false {
+        didSet {
+            setImageBackgroundColor()
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -51,6 +58,7 @@ class ImageCollectionViewItem: NSCollectionViewItem {
     func bindProbability(image: CategoryRepositories.Image, translationState: Bool) {
         
         imageItem.load(url: image.url)
+        setImageBackgroundColor()
         if(image.scenePriority) {
             
             idLabel.stringValue = "\(image.sceneId)"
@@ -65,6 +73,8 @@ class ImageCollectionViewItem: NSCollectionViewItem {
             nameLabel.stringValue = setTransltedName(name: image.objectName, state: translationState)
             setMarkImage(isSceneImage: false)
         }
+        
+        
     }
     
     func setMarkImage(isSceneImage: Bool) {
@@ -83,6 +93,14 @@ class ImageCollectionViewItem: NSCollectionViewItem {
         }
         return name
     }
+    
+    func setImageBackgroundColor() {
+        if(isImageSelected) {
+            imageBackgrountView.layer?.backgroundColor = NSColor.selectedTextBackgroundColor.cgColor
+        } else {
+            imageBackgrountView.layer?.backgroundColor = .clear
+        }
+    }
 }
 
 extension ImageCollectionViewItem: NSGestureRecognizerDelegate {
@@ -95,11 +113,9 @@ extension ImageCollectionViewItem: NSGestureRecognizerDelegate {
                 if let callback = doubleClickedCallback {
                     callback()
                 }
-                
                 return true
             }
         }
-        
         return false
     }
 }

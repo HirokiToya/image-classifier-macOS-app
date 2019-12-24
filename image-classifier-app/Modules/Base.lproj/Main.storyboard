@@ -885,14 +885,26 @@
                                     <action selector="translationButtonTapped:" target="taL-D0-KaQ" id="yNI-8f-ZOS"/>
                                 </connections>
                             </button>
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="h1a-UN-sYY">
+                                <rect key="frame" x="31" y="34" width="89" height="32"/>
+                                <buttonCell key="cell" type="push" title="ログ出力" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="aVx-uw-WJM">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="outputLogButtonTapped:" target="taL-D0-KaQ" id="TR1-IZ-TDN"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <constraints>
                             <constraint firstItem="ULL-qm-sXe" firstAttribute="leading" secondItem="KK5-ci-9Mw" secondAttribute="leading" id="2RK-VB-uii"/>
                             <constraint firstItem="ULL-qm-sXe" firstAttribute="centerX" secondItem="fk1-L4-Bqr" secondAttribute="centerX" id="3iJ-gR-Ysk"/>
                             <constraint firstItem="amb-Ec-sML" firstAttribute="top" secondItem="z1q-nE-g9i" secondAttribute="bottom" constant="20" id="4yQ-Ow-g5j"/>
                             <constraint firstItem="LWU-an-Sa8" firstAttribute="width" secondItem="z1q-nE-g9i" secondAttribute="width" id="5Ld-4Q-ldP"/>
+                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="60S-0m-GgZ" secondAttribute="trailing" constant="20" symbolic="YES" id="5Vs-tg-nB2"/>
                             <constraint firstItem="Dbg-h1-chJ" firstAttribute="leading" secondItem="a4i-uy-oHt" secondAttribute="leading" id="87o-Mz-EZd"/>
                             <constraint firstItem="KK5-ci-9Mw" firstAttribute="centerX" secondItem="fk1-L4-Bqr" secondAttribute="centerX" id="8F1-jB-xmh"/>
+                            <constraint firstItem="y20-Qu-ZSz" firstAttribute="top" secondItem="h1a-UN-sYY" secondAttribute="bottom" constant="10" id="8wV-68-2Ag"/>
                             <constraint firstItem="a4i-uy-oHt" firstAttribute="centerX" secondItem="ohj-3L-Qtc" secondAttribute="centerX" id="9KN-ua-FyE"/>
                             <constraint firstItem="a4i-uy-oHt" firstAttribute="centerX" secondItem="ohj-3L-Qtc" secondAttribute="centerX" id="AZX-fx-l70"/>
                             <constraint firstItem="ohj-3L-Qtc" firstAttribute="leading" secondItem="dCn-Vf-AQr" secondAttribute="leading" constant="20" id="DOd-E7-n0H"/>
@@ -920,6 +932,7 @@
                             <constraint firstItem="z1q-nE-g9i" firstAttribute="leading" secondItem="dCn-Vf-AQr" secondAttribute="leading" constant="10" id="jEt-io-FKp"/>
                             <constraint firstItem="vwB-Np-eVl" firstAttribute="top" secondItem="dCn-Vf-AQr" secondAttribute="top" constant="20" id="jUI-EO-dNJ"/>
                             <constraint firstItem="vwB-Np-eVl" firstAttribute="centerX" secondItem="dCn-Vf-AQr" secondAttribute="centerX" id="jzS-7h-4MI"/>
+                            <constraint firstItem="h1a-UN-sYY" firstAttribute="centerX" secondItem="dCn-Vf-AQr" secondAttribute="centerX" id="lKk-0N-u6x"/>
                             <constraint firstItem="y20-Qu-ZSz" firstAttribute="centerX" secondItem="dCn-Vf-AQr" secondAttribute="centerX" id="n6H-Pa-2PA"/>
                             <constraint firstItem="z1q-nE-g9i" firstAttribute="centerY" secondItem="inD-md-yw4" secondAttribute="centerY" id="oJ7-gV-Giq"/>
                             <constraint firstAttribute="trailing" secondItem="fk1-L4-Bqr" secondAttribute="trailing" constant="30" id="q9Q-o3-Dqm"/>

@@ -83,7 +83,7 @@ class CategoryViewController: NSViewController {
         self.categoryCollectionView.dataSource = self
         
         let flowLayout = NSCollectionViewFlowLayout()
-        flowLayout.itemSize = NSSize(width: 175.0, height: 175.0)
+        flowLayout.itemSize = NSSize(width: 100.0, height: 190.0)
         flowLayout.sectionInset = NSEdgeInsets(top: 10.0, left: 10.0, bottom: 10.0, right: 10.0)
         flowLayout.minimumInteritemSpacing = 20.0
         flowLayout.minimumLineSpacing = 20.0
@@ -113,6 +113,7 @@ class CategoryViewController: NSViewController {
                 alert.runModal()
             } else {
                 imagePaths = CategoryRepositories.clusterCategories(clusters: target)
+                print("クラスタリング処理終了時刻:\(DebugComponent.getTimeNow())")
             }
         }
     }

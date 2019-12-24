@@ -28,7 +28,7 @@ class CategoryRepositories {
         defaultCategorizedImages = getSceneRepresentativeImages()
     }
     
-    // 同一のシーンカテゴリ名の中から識別確率が最も高い画像をそれぞれ取得します．
+    /**** 同一のシーンカテゴリ名の中から識別確率が最も高い画像をそれぞれ取得します．****/
     class func getSceneRepresentativeImages() -> [Image] {
         
         var sceneCategories: [Image] = []
@@ -59,7 +59,7 @@ class CategoryRepositories {
         return sceneCategories
     }
     
-    // 同一のシーンカテゴリ名の画像を全て取得します．
+    /**** 同一のシーンカテゴリ名の画像を全て取得します．****/
     class func getSceneCategoryImages(sceneId: Int) -> [Image] {
         
         var images: [Image] = []
@@ -82,6 +82,7 @@ class CategoryRepositories {
         return images
     }
     
+    /**** 指定したカテゴリ数に応じてカテゴリ統合orカテゴリ分割処理を分岐させます．****/
     class func clusterCategories(clusters: Int) -> [Image]{
         
         if(clusters < defaultCategorizedImages.count){
@@ -91,7 +92,7 @@ class CategoryRepositories {
         }
     }
     
-    // 類似度の結果を用いてカテゴリを指定された数に統合します．
+    /**** 類似度の結果を用いてカテゴリを指定された数に統合します．****/
     class func integrateCategories(clusters: Int) -> [Image] {
         
         var images: [Image] = []
@@ -183,7 +184,7 @@ class CategoryRepositories {
         return images
     }
     
-    // カテゴリを指定された数に分割します．
+    /**** カテゴリを指定された数に分割します．****/
     class func divideCategories(clusters: Int) -> [Image] {
         
         var images: [Image] = []
@@ -294,10 +295,7 @@ class CategoryRepositories {
         return images
     }
     
-    class func getInCategoryImagesCount(sceneId: Int, objectName: String, scenePriority: Bool) -> Int {
-        return getCategoryAttributeImages(sceneId: sceneId, objectName: objectName, scenePriority: scenePriority).count
-    }
-    
+    /**** 選択した代表画像のカテゴリ内に含まれる画像を返します．****/
     class func getCategoryAttributeImages(sceneId: Int, objectName: String, scenePriority: Bool) -> [Image] {
         
         var images: [Image] = []
@@ -350,8 +348,48 @@ class CategoryRepositories {
         return images
     }
     
+    /**** 選択した代表画像のカテゴリ内に含まれる画像枚数を返します．****/
+    class func getInCategoryImagesCount(sceneId: Int, objectName: String, scenePriority: Bool) -> Int {
+        return getCategoryAttributeImages(sceneId: sceneId, objectName: objectName, scenePriority: scenePriority).count
+    }
+    
+    /**** categoryAttributes内のsceneIdの枚数を返します．****/
     func getSameSceneIdCount(sceneId: Int) -> Int {
         let results = CategoryRepositories.categoryAttributes.filter({ $0.representativeSceneId == sceneId})
         return results.count
+    }
+    
+    /**** sceneIdが属する親カテゴリの代表画像のImageを返します．****/
+    class func getRepresentativeImage(sceneId: Int) -> Image? {
+        
+        if let representativeCategoryId = CategoryRepositories
+            .categoryAttributes
+            .filter({ Int($0.predictionResult.scenePredictions[0].labelId)! == sceneId})
+            .first?
+            .representativeSceneId
+        {
+            
+            let representaticeImages = predictionResults.filter({ Int($0.scenePredictions[0].labelId) == representativeCategoryId})
+            
+            var shoudRepresentativeImage = representaticeImages[0]
+            for image in representaticeImages {
+                if(image.resnetPredictions[0].probability > shoudRepresentativeImage.scenePredictions[0].probability){
+                    shoudRepresentativeImage = image
+                }
+            }
+            
+            let image  = Image(url: shoudRepresentativeImage.imagePath.url!,
+                               sceneId: Int(shoudRepresentativeImage.scenePredictions[0].labelId)!,
+                               sceneName: shoudRepresentativeImage.scenePredictions[0].label,
+                               sceneProbability: shoudRepresentativeImage.scenePredictions[0].probability,
+                               objectId: shoudRepresentativeImage.resnetPredictions[0].labelId,
+                               objectName: shoudRepresentativeImage.resnetPredictions[0].label,
+                               objectProbability: shoudRepresentativeImage.resnetPredictions[0].probability,
+                               scenePriority: true)
+            
+            return image
+        }
+        
+        return nil
     }
 }

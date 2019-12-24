@@ -47,7 +47,6 @@ extension FileAccessor {
             
             do {
                 let similality = try JSONDecoder().decode(JsonPayload.Similalities.self, from: data)
-                print(similality.labels.count)
                 return similality
             } catch {
                 print(error)

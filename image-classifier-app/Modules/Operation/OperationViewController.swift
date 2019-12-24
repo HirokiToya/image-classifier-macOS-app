@@ -72,7 +72,6 @@ class OperationViewController: NSViewController, OperationViewInterface {
     
     @IBAction func leftViewRadioButtonTapped(_ sender: NSButton) {
         if let tag = SortActionTag(rawValue: sender.tag) {
-            print("tag:\(tag)")
             NotificationCenter.default.post(name: .setCategorySortTag, object: nil, userInfo: ["sortActionTag": tag])
         }
     }
@@ -91,6 +90,10 @@ class OperationViewController: NSViewController, OperationViewInterface {
             NotificationCenter.default.post(name: .translationState, object: nil, userInfo: ["state": false])
         default: break
         }
+    }
+    
+    @IBAction func outputLogButtonTapped(_ sender: Any) {
+        NotificationCenter.default.post(name: .outputLog, object: nil)
     }
     
     private func showDialog(_ mainText: String, description: String) -> Bool {
