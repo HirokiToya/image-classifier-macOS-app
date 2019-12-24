@@ -26,7 +26,6 @@ class ImageCollectionViewItem: NSCollectionViewItem {
         doubleClickGesture.numberOfClicksRequired = 2
         doubleClickGesture.delegate = self
         self.view.addGestureRecognizer(doubleClickGesture)
-        
     }
     
     func bind(image: CategoryRepositories.Image, translationState: Bool) {
@@ -73,8 +72,6 @@ class ImageCollectionViewItem: NSCollectionViewItem {
             nameLabel.stringValue = setTransltedName(name: image.objectName, state: translationState)
             setMarkImage(isSceneImage: false)
         }
-        
-        
     }
     
     func setMarkImage(isSceneImage: Bool) {
