@@ -179,6 +179,14 @@
 			path = ImageViewController;
 			sourceTree = "<group>";
 		};
+		ED7E51F223AE48A8008F8858 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				ED69986123687ADE0032453A /* FilePathes.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		ED9166182376A3CE00FFA053 /* InCategoryCollection */ = {
 			isa = PBXGroup;
 			children = (
@@ -195,7 +203,6 @@
 				EDF17E2D23711BEE00CA77C9 /* PredictionResults.swift */,
 				ED91412423787126003BE725 /* CategoryAttributes.swift */,
 				EDC4707F235389F700E7CE91 /* Similality.swift */,
-				ED69986123687ADE0032453A /* FilePathes.swift */,
 				EDF17E2F237153C600CA77C9 /* RealmModel.swift */,
 				ED6FB90E238271D200BDD446 /* SortActionTag.swift */,
 			);
@@ -282,6 +289,7 @@
 			children = (
 				EDD6DBFE23617D0400CF3744 /* Modules */,
 				EDD6DBFD23617CE100CF3744 /* Repositories */,
+				ED7E51F223AE48A8008F8858 /* Models */,
 				EDD6DBF823616BB100CF3744 /* Entities */,
 				EDF56AA6233F72A700A1019F /* Service */,
 				EDD6DC04236191AC00CF3744 /* Libs */,

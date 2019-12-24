@@ -44,7 +44,7 @@ class CategoryViewController: NSViewController {
             
             imagesCache = imagePaths
             
-            print("カテゴリ数：\(imagePaths.count)")
+//            print("カテゴリ数：\(imagePaths.count)")
             let clustersCount = ["clustersCount": imagePaths.count]
             NotificationCenter.default.post(name: .setCategoryCountLabel, object: nil, userInfo: clustersCount)
             categoryCollectionView.reloadData()
@@ -154,10 +154,10 @@ extension CategoryViewController: NSCollectionViewDelegate, NSCollectionViewData
     
     func collectionView(_ collectionView: NSCollectionView, didSelectItemsAt indexPaths: Set<IndexPath>) {
         let image = imagePaths[indexPaths.first?[1] ?? 0]
-        print(image.url)
-        print(image.sceneId)
-        print(image.sceneName)
-        print(image.sceneProbability)
+//        print(image.url)
+//        print(image.sceneId)
+//        print(image.sceneName)
+//        print(image.sceneProbability)
         
         let imageAttributes = ["imageAttributes": image]
         NotificationCenter.default.post(name: .reloadIncategoryImages, object: nil, userInfo: imageAttributes)

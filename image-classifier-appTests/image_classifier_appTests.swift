@@ -1,11 +1,3 @@
-//
-//  image_classifier_appTests.swift
-//  image-classifier-appTests
-//
-//  Created by 外谷弘樹 on 2019/09/28.
-//  Copyright © 2019 example. All rights reserved.
-//
-
 import XCTest
 @testable import image_classifier_app
 

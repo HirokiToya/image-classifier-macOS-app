@@ -5,6 +5,11 @@ class PredictionRepositories {
     
     private static var predictions: [PredictionResult] = []
     
+    class func reloadCache() {
+        predictions = []
+        predictions = loadPredictionResults()
+    }
+    
     class func loadPredictionResults() -> [PredictionResult] {
         
         if !predictions.isEmpty {
@@ -52,8 +57,10 @@ class PredictionRepositories {
         return predictions
     }
     
-    class func reloadCache() {
-        predictions = []
-        predictions = loadPredictionResults()
+    func getSameSceneIdCount(sceneId: Int) -> Int {
+        let predictionResults = PredictionRepositories.loadPredictionResults()
+        let results = predictionResults.filter({ Int($0.scenePredictions[0].labelId) == sceneId })
+        return results.count
     }
+    
 }

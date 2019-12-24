@@ -7,6 +7,7 @@ class InCategoryViewController: NSViewController {
     var sortTag: SortActionTag = .byProbability {
         didSet {
             imagePaths = imagesCache
+            selectedCount = 0
         }
     }
     
@@ -38,10 +39,12 @@ class InCategoryViewController: NSViewController {
             
             imagesCache = imagePaths
             
-            print("カテゴリ内画像枚数：\(imagePaths.count)")
+//            print("カテゴリ内画像枚数：\(imagePaths.count)")
             imageCollectionView.reloadData()
         }
     }
+    
+    var selectedCount = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -116,11 +119,14 @@ extension InCategoryViewController: NSCollectionViewDelegate, NSCollectionViewDa
         
         item.bindProbability(image: imagePaths[indexPath.item], translationState: translationState)
         item.doubleClickedCallback = {
-            let storyboard: NSStoryboard = NSStoryboard(name: "ImageViewController", bundle: nil)
-            if let nextView = storyboard.instantiateInitialController() as? ImageViewController {
-                nextView.imageUrl = self.imagePaths[indexPath.item].url
-                self.presentAsModalWindow(nextView)
-            }
+//            let storyboard: NSStoryboard = NSStoryboard(name: "ImageViewController", bundle: nil)
+//            if let nextView = storyboard.instantiateInitialController() as? ImageViewController {
+//                nextView.imageUrl = self.imagePaths[indexPath.item].url
+//                self.presentAsModalWindow(nextView)
+//            }
+            
+            self.selectedCount += 1
+            print(self.selectedCount)
         }
         
         return item
@@ -128,9 +134,9 @@ extension InCategoryViewController: NSCollectionViewDelegate, NSCollectionViewDa
     
     func collectionView(_ collectionView: NSCollectionView, didSelectItemsAt indexPaths: Set<IndexPath>) {
         let image = imagePaths[indexPaths.first?[1] ?? 0]
-        print(image.sceneId)
-        print(image.sceneName)
-        print(image.sceneProbability)
-        print(image.url)
+//        print(image.sceneId)
+//        print(image.sceneName)
+//        print(image.sceneProbability)
+//        print(image.url)
     }
 }
