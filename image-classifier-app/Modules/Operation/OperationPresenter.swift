@@ -25,7 +25,7 @@ class OperationPresenter: OperationPresenterInterface {
         self.interactor = OperationInteractor(output: self)
     }
     
-    func predictButtonPushed() {
+    func predictButtonTapped() {
         imagePathes = FileAccessor.loadAllImagePathes()
         print("全ての画像の枚数：\(imagePathes.count)")
         
@@ -53,6 +53,10 @@ class OperationPresenter: OperationPresenterInterface {
         
         print("まだ識別していない画像の枚数：\(imagePathes.count)")
         
+    }
+    
+    func changeExperimentImage() {
+        interactor.getRandamImage()
     }
     
     func deleteAllData() {
@@ -97,5 +101,9 @@ extension OperationPresenter: OperationInteractorOutput {
             print("\(objectPredictionPathIndex)/\(imagePathes.count)")
             print("物体識別終了:\(DebugComponent.getTimeNow())")
         }
+    }
+    
+    func gotRandomImage(image: URL) {
+        self.view.showExperimantImage(image: image)
     }
 }

@@ -9,4 +9,5 @@ extension Notification.Name {
     static let setInCategorySortTag = Notification.Name("setInCategorySortTag")
     static let translationState = Notification.Name("translationState")
     static let outputLog = Notification.Name("outputLog")
+    static let setSelectedImage = Notification.Name("setSelectedImage")
 }

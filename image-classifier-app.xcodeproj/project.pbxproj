@@ -205,6 +205,7 @@
 				EDC4707F235389F700E7CE91 /* Similality.swift */,
 				EDF17E2F237153C600CA77C9 /* RealmModel.swift */,
 				ED6FB90E238271D200BDD446 /* SortActionTag.swift */,
+				ED0E5D7A2377358700E34B64 /* NotificationName.swift */,
 			);
 			path = Entities;
 			sourceTree = "<group>";
@@ -249,7 +250,6 @@
 			children = (
 				ED25B3F023718855001CA699 /* UIImageViewExtension.swift */,
 				ED0E5D782377160500E34B64 /* StringToUrlExtention.swift */,
-				ED0E5D7A2377358700E34B64 /* NotificationName.swift */,
 				EDD15E57238BC92D002686CB /* DebugComponent.swift */,
 			);
 			path = Libs;

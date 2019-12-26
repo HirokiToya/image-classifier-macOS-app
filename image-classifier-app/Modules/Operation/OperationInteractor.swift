@@ -1,6 +1,7 @@
 import Foundation
 
 class OperationInteractor: OperationInteractorInput {
+    
     weak var output: OperationInteractorOutput!
     var realmAccessor: RealmAccessorInput!
     
@@ -57,6 +58,15 @@ class OperationInteractor: OperationInteractorInput {
                 print(error)
             }
         }
+    }
+    
+    func getRandamImage() {
+        let predictionResults = PredictionRepositories.loadPredictionResults()
+        let hightProbablityImages = predictionResults.filter({ $0.scenePredictions[0].probability > 0.4 })
+        let randomNum = Int.random(in: 0...hightProbablityImages.count-1)
+        let resultImage = hightProbablityImages[randomNum]
+        print("\(resultImage.imagePath):\(resultImage.scenePredictions[0].probability)")
+        self.output.gotRandomImage(image: resultImage.imagePath.url!)
     }
     
     func deleteAll(){

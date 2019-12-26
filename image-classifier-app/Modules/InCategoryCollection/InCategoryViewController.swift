@@ -1,7 +1,7 @@
 import Cocoa
 
 class InCategoryViewController: NSViewController {
-
+    
     @IBOutlet weak var imageCollectionView: NSCollectionView!
     
     var sortTag: SortActionTag = .byProbability {
@@ -38,7 +38,7 @@ class InCategoryViewController: NSViewController {
             
             imagesCache = imagePaths
             
-//            print("カテゴリ内画像枚数：\(imagePaths.count)")
+            //            print("カテゴリ内画像枚数：\(imagePaths.count)")
             imageCollectionView.reloadData()
         }
     }
@@ -143,15 +143,15 @@ extension InCategoryViewController: NSCollectionViewDelegate, NSCollectionViewDa
     
     func collectionView(_ collectionView: NSCollectionView, itemForRepresentedObjectAt indexPath: IndexPath) -> NSCollectionViewItem {
         let item = imageCollectionView.makeItem(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: "ImageCollectionViewItem"),
-                                                      for: indexPath) as! ImageCollectionViewItem
+                                                for: indexPath) as! ImageCollectionViewItem
         
         item.bindProbability(image: imagePaths[indexPath.item], translationState: translationState)
         item.doubleClickedCallback = {
-//            let storyboard: NSStoryboard = NSStoryboard(name: "ImageViewController", bundle: nil)
-//            if let nextView = storyboard.instantiateInitialController() as? ImageViewController {
-//                nextView.imageUrl = self.imagePaths[indexPath.item].url
-//                self.presentAsModalWindow(nextView)
-//            }
+            //            let storyboard: NSStoryboard = NSStoryboard(name: "ImageViewController", bundle: nil)
+            //            if let nextView = storyboard.instantiateInitialController() as? ImageViewController {
+            //                nextView.imageUrl = self.imagePaths[indexPath.item].url
+            //                self.presentAsModalWindow(nextView)
+            //            }
             
             let image = self.imagePaths[indexPath.item]
             if(self.selectedImages.filter({ $0.url == image.url }).count > 0) {
@@ -168,6 +168,8 @@ extension InCategoryViewController: NSCollectionViewDelegate, NSCollectionViewDa
                                                                       scenePriority: image.scenePriority))
                 item.isImageSelected = true
             }
+            let imageUrl = ["imageUrl": image.url]
+            NotificationCenter.default.post(name: .setSelectedImage, object: nil, userInfo: imageUrl)
         }
         
         let image = self.imagePaths[indexPath.item]
@@ -182,9 +184,9 @@ extension InCategoryViewController: NSCollectionViewDelegate, NSCollectionViewDa
     
     func collectionView(_ collectionView: NSCollectionView, didSelectItemsAt indexPaths: Set<IndexPath>) {
         let image = imagePaths[indexPaths.first?[1] ?? 0]
-//        print(image.sceneId)
-//        print(image.sceneName)
-//        print(image.sceneProbability)
-//        print(image.url)
+        //        print(image.sceneId)
+        //        print(image.sceneName)
+        //        print(image.sceneProbability)
+        //        print(image.url)
     }
 }

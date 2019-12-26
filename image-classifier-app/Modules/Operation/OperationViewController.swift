@@ -4,11 +4,13 @@ class OperationViewController: NSViewController, OperationViewInterface {
     
     @IBOutlet weak var selectFolderButton: NSButton!
     @IBOutlet weak var startPredictionButton: NSButton!
-    
     @IBOutlet weak var currentClustersLabel: NSTextField!
     @IBOutlet weak var clustersLabel: NSTextField!
+    @IBOutlet weak var experimentImageView: NSImageView!
+    @IBOutlet weak var experimentImageBackgroundView: NSView!
     
     var presenter: OperationPresenterInterface!
+    var experimentImageUrl:URL? = nil
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,6 +23,12 @@ class OperationViewController: NSViewController, OperationViewInterface {
                                                selector: #selector(setCurrentClustersLabel(notification:)),
                                                name: .setCategoryCountLabel,
                                                object: nil)
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(setSelectedImage(notification:)),
+                                               name: .setSelectedImage,
+                                               object: nil)
+        
+        
     }
     
     override var representedObject: Any? {
@@ -46,7 +54,7 @@ class OperationViewController: NSViewController, OperationViewInterface {
     }
     
     @IBAction func predictStart(_ sender: Any) {
-        presenter.predictButtonPushed()
+        presenter.predictButtonTapped()
     }
         
     @IBAction func reloadData(_ sender: Any) {
@@ -92,6 +100,22 @@ class OperationViewController: NSViewController, OperationViewInterface {
         }
     }
     
+    @IBAction func changeExperimentImage(_ sender: Any) {
+        self.presenter.changeExperimentImage()
+    }
+    
+    @objc func setSelectedImage(notification: Notification) {
+        if let target = notification.userInfo?["imageUrl"] as? URL {
+            print(target)
+            
+            if(experimentImageUrl == target) {
+                experimentImageBackgroundView.layer?.backgroundColor = NSColor.systemBlue.cgColor
+            } else {
+                experimentImageBackgroundView.layer?.backgroundColor = NSColor.systemRed.cgColor
+            }
+        }
+    }
+    
     @IBAction func outputLogButtonTapped(_ sender: Any) {
         NotificationCenter.default.post(name: .outputLog, object: nil)
     }
@@ -104,5 +128,13 @@ class OperationViewController: NSViewController, OperationViewInterface {
         alert.addButton(withTitle: "はい")
         alert.addButton(withTitle: "いいえ")
         return alert.runModal() == .alertFirstButtonReturn
+    }
+}
+
+extension OperationViewController {
+    // ランダムに取得した画像を表示します．
+    func showExperimantImage(image: URL){
+        experimentImageView.load(url: image)
+        experimentImageUrl = image
     }
 }

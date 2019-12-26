@@ -4,14 +4,15 @@ import Foundation
  * Protcol that defines the view input methods.
  */
 protocol OperationViewInterface: class {
-    
+    func showExperimantImage(image: URL)
 }
 
 /*
  * Protocol that defines the commands sent from View to the Presenter.
  */
 protocol OperationPresenterInterface: class {
-    func predictButtonPushed()
+    func predictButtonTapped()
+    func changeExperimentImage()
     func deleteAllData()
 }
 
@@ -21,6 +22,7 @@ protocol OperationPresenterInterface: class {
 protocol OperationInteractorInput: class {
     func predictScenes(path: URL)
     func predictObjects(path: URL)
+    func getRandamImage()
     func deleteAll()
 }
 
@@ -30,6 +32,7 @@ protocol OperationInteractorInput: class {
 protocol OperationInteractorOutput: class {
     func predictedScenes()
     func predictedObjects()
+    func gotRandomImage(image: URL)
 }
 
 /*
