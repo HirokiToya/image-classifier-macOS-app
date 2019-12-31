@@ -147,11 +147,6 @@ extension InCategoryViewController: NSCollectionViewDelegate, NSCollectionViewDa
         
         item.bindProbability(image: imagePaths[indexPath.item], translationState: translationState)
         item.doubleClickedCallback = {
-            //            let storyboard: NSStoryboard = NSStoryboard(name: "ImageViewController", bundle: nil)
-            //            if let nextView = storyboard.instantiateInitialController() as? ImageViewController {
-            //                nextView.imageUrl = self.imagePaths[indexPath.item].url
-            //                self.presentAsModalWindow(nextView)
-            //            }
             
             let image = self.imagePaths[indexPath.item]
             if(self.selectedImages.filter({ $0.url == image.url }).count > 0) {
@@ -170,6 +165,14 @@ extension InCategoryViewController: NSCollectionViewDelegate, NSCollectionViewDa
             }
             let imageUrl = ["imageUrl": image.url]
             NotificationCenter.default.post(name: .setSelectedImage, object: nil, userInfo: imageUrl)
+        }
+        
+        item.rightMouseDownCallback = {
+            let storyboard: NSStoryboard = NSStoryboard(name: "ImageViewController", bundle: nil)
+            if let nextView = storyboard.instantiateInitialController() as? ImageViewController {
+                nextView.imageUrl = self.imagePaths[indexPath.item].url
+                self.presentAsModalWindow(nextView)
+            }
         }
         
         let image = self.imagePaths[indexPath.item]

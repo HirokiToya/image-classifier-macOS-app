@@ -13,6 +13,8 @@ class ImageCollectionViewItem: NSCollectionViewItem {
     
     
     var doubleClickedCallback:(()->Void)?
+    var rightMouseDownCallback:(()->Void)?
+    
     var isImageSelected: Bool = false {
         didSet {
             setImageBackgroundColor()
@@ -114,5 +116,11 @@ extension ImageCollectionViewItem: NSGestureRecognizerDelegate {
             }
         }
         return false
+    }
+    
+    @objc override func rightMouseDown(with event: NSEvent) {
+        if let callback = rightMouseDownCallback {
+            callback()
+        }
     }
 }

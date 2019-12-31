@@ -101,6 +101,7 @@ class OperationViewController: NSViewController, OperationViewInterface {
     }
     
     @IBAction func changeExperimentImage(_ sender: Any) {
+        experimentImageBackgroundView.layer?.backgroundColor = .clear
         self.presenter.changeExperimentImage()
     }
     
@@ -110,8 +111,6 @@ class OperationViewController: NSViewController, OperationViewInterface {
             
             if(experimentImageUrl == target) {
                 experimentImageBackgroundView.layer?.backgroundColor = NSColor.systemBlue.cgColor
-            } else {
-                experimentImageBackgroundView.layer?.backgroundColor = NSColor.systemRed.cgColor
             }
         }
     }

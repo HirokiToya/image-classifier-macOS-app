@@ -14,3 +14,14 @@ class ImageViewController: NSViewController {
     }
     
 }
+
+extension ImageViewController : NSGestureRecognizerDelegate {
+    
+    @objc override func mouseDown(with event: NSEvent) {
+        dismiss(nil)
+    }
+    
+    @objc override func rightMouseUp(with event: NSEvent) {
+        dismiss(nil)
+    }
+}
