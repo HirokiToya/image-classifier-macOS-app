@@ -3,7 +3,8 @@ import Foundation
 class FilePathes {
     
     private static var defaultBasePath: String = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0].absoluteString
-    private static var dataFilePath: String = defaultBasePath + "input/"
+    private static var inputDataFilePath: String = defaultBasePath + "input/"
+    private static var outputDataFilePath: String = "/Users/toyahiroki/Library/Containers/jp.com.example.image-classifier-app/Data/Documents/output/"
     private static var imageFolderPath: URL? = nil
     
     // 画像フォルダのPathを指定します．
@@ -23,8 +24,8 @@ class FilePathes {
     // 1. lexvec_similarity.json
     // 2. wordnet_path_similarity.json
     // 3. wordnet_wup_similarity.json
-    class func getSimilalityFilePath(fileName: String = "lexvec_similarity.json") -> URL? {
-        if let filePath = URL(string: dataFilePath + fileName){
+    class func getSimilalityFilePath(fileName: String = "wordnet_wup_similarity.json") -> URL? {
+        if let filePath = URL(string: inputDataFilePath + fileName){
             return filePath
         }
         return nil
@@ -32,9 +33,14 @@ class FilePathes {
     
     // 翻訳ファイルのPathを取得します．
     class func getTranslationFilePath(fileName: String = "translation_list.json") -> URL? {
-        if let filePath = URL(string: dataFilePath + fileName){
+        if let filePath = URL(string: inputDataFilePath + fileName){
             return filePath
         }
         return nil
+    }
+    
+    // outputフォルダのPathを取得します．
+    class func getOutputDataFilePath(fileName: String = "") -> String {
+        return outputDataFilePath + fileName
     }
 }

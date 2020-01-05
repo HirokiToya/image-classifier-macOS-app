@@ -1,7 +1,8 @@
 import Foundation
 
 class DebugComponent {
-    class func getTimeNow() -> String {
+    
+    func getTimeNow() -> String {
         let f = DateFormatter()
         f.dateStyle = .none
         f.timeStyle = .medium

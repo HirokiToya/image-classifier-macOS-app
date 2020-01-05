@@ -9,7 +9,7 @@ class OperationPresenter: OperationPresenterInterface {
             scenePredictionPathIndex = 0
             objectPredictionPathIndex = 0
             
-            print("画像識別開始:\(DebugComponent.getTimeNow())")
+            print("画像識別開始:\(DebugComponent().getTimeNow())")
             if(imagePathes.count > 0) {
                 predictScenes(index: scenePredictionPathIndex)
                 predictObjects(index: objectPredictionPathIndex)
@@ -87,7 +87,7 @@ extension OperationPresenter: OperationInteractorOutput {
         } else {
             // 識別の終了をViewに伝える
             print("\(scenePredictionPathIndex)/\(imagePathes.count)")
-            print("シーン識別終了:\(DebugComponent.getTimeNow())")
+            print("シーン識別終了:\(DebugComponent().getTimeNow())")
         }
     }
     
@@ -99,7 +99,7 @@ extension OperationPresenter: OperationInteractorOutput {
         } else {
             // 識別の終了をViewに伝える
             print("\(objectPredictionPathIndex)/\(imagePathes.count)")
-            print("物体識別終了:\(DebugComponent.getTimeNow())")
+            print("物体識別終了:\(DebugComponent().getTimeNow())")
         }
     }
     

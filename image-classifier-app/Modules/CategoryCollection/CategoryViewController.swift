@@ -113,7 +113,7 @@ class CategoryViewController: NSViewController {
                 alert.runModal()
             } else {
                 imagePaths = CategoryRepositories.clusterCategories(clusters: target)
-                print("クラスタリング処理終了時刻:\(DebugComponent.getTimeNow())")
+                print("クラスタリング処理終了時刻:\(DebugComponent().getTimeNow())")
             }
         }
     }

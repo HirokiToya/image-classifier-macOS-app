@@ -228,7 +228,7 @@ class CategoryRepositories {
                                 CategoryRepositories.categoryAttributes[index].representativeObjectName = resnetPrediction.label
                                 CategoryRepositories.categoryAttributes[index].scenePriority = false
                                 
-                                print("SceneId[\(targetSceneId)]\(targetCategoryImages.count)枚 → ObjectId[\(resnetPrediction.labelId)] \(DebugComponent.getTimeNow())")
+                                print("SceneId[\(targetSceneId)]\(targetCategoryImages.count)枚 → ObjectId[\(resnetPrediction.labelId)] \(DebugComponent().getTimeNow())")
                                 let dividedObjectNames = categoryAttributes
                                     .filter({ !$0.scenePriority })
                                     .filter({ $0.representativeObjectName == resnetPrediction.label })

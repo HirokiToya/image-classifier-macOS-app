@@ -62,9 +62,9 @@ class OperationInteractor: OperationInteractorInput {
     
     func getRandamImage() {
         let predictionResults = PredictionRepositories.loadPredictionResults()
-        let hightProbablityImages = predictionResults.filter({ $0.scenePredictions[0].probability > 0.4 })
-        let randomNum = Int.random(in: 0...hightProbablityImages.count-1)
-        let resultImage = hightProbablityImages[randomNum]
+//        let hightProbablityImages = predictionResults.filter({ $0.scenePredictions[0].probability > 0.4 })
+        let randomNum = Int.random(in: 0...predictionResults.count-1)
+        let resultImage = predictionResults[randomNum]
         print("\(resultImage.imagePath):\(resultImage.scenePredictions[0].probability)")
         self.output.gotRandomImage(image: resultImage.imagePath.url!)
     }

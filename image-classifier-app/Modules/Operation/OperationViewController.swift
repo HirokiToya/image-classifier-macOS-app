@@ -15,7 +15,6 @@ class OperationViewController: NSViewController, OperationViewInterface {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
         startPredictionButton.isEnabled = false
         
         presenter = OperationPresenter(view: self)
@@ -28,7 +27,7 @@ class OperationViewController: NSViewController, OperationViewInterface {
                                                name: .setSelectedImage,
                                                object: nil)
         
-        
+        self.presenter.changeExperimentImage()
     }
     
     override var representedObject: Any? {

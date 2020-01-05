@@ -121,7 +121,7 @@ class InCategoryViewController: NSViewController {
     
     @objc func outputLog(notification: Notification) {
         print("ログ出力")
-        print("Time:\(DebugComponent.getTimeNow())")
+        print("Time:\(DebugComponent().getTimeNow())")
         
         for image in selectedImages {
             if let representativeImage = CategoryRepositories.getRepresentativeImage(sceneId: image.sceneId){
@@ -131,6 +131,20 @@ class InCategoryViewController: NSViewController {
             }
         }
         print("不適切な画像：\(selectedImages.count)枚")
+        
+        var urls = ""
+        for image in selectedImages {
+            urls += " \(image.url.lastPathComponent)"
+        }
+        
+        print(urls)
+        
+        // 画像URLをファイルに書き出し
+        if (FileAccessor.writeFileData(fileName: "selected_images.txt", fileData: urls)){
+            print("書き出し成功")
+        } else {
+            print("書き出し失敗")
+        }
         
     }
 }

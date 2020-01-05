@@ -23,9 +23,10 @@ class FileAccessor {
         return fileData
     }
     
-    class func writeFileData(absoluteStrPath: String, fileData: String, encoding: String.Encoding = String.Encoding.utf8)  -> Bool {
+    class func writeFileData(fileName: String, fileData: String, encoding: String.Encoding = String.Encoding.utf8)  -> Bool {
         do {
-            try fileData.write(toFile: absoluteStrPath, atomically: true, encoding: encoding)
+            let path = FilePathes.getOutputDataFilePath(fileName: fileName)
+            try fileData.write(toFile: path, atomically: true, encoding: encoding)
         } catch {
             return false
         }
