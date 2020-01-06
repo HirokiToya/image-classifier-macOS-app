@@ -17,6 +17,8 @@
 		ED25B3F123718855001CA699 /* UIImageViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED25B3F023718855001CA699 /* UIImageViewExtension.swift */; };
 		ED2A330523668760004BF90E /* RealmAccessor.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED2A330423668760004BF90E /* RealmAccessor.swift */; };
 		ED2A33072366EC7E004BF90E /* Contracts.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED2A33062366EC7E004BF90E /* Contracts.swift */; };
+		ED34191723C2EE9000EAAEC0 /* ExperimentImages.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED34191623C2EE9000EAAEC0 /* ExperimentImages.swift */; };
+		ED34191923C3347200EAAEC0 /* DateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED34191823C3347200EAAEC0 /* DateExtension.swift */; };
 		ED4D70BA236AA23A007F3A3C /* InceptionResnet.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED4D70B9236AA23A007F3A3C /* InceptionResnet.swift */; };
 		ED5E9DCD237BF951004708F9 /* ImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED5E9DCC237BF951004708F9 /* ImageViewController.swift */; };
 		ED5E9DCF237BFDD6004708F9 /* ImageViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ED5E9DCE237BFDD6004708F9 /* ImageViewController.storyboard */; };
@@ -75,6 +77,8 @@
 		ED25B3F023718855001CA699 /* UIImageViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageViewExtension.swift; sourceTree = "<group>"; };
 		ED2A330423668760004BF90E /* RealmAccessor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmAccessor.swift; sourceTree = "<group>"; };
 		ED2A33062366EC7E004BF90E /* Contracts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Contracts.swift; sourceTree = "<group>"; };
+		ED34191623C2EE9000EAAEC0 /* ExperimentImages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExperimentImages.swift; sourceTree = "<group>"; };
+		ED34191823C3347200EAAEC0 /* DateExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExtension.swift; sourceTree = "<group>"; };
 		ED4D70B9236AA23A007F3A3C /* InceptionResnet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InceptionResnet.swift; sourceTree = "<group>"; };
 		ED5E9DCC237BF951004708F9 /* ImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageViewController.swift; sourceTree = "<group>"; };
 		ED5E9DCE237BFDD6004708F9 /* ImageViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ImageViewController.storyboard; sourceTree = "<group>"; };
@@ -206,6 +210,7 @@
 				EDF17E2F237153C600CA77C9 /* RealmModel.swift */,
 				ED6FB90E238271D200BDD446 /* SortActionTag.swift */,
 				ED0E5D7A2377358700E34B64 /* NotificationName.swift */,
+				ED34191623C2EE9000EAAEC0 /* ExperimentImages.swift */,
 			);
 			path = Entities;
 			sourceTree = "<group>";
@@ -251,6 +256,7 @@
 				ED25B3F023718855001CA699 /* UIImageViewExtension.swift */,
 				ED0E5D782377160500E34B64 /* StringToUrlExtention.swift */,
 				EDD15E57238BC92D002686CB /* DebugComponent.swift */,
+				ED34191823C3347200EAAEC0 /* DateExtension.swift */,
 			);
 			path = Libs;
 			sourceTree = "<group>";
@@ -504,6 +510,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				EDF56AAB233F7B6100A1019F /* ApiPayload.swift in Sources */,
+				ED34191923C3347200EAAEC0 /* DateExtension.swift in Sources */,
 				EDD6DC0C23619FF400CF3744 /* SceneClassifierRepositories.swift in Sources */,
 				ED0E5D7B2377358700E34B64 /* NotificationName.swift in Sources */,
 				EDD6DBFC23617B8B00CF3744 /* ApiAccessors.swift in Sources */,
@@ -513,6 +520,7 @@
 				ED1A98DF235391D500AC5701 /* OperationPresenter.swift in Sources */,
 				ED91661A2376A67400FFA053 /* InCategoryViewController.swift in Sources */,
 				ED69986223687ADE0032453A /* FilePathes.swift in Sources */,
+				ED34191723C2EE9000EAAEC0 /* ExperimentImages.swift in Sources */,
 				ED91412523787126003BE725 /* CategoryAttributes.swift in Sources */,
 				ED69985C23686B7C0032453A /* Result.swift in Sources */,
 				EDF17E2C237117FB00CA77C9 /* PredictionRepositories.swift in Sources */,

@@ -4,8 +4,12 @@ class FilePathes {
     
     private static var defaultBasePath: String = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0].absoluteString
     private static var inputDataFilePath: String = defaultBasePath + "input/"
-    private static var outputDataFilePath: String = "/Users/toyahiroki/Library/Containers/jp.com.example.image-classifier-app/Data/Documents/output/"
     private static var imageFolderPath: URL? = nil
+    
+    // DocumentDirectoryのPathを取得します．
+    class func getDefaultBasePath() -> URL?{
+        return FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).last
+    }
     
     // 画像フォルダのPathを指定します．
     class func setImageFolderPath(relativePath: URL){
@@ -37,10 +41,5 @@ class FilePathes {
             return filePath
         }
         return nil
-    }
-    
-    // outputフォルダのPathを取得します．
-    class func getOutputDataFilePath(fileName: String = "") -> String {
-        return outputDataFilePath + fileName
     }
 }

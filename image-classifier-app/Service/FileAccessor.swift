@@ -23,14 +23,24 @@ class FileAccessor {
         return fileData
     }
     
-    class func writeFileData(fileName: String, fileData: String, encoding: String.Encoding = String.Encoding.utf8)  -> Bool {
-        do {
-            let path = FilePathes.getOutputDataFilePath(fileName: fileName)
-            try fileData.write(toFile: path, atomically: true, encoding: encoding)
-        } catch {
-            return false
+    class func writeFileData(fileName: String, string: String, encoding: String.Encoding = String.Encoding.utf8) {
+        if let documentDirectoryFileURL = FilePathes.getDefaultBasePath() {
+            let targetTextFilePath = documentDirectoryFileURL.appendingPathComponent(fileName)
+            print("書き込むファイルのパス: \(targetTextFilePath)")
+            
+            do {
+                let fileHandle = try FileHandle(forWritingTo: targetTextFilePath)
+                let stringToWrite = "\n" + string
+                fileHandle.seekToEndOfFile()
+                fileHandle.write(stringToWrite.data(using: String.Encoding.utf8)!)
+            } catch {
+                do {
+                    try string.write(to: targetTextFilePath, atomically: true, encoding: String.Encoding.utf8)
+                } catch let error as NSError {
+                    print("failed to write: \(error)")
+                }
+            }
         }
-        return true
     }
 }
 

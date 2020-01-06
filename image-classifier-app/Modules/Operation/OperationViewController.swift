@@ -26,8 +26,6 @@ class OperationViewController: NSViewController, OperationViewInterface {
                                                selector: #selector(setSelectedImage(notification:)),
                                                name: .setSelectedImage,
                                                object: nil)
-        
-        self.presenter.changeExperimentImage()
     }
     
     override var representedObject: Any? {
@@ -58,6 +56,7 @@ class OperationViewController: NSViewController, OperationViewInterface {
         
     @IBAction func reloadData(_ sender: Any) {
         NotificationCenter.default.post(name: .reloadCategoryImages, object: nil)
+        presenter.reloadButtonTapped()
     }
     
     @IBAction func performClustering(_ sender: Any) {
@@ -110,12 +109,14 @@ class OperationViewController: NSViewController, OperationViewInterface {
             
             if(experimentImageUrl == target) {
                 experimentImageBackgroundView.layer?.backgroundColor = NSColor.systemBlue.cgColor
+                presenter.selectedCorrectImage()
             }
         }
     }
     
     @IBAction func outputLogButtonTapped(_ sender: Any) {
         NotificationCenter.default.post(name: .outputLog, object: nil)
+        presenter.outputLogButtonTapped()
     }
     
     private func showDialog(_ mainText: String, description: String) -> Bool {
@@ -131,8 +132,28 @@ class OperationViewController: NSViewController, OperationViewInterface {
 
 extension OperationViewController {
     // ランダムに取得した画像を表示します．
-    func showExperimantImage(image: URL){
-        experimentImageView.load(url: image)
-        experimentImageUrl = image
+    func showExperimentImage(image: URL?){
+        if let image = image {
+            experimentImageView.load(url: image)
+            experimentImageUrl = image
+        } else {
+            experimentImageView.image = nil
+            experimentImageUrl = nil
+        }
+    }
+}
+
+extension OperationViewController : NSGestureRecognizerDelegate {
+    
+    @objc override func mouseDown(with event: NSEvent) {
+        dismiss(nil)
+    }
+    
+    @objc override func rightMouseUp(with event: NSEvent) {
+        let storyboard: NSStoryboard = NSStoryboard(name: "ImageViewController", bundle: nil)
+        if let nextView = storyboard.instantiateInitialController() as? ImageViewController {
+            nextView.imageUrl = experimentImageUrl
+            self.presentAsModalWindow(nextView)
+        }
     }
 }

@@ -60,15 +60,26 @@ class OperationInteractor: OperationInteractorInput {
         }
     }
     
-    func getRandamImage() {
+    func getExperimentImage(trialCount: Int) {
         let predictionResults = PredictionRepositories.loadPredictionResults()
-//        let hightProbablityImages = predictionResults.filter({ $0.scenePredictions[0].probability > 0.4 })
-        let randomNum = Int.random(in: 0...predictionResults.count-1)
-        let resultImage = predictionResults[randomNum]
-        print("\(resultImage.imagePath):\(resultImage.scenePredictions[0].probability)")
-        self.output.gotRandomImage(image: resultImage.imagePath.url!)
+        
+        //        let randomNum = Int.random(in: 0...predictionResults.count-1)
+        //        let resultImage = predictionResults[randomNum]
+        //        print("\(resultImage.imagePath):\(resultImage.scenePredictions[0].probability)")
+        
+        
+        if(predictionResults.count == 200) {
+            let image = UserExperimentComponent.firstExperimentImages().getImage(count: trialCount)
+            self.output.gotExperimentImage(image: image)
+            
+        }
+        
+        if(predictionResults.count == 1000) {
+            let image = UserExperimentComponent.secondExperimentImages().getImage(count: trialCount)
+            self.output.gotExperimentImage(image: image)
+        } 
     }
-    
+        
     func deleteAll(){
         realmAccessor.deleteAll()
     }
