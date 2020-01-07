@@ -5,12 +5,12 @@ class ImageCollectionViewItem: NSCollectionViewItem {
     @IBOutlet var collectionViewItem: ImageCollectionViewItem!
     
     @IBOutlet weak var imageItem: NSImageView!
-    @IBOutlet weak var idLabel: NSTextField!
-    @IBOutlet weak var numberLabel: NSTextField!
-    @IBOutlet weak var nameLabel: NSTextField!
-    @IBOutlet weak var markImage: NSImageView!
     @IBOutlet weak var imageBackgrountView: NSView!
-    
+    @IBOutlet weak var idLabel: NSTextField!
+    @IBOutlet weak var markImage: NSImageView!
+    @IBOutlet weak var nameLabel: NSTextField!
+    @IBOutlet weak var numberLabel: NSTextField!
+    @IBOutlet weak var evaluationLabel: NSTextField!
     
     var doubleClickedCallback:(()->Void)?
     var rightMouseDownCallback:(()->Void)?
@@ -43,6 +43,11 @@ class ImageCollectionViewItem: NSCollectionViewItem {
                                                                   scenePriority: image.scenePriority).count
             numberLabel.stringValue = "\(num)枚"
             setMarkImage(isSceneImage: true)
+            if let evalution = image.evaluation {
+                evaluationLabel.stringValue = "評価 \((ceil(evalution * 1000) / 1000))"
+            } else {
+                evaluationLabel.stringValue = ""
+            }
             
         } else {
 
@@ -53,6 +58,7 @@ class ImageCollectionViewItem: NSCollectionViewItem {
                                                                   scenePriority: image.scenePriority).count
             numberLabel.stringValue = "\(num)枚"
             setMarkImage(isSceneImage: false)
+            evaluationLabel.stringValue = ""
         }
     }
     
@@ -66,13 +72,14 @@ class ImageCollectionViewItem: NSCollectionViewItem {
             numberLabel.stringValue = "\(ceil(image.sceneProbability * 1000) / 1000)"
             nameLabel.stringValue = setTransltedName(name: image.sceneName, state: translationState)
             setMarkImage(isSceneImage: true)
-            
+            evaluationLabel.stringValue = ""
         } else {
             
             idLabel.stringValue = "\(image.objectId)"
             numberLabel.stringValue = "\(ceil(image.objectProbability * 1000) / 1000)"
             nameLabel.stringValue = setTransltedName(name: image.objectName, state: translationState)
             setMarkImage(isSceneImage: false)
+            evaluationLabel.stringValue = ""
         }
     }
     

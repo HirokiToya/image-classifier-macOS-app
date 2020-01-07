@@ -27,7 +27,7 @@ class SimilalityRepositories {
         }
     }
     
-    fileprivate class func getSimilality(id1: Int, id2: Int) -> Double? {
+    class func getSimilality(id1: Int, id2: Int) -> Double? {
         
         if similality != nil {
             return similality![id1][id2]
@@ -72,6 +72,28 @@ class SimilalityRepositories {
         let similalityCategories = sortedSimilalities.filter({ ($0.categoryId1 == sceneId) || ($0.categoryId2 == sceneId) })
                 
         return similalityCategories
+    }
+}
+
+extension SimilalityRepositories {
+    
+    // 類似度にシーン識別結果を加味した係数を付加して値を返します．
+    class func getRewitedSimilality(labelId1: Int, labelId2: Int, coefficient: Double) -> Double? {
+        if let shouldRewriteSimilalityIds = getShouldRewriteSimilalityIds()[labelId1]{
+            for id in shouldRewriteSimilalityIds {
+                if(id == labelId2) {
+                    if let similality = getSimilality(id1: labelId1, id2: labelId2) {
+                        return fabs(similality) * coefficient
+                    }
+                }
+            }
+        }
+        
+        if let similality = getSimilality(id1: labelId1, id2: labelId2) {
+            return similality
+        }
+        
+        return nil
     }
     
     fileprivate class func getShouldRewriteSimilalityIds() -> [Int: [Int]] {
@@ -124,23 +146,5 @@ class SimilalityRepositories {
         }
         
         return shouldRewriteSimilalityIds
-    }
-    
-    fileprivate class func getRewitedSimilality(labelId1: Int, labelId2: Int, coefficient: Double) -> Double? {
-        if let shouldRewriteSimilalityIds = getShouldRewriteSimilalityIds()[labelId1]{
-            for id in shouldRewriteSimilalityIds {
-                if(id == labelId2) {
-                    if let similality = getSimilality(id1: labelId1, id2: labelId2) {
-                        return fabs(similality) * coefficient
-                    }
-                }
-            }
-        }
-        
-        if let similality = getSimilality(id1: labelId1, id2: labelId2) {
-            return similality
-        }
-        
-        return nil
     }
 }

@@ -28,7 +28,8 @@ class FilePathes {
     // 1. lexvec_similarity.json
     // 2. wordnet_path_similarity.json
     // 3. wordnet_wup_similarity.json
-    class func getSimilalityFilePath(fileName: String = "wordnet_wup_similarity.json") -> URL? {
+    // 4. wordnet_similarities.json // wup 修正版
+    class func getSimilalityFilePath(fileName: String = "wordnet_similarities.json") -> URL? {
         if let filePath = URL(string: inputDataFilePath + fileName){
             return filePath
         }

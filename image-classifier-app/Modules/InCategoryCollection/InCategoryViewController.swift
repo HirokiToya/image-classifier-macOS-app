@@ -81,7 +81,7 @@ class InCategoryViewController: NSViewController {
         self.imageCollectionView.dataSource = self
         
         let flowLayout = NSCollectionViewFlowLayout()
-        flowLayout.itemSize = NSSize(width: 130.0, height: 190.0)
+        flowLayout.itemSize = NSSize(width: 130.0, height: 197.0)
         flowLayout.sectionInset = NSEdgeInsets(top: 10.0, left: 10.0, bottom: 10.0, right: 10.0)
         flowLayout.minimumInteritemSpacing = 20.0
         flowLayout.minimumLineSpacing = 20.0

@@ -25,6 +25,7 @@
 		ED69985C23686B7C0032453A /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED69985B23686B7C0032453A /* Result.swift */; };
 		ED69985E23686C980032453A /* ClientError.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED69985D23686C980032453A /* ClientError.swift */; };
 		ED69986223687ADE0032453A /* FilePathes.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED69986123687ADE0032453A /* FilePathes.swift */; };
+		ED6B5C3C23C474F6008AEE08 /* CategoryEvaluationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED6B5C3B23C474F6008AEE08 /* CategoryEvaluationModel.swift */; };
 		ED6FB90F238271D200BDD446 /* SortActionTag.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED6FB90E238271D200BDD446 /* SortActionTag.swift */; };
 		ED91412523787126003BE725 /* CategoryAttributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED91412423787126003BE725 /* CategoryAttributes.swift */; };
 		ED91661A2376A67400FFA053 /* InCategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED9166192376A67400FFA053 /* InCategoryViewController.swift */; };
@@ -85,6 +86,7 @@
 		ED69985B23686B7C0032453A /* Result.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Result.swift; sourceTree = "<group>"; };
 		ED69985D23686C980032453A /* ClientError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientError.swift; sourceTree = "<group>"; };
 		ED69986123687ADE0032453A /* FilePathes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilePathes.swift; sourceTree = "<group>"; };
+		ED6B5C3B23C474F6008AEE08 /* CategoryEvaluationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryEvaluationModel.swift; sourceTree = "<group>"; };
 		ED6FB90E238271D200BDD446 /* SortActionTag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortActionTag.swift; sourceTree = "<group>"; };
 		ED91412423787126003BE725 /* CategoryAttributes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryAttributes.swift; sourceTree = "<group>"; };
 		ED9166192376A67400FFA053 /* InCategoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InCategoryViewController.swift; sourceTree = "<group>"; };
@@ -187,6 +189,7 @@
 			isa = PBXGroup;
 			children = (
 				ED69986123687ADE0032453A /* FilePathes.swift */,
+				ED6B5C3B23C474F6008AEE08 /* CategoryEvaluationModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -532,6 +535,7 @@
 				ED25B3F123718855001CA699 /* UIImageViewExtension.swift in Sources */,
 				ED0E5D792377160500E34B64 /* StringToUrlExtention.swift in Sources */,
 				EDF56A8A233F710F00A1019F /* OperationViewController.swift in Sources */,
+				ED6B5C3C23C474F6008AEE08 /* CategoryEvaluationModel.swift in Sources */,
 				ED1193082372ED330030B582 /* CategoryViewController.swift in Sources */,
 				ED0E5D7723770C4E00E34B64 /* CategoryRepositories.swift in Sources */,
 				ED2A33072366EC7E004BF90E /* Contracts.swift in Sources */,

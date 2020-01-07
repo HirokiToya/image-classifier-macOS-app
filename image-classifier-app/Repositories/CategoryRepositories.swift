@@ -10,6 +10,7 @@ class CategoryRepositories {
         var objectId: String
         var objectName: String
         var objectProbability: Double
+        var evaluation: Double?
         var scenePriority: Bool
     }
     
@@ -247,6 +248,8 @@ extension CategoryRepositories {
         }
         // 統合後表示する代表画像のリストの生成
         let clusteredCategoryAttributes = CategoryRepositories.categoryAttributes
+        let categoryEvaluationModel = CategoryEvaluationModel(attributes: clusteredCategoryAttributes)
+        
         for label in 0...364 {
             let categoryImages = clusteredCategoryAttributes
                 .filter({ $0.representativeSceneId == label })
@@ -260,6 +263,10 @@ extension CategoryRepositories {
                     }
                 }
                 
+                let evolutionResult = categoryEvaluationModel.getEvaluation(representativeSceneId: Int(shoudRepresentativeImage.scenePredictions[0].labelId)!)
+                print("代表画像:\(shoudRepresentativeImage.scenePredictions[0].labelId)のカテゴリ評価値：\(evolutionResult)")
+                print("---------------------------")
+                
                 images.append(Image(url: shoudRepresentativeImage.imagePath.url!,
                                     sceneId: Int(shoudRepresentativeImage.scenePredictions[0].labelId)!,
                                     sceneName: shoudRepresentativeImage.scenePredictions[0].label,
@@ -267,6 +274,7 @@ extension CategoryRepositories {
                                     objectId: shoudRepresentativeImage.resnetPredictions[0].labelId,
                                     objectName: shoudRepresentativeImage.resnetPredictions[0].label,
                                     objectProbability: shoudRepresentativeImage.resnetPredictions[0].probability,
+                                    evaluation: evolutionResult,
                                     scenePriority: true))
             }
         }
