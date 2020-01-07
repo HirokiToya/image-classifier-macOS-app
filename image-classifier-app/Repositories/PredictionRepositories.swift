@@ -57,7 +57,7 @@ class PredictionRepositories {
         return predictions
     }
     
-    func getSameSceneIdCount(sceneId: Int) -> Int {
+    class func getSameSceneIdCount(sceneId: Int) -> Int {
         let predictionResults = PredictionRepositories.loadPredictionResults()
         let results = predictionResults.filter({ Int($0.scenePredictions[0].labelId) == sceneId })
         return results.count

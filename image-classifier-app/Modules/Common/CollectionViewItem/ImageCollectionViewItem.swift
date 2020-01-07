@@ -38,9 +38,9 @@ class ImageCollectionViewItem: NSCollectionViewItem {
 
             idLabel.stringValue = "\(image.sceneId)"
             nameLabel.stringValue = setTransltedName(name: image.sceneName, state: translationState)
-            let num = CategoryRepositories.getInCategoryImagesCount(sceneId: image.sceneId,
-                                                                    objectName: image.objectName,
-                                                                    scenePriority: image.scenePriority)
+            let num = CategoryRepositories.getSceneCategoryImages(sceneId: image.sceneId,
+                                                                  objectName: image.objectName,
+                                                                  scenePriority: image.scenePriority).count
             numberLabel.stringValue = "\(num)枚"
             setMarkImage(isSceneImage: true)
             
@@ -48,9 +48,9 @@ class ImageCollectionViewItem: NSCollectionViewItem {
 
             idLabel.stringValue = "(\(image.sceneId))"
             nameLabel.stringValue = setTransltedName(name: image.objectName, state: translationState)
-            let num = CategoryRepositories.getInCategoryImagesCount(sceneId: image.sceneId,
-                                                                    objectName: image.objectName,
-                                                                    scenePriority: image.scenePriority)
+            let num = CategoryRepositories.getSceneCategoryImages(sceneId: image.sceneId,
+                                                                  objectName: image.objectName,
+                                                                  scenePriority: image.scenePriority).count
             numberLabel.stringValue = "\(num)枚"
             setMarkImage(isSceneImage: false)
         }

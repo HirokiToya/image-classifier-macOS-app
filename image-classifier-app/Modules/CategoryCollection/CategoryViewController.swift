@@ -26,7 +26,7 @@ class CategoryViewController: NSViewController {
                 imagePaths.sort(by: { $0.sceneId < $1.sceneId })
             case .bByCount:
                 imagePaths.sort(by: {
-                    CategoryRepositories.getInCategoryImagesCount(sceneId: $0.sceneId, objectName: $0.objectName, scenePriority: $0.scenePriority) > CategoryRepositories.getInCategoryImagesCount(sceneId: $1.sceneId, objectName: $1.objectName, scenePriority: $1.scenePriority)
+                    CategoryRepositories.getSceneCategoryImages(sceneId: $0.sceneId, objectName: $0.objectName, scenePriority: $0.scenePriority).count > CategoryRepositories.getSceneCategoryImages(sceneId: $1.sceneId, objectName: $1.objectName, scenePriority: $1.scenePriority).count
                 })
             case .byProbability:
                 imagePaths.sort(by: {
@@ -112,7 +112,15 @@ class CategoryViewController: NSViewController {
                 alert.informativeText = "0より大きいカテゴリ数を指定してください．"
                 alert.runModal()
             } else {
-                imagePaths = CategoryRepositories.clusterCategories(clusters: target)
+                
+                if(target < CategoryRepositories.getSceneRepresentativeImages().count){
+                    // カテゴリ統合処理結果を取得します．
+                    imagePaths = CategoryRepositories.integrateCategories(clusters: target)
+                } else {
+                    // カテゴリ分割処理結果を取得します．
+                    imagePaths = CategoryRepositories.divideCategories(clusters: target)
+                }
+                
                 print("クラスタリング処理終了時刻:\(DebugComponent().getTimeNow())")
             }
         }
