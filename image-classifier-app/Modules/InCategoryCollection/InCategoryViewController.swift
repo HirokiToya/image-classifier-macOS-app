@@ -4,7 +4,7 @@ class InCategoryViewController: NSViewController {
     
     @IBOutlet weak var imageCollectionView: NSCollectionView!
     
-    var sortTag: SortActionTag = .byProbability {
+    var sortTag: SortActionTag = .byEvalution {
         didSet {
             imagePaths = imagesCache
         }
@@ -28,7 +28,7 @@ class InCategoryViewController: NSViewController {
                 }
             case .bByCount:
                 break
-            case .byProbability:
+            case .byEvalution:
                 if(scenePriorityCache) {
                     imagePaths.sort(by: { $0.sceneProbability > $1.sceneProbability })
                 } else {
@@ -108,8 +108,8 @@ class InCategoryViewController: NSViewController {
                 sortTag = .byId
             case .bByCount:
                 sortTag = .bByCount
-            case .byProbability:
-                sortTag = .byProbability
+            case .byEvalution:
+                sortTag = .byEvalution
             }
         }
     }

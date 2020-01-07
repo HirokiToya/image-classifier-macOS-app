@@ -28,17 +28,21 @@ class CategoryViewController: NSViewController {
                 imagePaths.sort(by: {
                     CategoryRepositories.getSceneCategoryImages(sceneId: $0.sceneId, objectName: $0.objectName, scenePriority: $0.scenePriority).count > CategoryRepositories.getSceneCategoryImages(sceneId: $1.sceneId, objectName: $1.objectName, scenePriority: $1.scenePriority).count
                 })
-            case .byProbability:
+            case .byEvalution:
+//                imagePaths.sort(by: {
+//                    if($0.scenePriority && $1.scenePriority) {
+//                       return ($0.sceneProbability > $1.sceneProbability)
+//                    } else if (!$0.scenePriority && $1.scenePriority){
+//                       return ($0.objectProbability > $1.sceneProbability)
+//                    } else if($0.scenePriority && !$1.scenePriority) {
+//                        return ($0.sceneProbability > $1.objectProbability)
+//                    } else {
+//                        return ($0.objectProbability > $1.objectProbability)
+//                    }
+//                })
+                
                 imagePaths.sort(by: {
-                    if($0.scenePriority && $1.scenePriority) {
-                       return ($0.sceneProbability > $1.sceneProbability)
-                    } else if (!$0.scenePriority && $1.scenePriority){
-                       return ($0.objectProbability > $1.sceneProbability)
-                    } else if($0.scenePriority && !$1.scenePriority) {
-                        return ($0.sceneProbability > $1.objectProbability)
-                    } else {
-                        return ($0.objectProbability > $1.objectProbability)
-                    }
+                    $0.evaluation ?? 0 > $1.evaluation ?? 0
                 })
             }
             
@@ -133,8 +137,8 @@ class CategoryViewController: NSViewController {
                 sortTag = .byId
             case .bByCount:
                 sortTag = .bByCount
-            case .byProbability:
-                sortTag = .byProbability
+            case .byEvalution:
+                sortTag = .byEvalution
             }
         }
     }

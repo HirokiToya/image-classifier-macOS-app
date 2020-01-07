@@ -38,6 +38,14 @@
                         <constraint firstItem="umH-HU-rOc" firstAttribute="centerY" secondItem="wKY-Gy-tcX" secondAttribute="centerY" id="hHd-w8-fEp"/>
                     </constraints>
                 </customView>
+                <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="HCT-u7-5LC">
+                    <rect key="frame" x="51" y="56" width="16" height="16"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="16" id="9BE-fa-85Y"/>
+                        <constraint firstAttribute="width" constant="16" id="ViO-cW-yGA"/>
+                    </constraints>
+                    <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="NSStatusAvailable" id="2Ud-AE-pvK"/>
+                </imageView>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xh9-jO-9on">
                     <rect key="frame" x="65" y="56" width="41" height="16"/>
                     <textFieldCell key="cell" lineBreakMode="clipping" alignment="center" title="Label" id="OG9-NQ-vPM">
@@ -62,14 +70,6 @@
                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
-                <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="HCT-u7-5LC">
-                    <rect key="frame" x="51" y="56" width="16" height="16"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="16" id="9BE-fa-85Y"/>
-                        <constraint firstAttribute="width" constant="16" id="ViO-cW-yGA"/>
-                    </constraints>
-                    <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="NSStatusAvailable" id="2Ud-AE-pvK"/>
-                </imageView>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="vBd-uc-Xpy">
                     <rect key="frame" x="41" y="0.0" width="89" height="16"/>
                     <textFieldCell key="cell" lineBreakMode="clipping" title="カテゴリ評価値" id="QYl-S0-HnA">
@@ -86,10 +86,10 @@
                 <constraint firstItem="xh9-jO-9on" firstAttribute="leading" secondItem="HCT-u7-5LC" secondAttribute="trailing" id="Gmf-2z-zRJ"/>
                 <constraint firstItem="xh9-jO-9on" firstAttribute="centerY" secondItem="HCT-u7-5LC" secondAttribute="centerY" id="MYL-nr-FlR"/>
                 <constraint firstItem="HCT-u7-5LC" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="Hz6-mo-xeY" secondAttribute="leading" id="NGC-Oy-2mz"/>
-                <constraint firstItem="vBd-uc-Xpy" firstAttribute="top" secondItem="Onm-5g-rkg" secondAttribute="bottom" constant="8" symbolic="YES" id="R8h-7O-i0A"/>
                 <constraint firstItem="Onm-5g-rkg" firstAttribute="top" secondItem="Uca-Rj-DmX" secondAttribute="bottom" id="eo9-IV-A4a"/>
                 <constraint firstAttribute="bottom" secondItem="vBd-uc-Xpy" secondAttribute="bottom" id="fBW-8K-dsK"/>
                 <constraint firstItem="vBd-uc-Xpy" firstAttribute="centerX" secondItem="Hz6-mo-xeY" secondAttribute="centerX" id="hl7-78-OPE"/>
+                <constraint firstItem="vBd-uc-Xpy" firstAttribute="top" secondItem="Onm-5g-rkg" secondAttribute="bottom" constant="8" symbolic="YES" id="mVx-5B-8ui"/>
                 <constraint firstItem="Uca-Rj-DmX" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="Hz6-mo-xeY" secondAttribute="leading" id="oZ6-5t-pLm"/>
                 <constraint firstItem="xh9-jO-9on" firstAttribute="centerX" secondItem="Hz6-mo-xeY" secondAttribute="centerX" id="s5D-Fb-4Jf"/>
                 <constraint firstItem="wKY-Gy-tcX" firstAttribute="centerX" secondItem="Hz6-mo-xeY" secondAttribute="centerX" id="tDz-6t-1if"/>
