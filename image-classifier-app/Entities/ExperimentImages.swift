@@ -4,9 +4,9 @@ class UserExperimentComponent {
     
     // 200枚の実験で用いる画像です．
     struct firstExperimentImages {
-        let first: URL = "file:///Users/toyahiroki/Pictures/correct_images_200/AC189_L.jpg"
-        let second: URL = "file:///Users/toyahiroki/Pictures/correct_images_200/DU175_L.jpg"
-        let third: URL = "file:///Users/toyahiroki/Pictures/correct_images_200/AQ011_L.jpg"
+        let first: URL = "file:///Users/toyahiroki/Pictures/correct_images_200/AC164_L.jpg"
+        let second: URL = "file:///Users/toyahiroki/Pictures/correct_images_200/DU060_L.jpg"
+        let third: URL = "file:///Users/toyahiroki/Pictures/correct_images_200/DX031_L.jpg"
         
         func getImage(count: Int) -> URL?{
             switch count {
