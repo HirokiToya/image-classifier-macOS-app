@@ -69,14 +69,14 @@ class ImageCollectionViewItem: NSCollectionViewItem {
         if(image.scenePriority) {
             
             idLabel.stringValue = "\(image.sceneId)"
-            numberLabel.stringValue = "\(ceil(image.sceneProbability * 1000) / 1000)"
+            numberLabel.stringValue = "識別確率 \(ceil(image.sceneProbability * 1000) / 1000)"
             nameLabel.stringValue = setTransltedName(name: image.sceneName, state: translationState)
             setMarkImage(isSceneImage: true)
             evaluationLabel.stringValue = ""
         } else {
             
             idLabel.stringValue = "\(image.objectId)"
-            numberLabel.stringValue = "\(ceil(image.objectProbability * 1000) / 1000)"
+            numberLabel.stringValue = "識別確率 \(ceil(image.objectProbability * 1000) / 1000)"
             nameLabel.stringValue = setTransltedName(name: image.objectName, state: translationState)
             setMarkImage(isSceneImage: false)
             evaluationLabel.stringValue = ""

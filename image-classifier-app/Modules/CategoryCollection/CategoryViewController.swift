@@ -28,19 +28,7 @@ class CategoryViewController: NSViewController {
                 imagePaths.sort(by: {
                     CategoryRepositories.getSceneCategoryImages(sceneId: $0.sceneId, objectName: $0.objectName, scenePriority: $0.scenePriority).count > CategoryRepositories.getSceneCategoryImages(sceneId: $1.sceneId, objectName: $1.objectName, scenePriority: $1.scenePriority).count
                 })
-            case .byEvalution:
-//                imagePaths.sort(by: {
-//                    if($0.scenePriority && $1.scenePriority) {
-//                       return ($0.sceneProbability > $1.sceneProbability)
-//                    } else if (!$0.scenePriority && $1.scenePriority){
-//                       return ($0.objectProbability > $1.sceneProbability)
-//                    } else if($0.scenePriority && !$1.scenePriority) {
-//                        return ($0.sceneProbability > $1.objectProbability)
-//                    } else {
-//                        return ($0.objectProbability > $1.objectProbability)
-//                    }
-//                })
-                
+            case .byEvalution:                
                 imagePaths.sort(by: {
                     $0.evaluation ?? 0 > $1.evaluation ?? 0
                 })
