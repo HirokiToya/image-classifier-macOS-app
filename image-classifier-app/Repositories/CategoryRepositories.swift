@@ -87,7 +87,7 @@ class CategoryRepositories {
         
         return images
     }
-        
+    
     /**** 選択した代表画像のカテゴリ内に含まれる画像を返します．****/
     class func getSceneCategoryImages(sceneId: Int, objectName: String, scenePriority: Bool) -> [Image] {
         
@@ -140,7 +140,7 @@ class CategoryRepositories {
         
         return images
     }
-        
+    
     /**** CategoryAttribute内でsceneIdが一致する画像を全て返します．****/
     class func getSameSceneIdCount(sceneId: Int) -> [CategoryAttribute] {
         return CategoryRepositories.categoryAttributes.filter({ $0.representativeSceneId == sceneId})
@@ -180,7 +180,6 @@ class CategoryRepositories {
     }
 }
 
-
 /****カテゴリ統合処理****/
 extension CategoryRepositories {
     
@@ -192,9 +191,9 @@ extension CategoryRepositories {
         categoryAttributes = []
         for result in predictionResults {
             categoryAttributes.append(CategoryAttribute(predictionResult: result,
-                                                                             representativeSceneId: Int(result.scenePredictions[0].labelId)!,
-                                                                             representativeObjectName: result.resnetPredictions[0].labelId,
-                                                                             scenePriority: true))
+                                                        representativeSceneId: Int(result.scenePredictions[0].labelId)!,
+                                                        representativeObjectName: result.resnetPredictions[0].labelId,
+                                                        scenePriority: true))
         }
         
         var sceneCategoryCounts:[CategoryImagesCount] = []
@@ -203,15 +202,107 @@ extension CategoryRepositories {
         
         while(clusteredCount < (defaultCategoriesCount - clusters)) {
             
+            /***カテゴリの枚数を無視してカテゴリ統合評価のみを考慮してカテゴリ統合する***/
+//            // 代表画像のSceneIdのリストを返します．
+//            let representativeSceneIds: [Int] = categoryAttributes.map({ $0.representativeSceneId })
+//            let representativeCategories = representativeSceneIds.unique().sorted(by: { $0 < $1 })
+//            print("代表画像カテゴリ数：\(representativeCategories.count)")
+//
+//            var bestEvalution: Double = 0.0
+//            var shouldIntegratedCategoryId1: Int = 0
+//            var shouldIntegratedCategoryId2: Int = 0
+//
+//            for id1 in representativeCategories {
+//                for id2 in representativeCategories {
+//                    if(id1 > id2) {
+//                        let evalution = evaluator.evaluateCategories(categotyAttributes: categoryAttributes,
+//                                                                     fromRepresentativeSceneId: id1,
+//                                                                     toRepresentativeSceneId: id2)
+//                        if(evalution > bestEvalution) {
+//                            bestEvalution = evalution
+//                            shouldIntegratedCategoryId1 = id1
+//                            shouldIntegratedCategoryId2 = id2
+//                        }
+//                    }
+//                }
+//            }
+//
+//            let categoryId1Images = categoryAttributes.filter({ $0.representativeSceneId == shouldIntegratedCategoryId1 })
+//            let categoryId2Images = categoryAttributes.filter({ $0.representativeSceneId == shouldIntegratedCategoryId2 })
+//            let categoryId1Count = PredictionRepositories.getSameSceneIdCount(sceneId: shouldIntegratedCategoryId1)
+//            let categoryId2Count = PredictionRepositories.getSameSceneIdCount(sceneId: shouldIntegratedCategoryId2)
+//            if( categoryId1Count > categoryId2Count) {
+//                for (index,categoryAttribute) in categoryAttributes.enumerated() {
+//                    if(categoryAttribute.representativeSceneId == shouldIntegratedCategoryId2) {
+//                        categoryAttributes[index].representativeSceneId = shouldIntegratedCategoryId1
+//                    }
+//                }
+//                print("カテゴリ[\(shouldIntegratedCategoryId2)] \(categoryId2Images.count)枚 >> カテゴリ[\(shouldIntegratedCategoryId1)] \(categoryId1Images.count)枚 \(bestEvalution)")
+//            } else {
+//                for (index,categoryAttribute) in categoryAttributes.enumerated() {
+//                    if(categoryAttribute.representativeSceneId == shouldIntegratedCategoryId1) {
+//                        categoryAttributes[index].representativeSceneId = shouldIntegratedCategoryId2
+//                    }
+//                }
+//                 print("カテゴリ[\(shouldIntegratedCategoryId1)] \(categoryId1Images.count)枚 >> カテゴリ[\(shouldIntegratedCategoryId2)] \(categoryId2Images.count)枚 \(bestEvalution)")
+//            }
+//
+//            clusteredCount += 1
+            
+            
+            /***カテゴリの枚数が一番少ないカテゴリをターゲットに代表画像同士の類似度が最大のカテゴリと統合する．***/
+//            sceneCategoryCounts = []
+//            for labelId in (0...364) {
+//                let categoryImages = categoryAttributes.filter({ $0.representativeSceneId == labelId})
+//                sceneCategoryCounts.append(CategoryImagesCount(labelId: labelId, count: categoryImages.count))
+//            }
+//
+//            sceneCategoryCounts.sort(by: { $0.count < $1.count })
+//            let filteredCategories = sceneCategoryCounts.filter({ $0.count != 0 })
+//
+//            // 枚数が一番少ない統合すべきカテゴリId
+//            if let targetId = filteredCategories.first?.labelId {
+//                let similarList = SimilalityRepositories.getSimilarSceneIds(sceneId: targetId)
+//                let filteredSimilarList = similarList.filter({
+//                    CategoryRepositories.getSameSceneIdCount(sceneId: $0.categoryId1).count > 0 &&
+//                        CategoryRepositories.getSameSceneIdCount(sceneId: $0.categoryId2).count > 0
+//                })
+//            if let similarAttr = filteredSimilarList.first {
+//                let categoryId1Images = categoryAttributes.filter({ $0.representativeSceneId == similarAttr.categoryId1 })
+//                let categoryId2Images = categoryAttributes.filter({ $0.representativeSceneId == similarAttr.categoryId2 })
+//                let categoryId1Count = PredictionRepositories.getSameSceneIdCount(sceneId: similarAttr.categoryId1)
+//                let categoryId2Count = PredictionRepositories.getSameSceneIdCount(sceneId: similarAttr.categoryId2)
+//                if( categoryId1Count > categoryId2Count) {
+//                    for (index,categoryAttribute) in categoryAttributes.enumerated() {
+//                        if(categoryAttribute.representativeSceneId == similarAttr.categoryId2) {
+//                            categoryAttributes[index].representativeSceneId = similarAttr.categoryId1
+//                        }
+//                    }
+//                    print("カテゴリ[\(similarAttr.categoryId2)] \(categoryId2Images.count)枚 >> カテゴリ[\(similarAttr.categoryId1)] \(categoryId1Images.count)枚 \(similarAttr.similality)")
+//
+//                } else {
+//                    for (index,categoryAttribute) in categoryAttributes.enumerated() {
+//                        if(categoryAttribute.representativeSceneId == similarAttr.categoryId1) {
+//                            categoryAttributes[index].representativeSceneId = similarAttr.categoryId2
+//                        }
+//                    }
+//
+//                    print("カテゴリ[\(similarAttr.categoryId1)] \(categoryId1Images.count)枚 >> カテゴリ[\(similarAttr.categoryId2)] \(categoryId2Images.count)枚 \(similarAttr.similality)")
+//                }
+//
+//                clusteredCount += 1
+//            }
+            
+            /***カテゴリの枚数が一番少ないカテゴリをターゲットにカテゴリ統合評価が最大になるカテゴリと統合する．***/
             sceneCategoryCounts = []
             for labelId in (0...364) {
                 let categoryImages = categoryAttributes.filter({ $0.representativeSceneId == labelId})
                 sceneCategoryCounts.append(CategoryImagesCount(labelId: labelId, count: categoryImages.count))
             }
-            
+
             sceneCategoryCounts.sort(by: { $0.count < $1.count })
             let filteredCategories = sceneCategoryCounts.filter({ $0.count != 0 })
-            
+
             // 枚数が一番少ない統合すべきカテゴリId
             if let targetId = filteredCategories.first?.labelId {
                 let similarList = SimilalityRepositories.getSimilarSceneIds(sceneId: targetId)
@@ -219,11 +310,11 @@ extension CategoryRepositories {
                     CategoryRepositories.getSameSceneIdCount(sceneId: $0.categoryId1).count > 0 &&
                         CategoryRepositories.getSameSceneIdCount(sceneId: $0.categoryId2).count > 0
                 })
-                
+
                 var bestEvalution: Double = 0.0
                 var shouldIntegratedCategoryId1: Int = filteredSimilarList[0].categoryId1
                 var shouldIntegratedCategoryId2: Int = filteredSimilarList[0].categoryId2
-                
+
                 for similarAttr in filteredSimilarList {
                     let evalution = evaluator.evaluateCategories(categotyAttributes: categoryAttributes,
                                                                  fromRepresentativeSceneId: similarAttr.categoryId1,
@@ -234,36 +325,7 @@ extension CategoryRepositories {
                         shouldIntegratedCategoryId2 = similarAttr.categoryId2
                     }
                 }
-                
-                if let similarAttr = filteredSimilarList.first {
-                    print("---------------------------")
-                    print("これまで：\(similarAttr.categoryId1),\(similarAttr.categoryId2) 評価値 \(evaluator.evaluateCategories(categotyAttributes: categoryAttributes, fromRepresentativeSceneId: similarAttr.categoryId1, toRepresentativeSceneId: similarAttr.categoryId2))")
-                                    
-                //                    let categoryId1Images = categoryAttributes.filter({ $0.representativeSceneId == similarAttr.categoryId1 })
-                //                    let categoryId2Images = categoryAttributes.filter({ $0.representativeSceneId == similarAttr.categoryId2 })
-                //                    let categoryId1Count = PredictionRepositories.getSameSceneIdCount(sceneId: similarAttr.categoryId1)
-                //                    let categoryId2Count = PredictionRepositories.getSameSceneIdCount(sceneId: similarAttr.categoryId2)
-                //                    if( categoryId1Count > categoryId2Count) {
-                //                        for (index,categoryAttribute) in categoryAttributes.enumerated() {
-                //                            if(categoryAttribute.representativeSceneId == similarAttr.categoryId2) {
-                //                                categoryAttributes[index].representativeSceneId = similarAttr.categoryId1
-                //                            }
-                //                        }
-                //                        print("カテゴリ[\(similarAttr.categoryId2)] \(categoryId2Images.count)枚 >> カテゴリ[\(similarAttr.categoryId1)] \(categoryId1Images.count)枚 \(similarAttr.similality)")
-                //
-                //                    } else {
-                //                        for (index,categoryAttribute) in categoryAttributes.enumerated() {
-                //                            if(categoryAttribute.representativeSceneId == similarAttr.categoryId1) {
-                //                                categoryAttributes[index].representativeSceneId = similarAttr.categoryId2
-                //                            }
-                //                        }
-                //                        print("カテゴリ[\(similarAttr.categoryId1)] \(categoryId1Images.count)枚 >> カテゴリ[\(similarAttr.categoryId2)] \(categoryId2Images.count)枚 \(similarAttr.similality)")
-                //                    }
-                //
-                //                    clusteredCount += 1
-                }
-                
-                // 統合処理
+
                 let categoryId1Images = categoryAttributes.filter({ $0.representativeSceneId == shouldIntegratedCategoryId1 })
                 let categoryId2Images = categoryAttributes.filter({ $0.representativeSceneId == shouldIntegratedCategoryId2 })
                 let categoryId1Count = PredictionRepositories.getSameSceneIdCount(sceneId: shouldIntegratedCategoryId1)
@@ -274,23 +336,22 @@ extension CategoryRepositories {
                             categoryAttributes[index].representativeSceneId = shouldIntegratedCategoryId1
                         }
                     }
-//                    print("カテゴリ[\(shouldIntegratedCategoryId2)] \(categoryId2Images.count)枚 >> カテゴリ[\(shouldIntegratedCategoryId1)] \(categoryId1Images.count)枚 \(bestEvalution)")
-                    
+                    print("カテゴリ[\(shouldIntegratedCategoryId2)] \(categoryId2Images.count)枚 >> カテゴリ[\(shouldIntegratedCategoryId1)] \(categoryId1Images.count)枚 \(bestEvalution)")
+
                 } else {
                     for (index,categoryAttribute) in categoryAttributes.enumerated() {
                         if(categoryAttribute.representativeSceneId == shouldIntegratedCategoryId1) {
                             categoryAttributes[index].representativeSceneId = shouldIntegratedCategoryId2
                         }
                     }
-                    
-//                    print("カテゴリ[\(shouldIntegratedCategoryId1)] \(categoryId1Images.count)枚 >> カテゴリ[\(shouldIntegratedCategoryId2)] \(categoryId2Images.count)枚 \(bestEvalution)")
+
+                    print("カテゴリ[\(shouldIntegratedCategoryId1)] \(categoryId1Images.count)枚 >> カテゴリ[\(shouldIntegratedCategoryId2)] \(categoryId2Images.count)枚 \(bestEvalution)")
                 }
-                
-                print("こんかい：\(shouldIntegratedCategoryId1),\(shouldIntegratedCategoryId2) 評価値 \(bestEvalution)")
+
                 clusteredCount += 1
-                
             }
         }
+        
         // 統合後表示する代表画像のリストの生成
         let clusteredCategoryAttributes = categoryAttributes
         let categoryEvaluationModel = CategoryEvaluationModel()
@@ -312,8 +373,8 @@ extension CategoryRepositories {
                     categotyAttributes: clusteredCategoryAttributes,
                     representativeSceneId: Int(shoudRepresentativeImage.scenePredictions[0].labelId)!
                 )
-//                print("代表画像:\(shoudRepresentativeImage.scenePredictions[0].labelId)のカテゴリ評価値：\(evolutionResult)")
-//                print("---------------------------")
+                //                print("代表画像:\(shoudRepresentativeImage.scenePredictions[0].labelId)のカテゴリ評価値：\(evolutionResult)")
+                //                print("---------------------------")
                 
                 images.append(Image(url: shoudRepresentativeImage.imagePath.url!,
                                     sceneId: Int(shoudRepresentativeImage.scenePredictions[0].labelId)!,
