@@ -819,7 +819,7 @@
                                     <action selector="rightViewRadioButtonTapped:" target="taL-D0-KaQ" id="5wT-ls-Vfx"/>
                                 </connections>
                             </button>
-                            <button verticalHuggingPriority="750" tag="2" translatesAutoresizingMaskIntoConstraints="NO" id="ULL-qm-sXe">
+                            <button verticalHuggingPriority="750" tag="3" translatesAutoresizingMaskIntoConstraints="NO" id="ULL-qm-sXe">
                                 <rect key="frame" x="77" y="424" width="59" height="18"/>
                                 <buttonCell key="cell" type="radio" title="確率順" bezelStyle="regularSquare" imagePosition="left" alignment="left" state="on" inset="2" id="Re3-Ma-Rzs">
                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -932,6 +932,16 @@
                                     <action selector="leftViewRadioButtonTapped:" target="taL-D0-KaQ" id="ORr-J2-ezL"/>
                                 </connections>
                             </button>
+                            <button verticalHuggingPriority="750" tag="4" translatesAutoresizingMaskIntoConstraints="NO" id="aai-ZK-xN0">
+                                <rect key="frame" x="77" y="398" width="71" height="18"/>
+                                <buttonCell key="cell" type="radio" title="ランダム" bezelStyle="regularSquare" imagePosition="left" alignment="left" inset="2" id="8jt-OI-2lM">
+                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="rightViewRadioButtonTapped:" target="taL-D0-KaQ" id="eEo-xY-PEI"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <constraints>
                             <constraint firstItem="ULL-qm-sXe" firstAttribute="leading" secondItem="KK5-ci-9Mw" secondAttribute="leading" id="2RK-VB-uii"/>
@@ -950,6 +960,7 @@
                             <constraint firstItem="ULL-qm-sXe" firstAttribute="leading" secondItem="KK5-ci-9Mw" secondAttribute="leading" id="Dg5-mV-eGY"/>
                             <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="amb-Ec-sML" secondAttribute="trailing" constant="20" symbolic="YES" id="Dpk-wB-FIe"/>
                             <constraint firstItem="LWU-an-Sa8" firstAttribute="top" secondItem="amb-Ec-sML" secondAttribute="bottom" constant="5" id="Eke-Ac-xde"/>
+                            <constraint firstItem="aai-ZK-xN0" firstAttribute="leading" secondItem="ULL-qm-sXe" secondAttribute="leading" id="FX7-a0-PZA"/>
                             <constraint firstItem="KK5-ci-9Mw" firstAttribute="top" secondItem="fk1-L4-Bqr" secondAttribute="bottom" constant="10" id="Ghe-me-5qD"/>
                             <constraint firstItem="z1q-nE-g9i" firstAttribute="top" secondItem="vwB-Np-eVl" secondAttribute="bottom" constant="20" id="HH5-sW-t21"/>
                             <constraint firstItem="60S-0m-GgZ" firstAttribute="top" secondItem="1Cj-wD-B6y" secondAttribute="bottom" constant="25" id="HqL-UG-K2J"/>
@@ -979,6 +990,7 @@
                             <constraint firstItem="E4d-e2-1C7" firstAttribute="centerX" secondItem="dCn-Vf-AQr" secondAttribute="centerX" id="mvF-GO-6lS"/>
                             <constraint firstItem="y20-Qu-ZSz" firstAttribute="centerX" secondItem="dCn-Vf-AQr" secondAttribute="centerX" id="n6H-Pa-2PA"/>
                             <constraint firstItem="z1q-nE-g9i" firstAttribute="centerY" secondItem="inD-md-yw4" secondAttribute="centerY" id="oJ7-gV-Giq"/>
+                            <constraint firstItem="aai-ZK-xN0" firstAttribute="top" secondItem="ULL-qm-sXe" secondAttribute="bottom" constant="10" id="q8C-BJ-0Dp"/>
                             <constraint firstAttribute="trailing" secondItem="fk1-L4-Bqr" secondAttribute="trailing" constant="30" id="q9Q-o3-Dqm"/>
                             <constraint firstItem="1Cj-wD-B6y" firstAttribute="centerX" secondItem="ohj-3L-Qtc" secondAttribute="centerX" id="qvc-lE-uFB"/>
                             <constraint firstItem="1Cj-wD-B6y" firstAttribute="leading" secondItem="a4i-uy-oHt" secondAttribute="leading" id="r9R-KS-uZc"/>

@@ -32,11 +32,13 @@ class CategoryViewController: NSViewController {
                 imagePaths.sort(by: {
                     $0.evaluation ?? 0 > $1.evaluation ?? 0
                 })
+            case .bySimilality:
+                break
+            case .byRandam:
+                break
             }
             
             imagesCache = imagePaths
-            
-//            print("カテゴリ数：\(imagePaths.count)")
             let clustersCount = ["clustersCount": imagePaths.count]
             NotificationCenter.default.post(name: .setCategoryCountLabel, object: nil, userInfo: clustersCount)
             categoryCollectionView.reloadData()
@@ -127,6 +129,10 @@ class CategoryViewController: NSViewController {
                 sortTag = .bByCount
             case .byEvalution:
                 sortTag = .byEvalution
+            case .bySimilality:
+                sortTag = .bySimilality
+            case .byRandam:
+                sortTag = .byRandam
             }
         }
     }

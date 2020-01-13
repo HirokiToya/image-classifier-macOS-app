@@ -28,17 +28,19 @@ class InCategoryViewController: NSViewController {
                 }
             case .bByCount:
                 break
-            case .byEvalution:
+            case .bySimilality:
                 if(scenePriorityCache) {
                     imagePaths.sort(by: { $0.sceneProbability > $1.sceneProbability })
                 } else {
                     imagePaths.sort(by: { $0.objectProbability > $1.objectProbability })
                 }
+            case .byEvalution:
+                break
+            case .byRandam:
+                imagePaths.shuffle()
             }
             
             imagesCache = imagePaths
-            
-            //            print("カテゴリ内画像枚数：\(imagePaths.count)")
             imageCollectionView.reloadData()
         }
     }
@@ -110,6 +112,10 @@ class InCategoryViewController: NSViewController {
                 sortTag = .bByCount
             case .byEvalution:
                 sortTag = .byEvalution
+            case .bySimilality:
+                sortTag = .bySimilality
+            case .byRandam:
+                sortTag = .byRandam
             }
         }
     }
