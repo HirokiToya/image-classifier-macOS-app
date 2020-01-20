@@ -26,7 +26,7 @@ class UserExperimentComponent {
     struct secondExperimentImages {
         let first: URL = "file:///Users/toyahiroki/Pictures/correct_images_1000/SE066_L.jpg"
         let second: URL = "file:///Users/toyahiroki/Pictures/correct_images_1000/AX181_L.jpg"
-        let third: URL = "file:///Users/toyahiroki/Pictures/correct_images_1000/CX012_L.jpg"
+        let third: URL = "file:///Users/toyahiroki/Pictures/correct_images_1000/EB154_L.jpg"
         
         func getImage(count: Int) -> URL?{
             switch count {

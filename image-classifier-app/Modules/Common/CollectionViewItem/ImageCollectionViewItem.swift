@@ -102,7 +102,7 @@ class ImageCollectionViewItem: NSCollectionViewItem {
     
     func setImageBackgroundColor() {
         if(isImageSelected) {
-            imageBackgrountView.layer?.backgroundColor = NSColor.selectedTextBackgroundColor.cgColor
+//            imageBackgrountView.layer?.backgroundColor = NSColor.selectedTextBackgroundColor.cgColor
         } else {
             imageBackgrountView.layer?.backgroundColor = .clear
         }

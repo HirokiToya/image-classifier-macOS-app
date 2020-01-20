@@ -866,8 +866,8 @@
                                 </connections>
                             </button>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="60S-0m-GgZ">
-                                <rect key="frame" x="8" y="358" width="47" height="18"/>
-                                <buttonCell key="cell" type="check" title="翻訳" bezelStyle="regularSquare" imagePosition="left" inset="2" id="JS9-bG-jDr">
+                                <rect key="frame" x="8" y="358" width="102" height="18"/>
+                                <buttonCell key="cell" type="check" title="英語 ⇄ 日本語" bezelStyle="regularSquare" imagePosition="left" inset="2" id="JS9-bG-jDr">
                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
