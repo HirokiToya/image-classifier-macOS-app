@@ -93,9 +93,10 @@ class InCategoryViewController: NSViewController {
     @objc func reloadData(notification: Notification) {
         if let target = notification.userInfo?["imageAttributes"] as? CategoryRepositories.Image {
             scenePriorityCache = target.scenePriority
-            imagePaths = CategoryRepositories.getSceneCategoryImages(sceneId: target.sceneId,
-                                                                         objectName: target.objectName,
-                                                                         scenePriority: target.scenePriority)
+            imagePaths = CategoryRepositories.getSceneCategoryImages(
+                sceneId: target.sceneId,
+                objectName: target.objectName,
+                scenePriority: target.scenePriority)
         }
     }
     
@@ -169,14 +170,16 @@ extension InCategoryViewController: NSCollectionViewDelegate, NSCollectionViewDa
                 self.selectedImages.removeAll(where: { $0.url == image.url })
                 item.isImageSelected = false
             } else {
-                self.selectedImages.append(CategoryRepositories.Image(url: image.url,
-                                                                      sceneId: image.sceneId,
-                                                                      sceneName: image.sceneName,
-                                                                      sceneProbability: image.sceneProbability,
-                                                                      objectId: image.objectId,
-                                                                      objectName: image.objectName,
-                                                                      objectProbability: image.objectProbability,
-                                                                      scenePriority: image.scenePriority))
+                self.selectedImages.append(
+                    CategoryRepositories.Image(
+                        url: image.url,
+                        sceneId: image.sceneId,
+                        sceneName: image.sceneName,
+                        sceneProbability: image.sceneProbability,
+                        objectId: image.objectId,
+                        objectName: image.objectName,
+                        objectProbability: image.objectProbability,
+                        scenePriority: image.scenePriority))
                 item.isImageSelected = true
             }
             let imageUrl = ["imageUrl": image.url]

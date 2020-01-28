@@ -72,7 +72,11 @@ class ImageCollectionViewItem: NSCollectionViewItem {
             numberLabel.stringValue = "識別確率 \(ceil(image.sceneProbability * 1000) / 1000)"
             nameLabel.stringValue = setTransltedName(name: image.sceneName, state: translationState)
             setMarkImage(isSceneImage: true)
-            evaluationLabel.stringValue = ""
+            if let similarityWithRepresentative = image.similarityWithRepresentative {
+                evaluationLabel.stringValue = "SWR \(ceil(similarityWithRepresentative * 1000) / 1000)"
+            } else {
+                evaluationLabel.stringValue = ""
+            }
         } else {
             
             idLabel.stringValue = "\(image.objectId)"

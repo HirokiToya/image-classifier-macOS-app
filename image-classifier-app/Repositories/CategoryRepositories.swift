@@ -11,6 +11,7 @@ class CategoryRepositories {
         var objectName: String
         var objectProbability: Double
         var evaluation: Double?
+        var similarityWithRepresentative: Double?
         var scenePriority: Bool
     }
         
@@ -78,6 +79,9 @@ class CategoryRepositories {
                                     objectId: sameCategoryImage.resnetPredictions[0].labelId,
                                     objectName: sameCategoryImage.resnetPredictions[0].label,
                                     objectProbability: sameCategoryImage.resnetPredictions[0].probability,
+                                    similarityWithRepresentative:SimilalityRepositories.getSimilality(
+                                        id1: sceneId,
+                                        id2: Int(sameCategoryImage.scenePredictions[0].labelId)!),
                                     scenePriority: true))
             }
         }
@@ -111,6 +115,9 @@ class CategoryRepositories {
                                             objectId: categoryImage.predictionResult.resnetPredictions[0].labelId,
                                             objectName: categoryImage.predictionResult.resnetPredictions[0].label,
                                             objectProbability: categoryImage.predictionResult.resnetPredictions[0].probability,
+                                            similarityWithRepresentative: SimilalityRepositories.getSimilality(
+                                                id1: sceneId,
+                                                id2: Int(categoryImage.predictionResult.scenePredictions[0].labelId)!),
                                             scenePriority: true))
                     }
                 }
