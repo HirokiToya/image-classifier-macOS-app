@@ -120,7 +120,7 @@ class OperationViewController: NSViewController, OperationViewInterface {
             }
         }
     }
-        
+    
     @IBAction func startLogging(_ sender: NSButton) {
         switch sender.state {
         case .on:
@@ -130,6 +130,13 @@ class OperationViewController: NSViewController, OperationViewInterface {
             DebugComponent.endExperiment()
             
         default: break
+        }
+    }
+    
+    @IBAction func helpButtonTapped(_ sender: Any) {
+        let storyboard: NSStoryboard = NSStoryboard(name: "HelpViewController", bundle: nil)
+        if let nextView = storyboard.instantiateInitialController() as? HelpViewController {
+            self.presentAsModalWindow(nextView)
         }
     }
     

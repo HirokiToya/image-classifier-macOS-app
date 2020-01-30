@@ -31,6 +31,8 @@
 		ED69986223687ADE0032453A /* FilePathes.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED69986123687ADE0032453A /* FilePathes.swift */; };
 		ED6B5C3C23C474F6008AEE08 /* CategoryEvaluationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED6B5C3B23C474F6008AEE08 /* CategoryEvaluationModel.swift */; };
 		ED6FB90F238271D200BDD446 /* SortActionTag.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED6FB90E238271D200BDD446 /* SortActionTag.swift */; };
+		ED78A18123E2CA860037235A /* HelpViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ED78A18023E2CA860037235A /* HelpViewController.storyboard */; };
+		ED78A18323E2CAA30037235A /* HelpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED78A18223E2CAA30037235A /* HelpViewController.swift */; };
 		ED91412523787126003BE725 /* CategoryAttributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED91412423787126003BE725 /* CategoryAttributes.swift */; };
 		ED91661A2376A67400FFA053 /* InCategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED9166192376A67400FFA053 /* InCategoryViewController.swift */; };
 		EDC47080235389F700E7CE91 /* Similality.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDC4707F235389F700E7CE91 /* Similality.swift */; };
@@ -96,6 +98,8 @@
 		ED69986123687ADE0032453A /* FilePathes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilePathes.swift; sourceTree = "<group>"; };
 		ED6B5C3B23C474F6008AEE08 /* CategoryEvaluationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryEvaluationModel.swift; sourceTree = "<group>"; };
 		ED6FB90E238271D200BDD446 /* SortActionTag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortActionTag.swift; sourceTree = "<group>"; };
+		ED78A18023E2CA860037235A /* HelpViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = HelpViewController.storyboard; sourceTree = "<group>"; };
+		ED78A18223E2CAA30037235A /* HelpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpViewController.swift; sourceTree = "<group>"; };
 		ED91412423787126003BE725 /* CategoryAttributes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryAttributes.swift; sourceTree = "<group>"; };
 		ED9166192376A67400FFA053 /* InCategoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InCategoryViewController.swift; sourceTree = "<group>"; };
 		EDC4707F235389F700E7CE91 /* Similality.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Similality.swift; sourceTree = "<group>"; };
@@ -178,6 +182,7 @@
 		ED1193092372ED610030B582 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				ED78A17F23E2CA630037235A /* HelpViewController */,
 				ED5E9DD0237C0224004708F9 /* ImageViewController */,
 				EDF17E352371691300CA77C9 /* CollectionViewItem */,
 			);
@@ -191,6 +196,15 @@
 				ED5E9DCE237BFDD6004708F9 /* ImageViewController.storyboard */,
 			);
 			path = ImageViewController;
+			sourceTree = "<group>";
+		};
+		ED78A17F23E2CA630037235A /* HelpViewController */ = {
+			isa = PBXGroup;
+			children = (
+				ED78A18223E2CAA30037235A /* HelpViewController.swift */,
+				ED78A18023E2CA860037235A /* HelpViewController.storyboard */,
+			);
+			path = HelpViewController;
 			sourceTree = "<group>";
 		};
 		ED7E51F223AE48A8008F8858 /* Models */ = {
@@ -440,6 +454,7 @@
 			files = (
 				ED5E9DCF237BFDD6004708F9 /* ImageViewController.storyboard in Resources */,
 				EDF56A8C233F711200A1019F /* Assets.xcassets in Resources */,
+				ED78A18123E2CA860037235A /* HelpViewController.storyboard in Resources */,
 				EDF17E342371690E00CA77C9 /* ImageCollectionViewItem.xib in Resources */,
 				EDF56A8F233F711200A1019F /* Main.storyboard in Resources */,
 				EDF56AAD233F815000A1019F /* APIConfig.plist in Resources */,
@@ -563,6 +578,7 @@
 				EDC47080235389F700E7CE91 /* Similality.swift in Sources */,
 				ED604B0B23C6EBAF0099424C /* CategoryDivider.swift in Sources */,
 				EDF56AA9233F7A7B00A1019F /* EndPoints.swift in Sources */,
+				ED78A18323E2CAA30037235A /* HelpViewController.swift in Sources */,
 				EDF56A88233F710F00A1019F /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

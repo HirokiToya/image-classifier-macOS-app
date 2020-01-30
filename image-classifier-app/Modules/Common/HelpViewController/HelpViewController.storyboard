@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="15702" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="yeT-Ax-eQt">
+    <dependencies>
+        <deployment identifier="macosx"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="15702"/>
+        <plugIn identifier="com.apple.WebKit2IBPlugin" version="15702"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Help View Controller-->
+        <scene sceneID="ZJ6-lR-qE5">
+            <objects>
+                <viewController id="yeT-Ax-eQt" customClass="HelpViewController" customModule="image_classifier_app" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" id="JGr-HG-3gp">
+                        <rect key="frame" x="0.0" y="0.0" width="1000" height="500"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <subviews>
+                            <wkWebView wantsLayer="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qD1-lJ-8fw">
+                                <rect key="frame" x="0.0" y="0.0" width="1000" height="500"/>
+                                <wkWebViewConfiguration key="configuration">
+                                    <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
+                                    <wkPreferences key="preferences"/>
+                                </wkWebViewConfiguration>
+                            </wkWebView>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="qD1-lJ-8fw" firstAttribute="leading" secondItem="JGr-HG-3gp" secondAttribute="leading" id="Bv8-tW-XC2"/>
+                            <constraint firstAttribute="bottom" secondItem="qD1-lJ-8fw" secondAttribute="bottom" id="HUi-Zv-Peu"/>
+                            <constraint firstAttribute="trailing" secondItem="qD1-lJ-8fw" secondAttribute="trailing" id="OqF-7l-eCl"/>
+                            <constraint firstItem="qD1-lJ-8fw" firstAttribute="top" secondItem="JGr-HG-3gp" secondAttribute="top" id="QGU-bX-nP5"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="webView" destination="qD1-lJ-8fw" id="rSt-wy-EId"/>
+                    </connections>
+                </viewController>
+                <customObject id="v33-kR-Mgs" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="220" y="143"/>
+        </scene>
+    </scenes>
+</document>
