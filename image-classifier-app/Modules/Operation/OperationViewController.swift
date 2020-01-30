@@ -9,6 +9,7 @@ class OperationViewController: NSViewController, OperationViewInterface {
     @IBOutlet weak var experimentImageView: NSImageView!
     @IBOutlet weak var experimentImageBackgroundView: NSView!
     
+    
     var presenter: OperationPresenterInterface!
     var experimentImageUrl:URL? = nil
     
@@ -56,12 +57,14 @@ class OperationViewController: NSViewController, OperationViewInterface {
         
     @IBAction func reloadData(_ sender: Any) {
         NotificationCenter.default.post(name: .reloadCategoryImages, object: nil)
+        clustersLabel.stringValue = ""
         presenter.reloadButtonTapped()
     }
     
     @IBAction func performClustering(_ sender: Any) {
         let clusters = ["clusters": Int(clustersLabel.intValue)]
         NotificationCenter.default.post(name: .performClustering, object: nil, userInfo: clusters)
+        DebugComponent.setCluster(num: Int(clustersLabel.intValue))
     }
     
     @IBAction func cleanDatabase(_ sender: Any) {
@@ -79,12 +82,14 @@ class OperationViewController: NSViewController, OperationViewInterface {
     @IBAction func leftViewRadioButtonTapped(_ sender: NSButton) {
         if let tag = SortActionTag(rawValue: sender.tag) {
             NotificationCenter.default.post(name: .setCategorySortTag, object: nil, userInfo: ["sortActionTag": tag])
+            DebugComponent.changeRepresentativeImageOrder(tag: tag)
         }
     }
     
     @IBAction func rightViewRadioButtonTapped(_ sender: NSButton) {
         if let tag = SortActionTag(rawValue: sender.tag) {
             NotificationCenter.default.post(name: .setInCategorySortTag, object: nil, userInfo: ["sortActionTag": tag])
+            DebugComponent.changeClusteredImageOrder(tag: tag)
         }
     }
     
@@ -92,8 +97,10 @@ class OperationViewController: NSViewController, OperationViewInterface {
         switch sender.state {
         case .on:
             NotificationCenter.default.post(name: .translationState, object: nil, userInfo: ["state": true])
+            DebugComponent.changeTransrateState(tag: true)
         case .off:
             NotificationCenter.default.post(name: .translationState, object: nil, userInfo: ["state": false])
+            DebugComponent.changeTransrateState(tag: false)
         default: break
         }
     }
@@ -111,6 +118,18 @@ class OperationViewController: NSViewController, OperationViewInterface {
                 experimentImageBackgroundView.layer?.backgroundColor = NSColor.systemBlue.cgColor
                 presenter.selectedCorrectImage()
             }
+        }
+    }
+        
+    @IBAction func startLogging(_ sender: NSButton) {
+        switch sender.state {
+        case .on:
+            DebugComponent.startExperiment()
+            
+        case .off:
+            DebugComponent.endExperiment()
+            
+        default: break
         }
     }
     

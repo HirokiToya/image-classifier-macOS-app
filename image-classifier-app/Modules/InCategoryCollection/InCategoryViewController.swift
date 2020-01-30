@@ -129,7 +129,7 @@ class InCategoryViewController: NSViewController {
     
     @objc func outputLog(notification: Notification) {
         print("ログ出力")
-        print("Time:\(debugger.getTimeNow())")
+        print("Time:\(DebugComponent.getTimeNow())")
         
         for image in selectedImages {
             if let representativeImage = CategoryRepositories.getRepresentativeImage(sceneId: image.sceneId){
@@ -148,7 +148,7 @@ class InCategoryViewController: NSViewController {
         print(urls)
         
         // 画像URLをファイルに書き出し
-        debugger.writeSelectedImagesName(data: urls)
+        DebugComponent.writeSelectedImagesName(data: urls)
     }
 }
 

@@ -9,7 +9,7 @@ class OperationPresenter: OperationPresenterInterface {
             scenePredictionPathIndex = 0
             objectPredictionPathIndex = 0
             
-            print("画像識別開始:\(dubugger.getTimeNow())")
+            print("画像識別開始:\(DebugComponent.getTimeNow())")
             if(imagePathes.count > 0) {
                 predictScenes(index: scenePredictionPathIndex)
                 predictObjects(index: objectPredictionPathIndex)
@@ -22,21 +22,19 @@ class OperationPresenter: OperationPresenterInterface {
     
     private var experimentTrialCount = 0 {
         didSet {
-            if(experimentTrialCount > 3) {
+            if(experimentTrialCount > UserExperimentComponent.experimentTrialCountMax) {
                 experimentTrialCount = 0
             }
         }
     }
-    
-    let dubugger = DebugComponent()
-    
+        
     init(view: OperationViewInterface!){
         self.view = view
         self.interactor = OperationInteractor(output: self)
     }
     
     func reloadButtonTapped() {
-        dubugger.startExperiment()
+        
     }
     
     func predictButtonTapped() {
@@ -71,18 +69,16 @@ class OperationPresenter: OperationPresenterInterface {
     
     func changeExperimentImage() {
         interactor.getExperimentImage(trialCount: experimentTrialCount)
-        experimentTrialCount += 1
-        
-        // 実験時間測定開始
-        dubugger.startSelecting()
+        DebugComponent.startSelecting(num:experimentTrialCount)
     }
     
     func selectedCorrectImage() {
-        dubugger.endSelecting()
+        DebugComponent.endSelecting(num: experimentTrialCount)
+        experimentTrialCount += 1
     }
     
     func outputLogButtonTapped() {
-        dubugger.endExperiment()
+        DebugComponent.endExperiment()
     }
     
     func deleteAllData() {
@@ -113,7 +109,7 @@ extension OperationPresenter: OperationInteractorOutput {
         } else {
             // 識別の終了をViewに伝える
             print("\(scenePredictionPathIndex)/\(imagePathes.count)")
-            print("シーン識別終了:\(dubugger.getTimeNow())")
+            print("シーン識別終了:\(DebugComponent.getTimeNow())")
         }
     }
     
@@ -125,7 +121,7 @@ extension OperationPresenter: OperationInteractorOutput {
         } else {
             // 識別の終了をViewに伝える
             print("\(objectPredictionPathIndex)/\(imagePathes.count)")
-            print("物体識別終了:\(dubugger.getTimeNow())")
+            print("物体識別終了:\(DebugComponent.getTimeNow())")
         }
     }
     

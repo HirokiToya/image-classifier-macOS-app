@@ -942,6 +942,16 @@
                                     <action selector="rightViewRadioButtonTapped:" target="taL-D0-KaQ" id="eEo-xY-PEI"/>
                                 </connections>
                             </button>
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="5TR-m0-5TT">
+                                <rect key="frame" x="40" y="65" width="71" height="18"/>
+                                <buttonCell key="cell" type="check" title="ログ収集" bezelStyle="regularSquare" imagePosition="left" inset="2" id="tTV-PY-zt9">
+                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="startLogging:" target="taL-D0-KaQ" id="GjI-pp-51A"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <constraints>
                             <constraint firstItem="ULL-qm-sXe" firstAttribute="leading" secondItem="KK5-ci-9Mw" secondAttribute="leading" id="2RK-VB-uii"/>
@@ -983,6 +993,7 @@
                             <constraint firstItem="Dbg-h1-chJ" firstAttribute="centerX" secondItem="ohj-3L-Qtc" secondAttribute="centerX" id="eN6-xW-bMf"/>
                             <constraint firstItem="LWU-an-Sa8" firstAttribute="leading" secondItem="z1q-nE-g9i" secondAttribute="leading" id="jDj-oB-dbE"/>
                             <constraint firstItem="z1q-nE-g9i" firstAttribute="leading" secondItem="dCn-Vf-AQr" secondAttribute="leading" constant="10" id="jEt-io-FKp"/>
+                            <constraint firstItem="h1a-UN-sYY" firstAttribute="top" secondItem="5TR-m0-5TT" secondAttribute="bottom" constant="5" id="jGP-6v-5cn"/>
                             <constraint firstItem="vwB-Np-eVl" firstAttribute="top" secondItem="dCn-Vf-AQr" secondAttribute="top" constant="20" id="jUI-EO-dNJ"/>
                             <constraint firstItem="vwB-Np-eVl" firstAttribute="centerX" secondItem="dCn-Vf-AQr" secondAttribute="centerX" id="jzS-7h-4MI"/>
                             <constraint firstItem="h1a-UN-sYY" firstAttribute="centerX" secondItem="dCn-Vf-AQr" secondAttribute="centerX" id="lKk-0N-u6x"/>
@@ -992,6 +1003,7 @@
                             <constraint firstItem="z1q-nE-g9i" firstAttribute="centerY" secondItem="inD-md-yw4" secondAttribute="centerY" id="oJ7-gV-Giq"/>
                             <constraint firstItem="aai-ZK-xN0" firstAttribute="top" secondItem="ULL-qm-sXe" secondAttribute="bottom" constant="10" id="q8C-BJ-0Dp"/>
                             <constraint firstAttribute="trailing" secondItem="fk1-L4-Bqr" secondAttribute="trailing" constant="30" id="q9Q-o3-Dqm"/>
+                            <constraint firstItem="5TR-m0-5TT" firstAttribute="centerX" secondItem="dCn-Vf-AQr" secondAttribute="centerX" id="qK7-DB-0GK"/>
                             <constraint firstItem="1Cj-wD-B6y" firstAttribute="centerX" secondItem="ohj-3L-Qtc" secondAttribute="centerX" id="qvc-lE-uFB"/>
                             <constraint firstItem="1Cj-wD-B6y" firstAttribute="leading" secondItem="a4i-uy-oHt" secondAttribute="leading" id="r9R-KS-uZc"/>
                             <constraint firstItem="TgS-cc-7a6" firstAttribute="centerY" secondItem="LWU-an-Sa8" secondAttribute="centerY" id="tDJ-96-A04"/>

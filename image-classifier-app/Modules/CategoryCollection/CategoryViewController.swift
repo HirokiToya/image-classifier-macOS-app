@@ -115,7 +115,7 @@ class CategoryViewController: NSViewController {
                     imagePaths = CategoryRepositories.divideCategories(clusters: target)
                 }
                 
-                print("クラスタリング処理終了時刻:\(DebugComponent().getTimeNow())")
+                print("クラスタリング処理終了時刻:\(DebugComponent.getTimeNow())")
             }
         }
     }
@@ -168,5 +168,6 @@ extension CategoryViewController: NSCollectionViewDelegate, NSCollectionViewData
         
         let imageAttributes = ["imageAttributes": image]
         NotificationCenter.default.post(name: .reloadIncategoryImages, object: nil, userInfo: imageAttributes)
+        DebugComponent.selectRepresentative(image: image.url)
     }
 }
