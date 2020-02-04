@@ -30,7 +30,7 @@ class UserExperimentComponent {
         //        let second: URL = "file:///Users/toyahiroki/Pictures/correct_images_1000/AX181_L.jpg"
         //        let third: URL = "file:///Users/toyahiroki/Pictures/correct_images_1000/EB154_L.jpg"
         
-        let image1: URL = "file:///Users/toyahiroki/Pictures/correct_images_1000/SE066_L.jpg"
+        let image1: URL = "file:///Users/toyahiroki/Pictures/correct_images_1000/EC131_L.jpg"
         let image2: URL = "file:///Users/toyahiroki/Pictures/correct_images_1000/SR015_L.jpg"
         let image3: URL = "file:///Users/toyahiroki/Pictures/correct_images_1000/EA081_L.jpg"
         let image4: URL = "file:///Users/toyahiroki/Pictures/correct_images_1000/AS026_L.jpg"

@@ -34,7 +34,7 @@ class DebugComponent {
     
     class func selectRepresentative(image: URL) {
         if isDebug {
-            writeUserActionLog(data: "\(getTimeNow()) 代表画像選択：\(image)")
+            writeUserActionLog(data: "\(getTimeNow()) 代表画像選択：\(image.lastPathComponent)")
         }
     }
     

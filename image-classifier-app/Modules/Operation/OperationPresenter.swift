@@ -69,12 +69,12 @@ class OperationPresenter: OperationPresenterInterface {
     
     func changeExperimentImage() {
         interactor.getExperimentImage(trialCount: experimentTrialCount)
+        experimentTrialCount += 1
         DebugComponent.startSelecting(num:experimentTrialCount)
     }
     
     func selectedCorrectImage() {
         DebugComponent.endSelecting(num: experimentTrialCount)
-        experimentTrialCount += 1
     }
     
     func outputLogButtonTapped() {
